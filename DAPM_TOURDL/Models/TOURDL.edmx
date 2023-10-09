@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TourDLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="ID_HoaDon" />
+          </Key>
+          <Property Name="ID_HoaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SLTreEm" Type="int" Nullable="false" />
+          <Property Name="TongTienTour" Type="int" Nullable="false" />
+          <Property Name="NgayDat" Type="date" Nullable="false" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SLNguoiLon" Type="int" Nullable="false" />
+          <Property Name="TienKhuyenMai" Type="int" Nullable="false" />
+          <Property Name="TienPhaiTra" Type="int" Nullable="false" />
+          <Property Name="ID_SPTour" Type="varchar" MaxLength="10" />
+          <Property Name="ID_KH" Type="int" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="ID_KH" />
+          </Key>
+          <Property Name="ID_KH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen_KH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GioiTinh_KH" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="NgaySinh_KH" Type="date" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CCCD" Type="char" MaxLength="12" />
+          <Property Name="SDT_KH" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Mail_KH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diem" Type="int" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="ID_NV" />
+          </Key>
+          <Property Name="ID_NV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GioiTinh_NV" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="NgaySinh_NV" Type="date" Nullable="false" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail_NV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="SDT_NV" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SPTOUR">
+          <Key>
+            <PropertyRef Name="ID_SPTour" />
+          </Key>
+          <Property Name="ID_SPTour" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenSPTour" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="GiaNguoiLon" Type="int" Nullable="false" />
+          <Property Name="NgayKhoiHanh" Type="date" Nullable="false" />
+          <Property Name="NgayKetThuc" Type="date" Nullable="false" />
+          <Property Name="MoTa" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="DiemTapTrung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiemDen" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoNguoi" Type="int" Nullable="false" />
+          <Property Name="HinhAnh" Type="varbinary(max)" />
+          <Property Name="GiaTreEm" Type="int" Nullable="false" />
+          <Property Name="ID_NV" Type="int" />
+          <Property Name="ID_TOUR" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TOUR">
+          <Key>
+            <PropertyRef Name="ID_TOUR" />
+          </Key>
+          <Property Name="ID_TOUR" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="TenTour" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GiaTour" Type="int" Nullable="false" />
+          <Property Name="MoTa" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="HinhTour" Type="varbinary(max)" />
+          <Property Name="TinhThanh" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoaiTour" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__HOADON__ID_KH__571DF1D5">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="ID_KH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="ID_KH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__ID_SPTou__5629CD9C">
+          <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPTOUR">
+              <PropertyRef Name="ID_SPTour" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="ID_SPTour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SPTOUR__ID_NV__52593CB8">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="ID_NV" />
+            </Principal>
+            <Dependent Role="SPTOUR">
+              <PropertyRef Name="ID_NV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SPTOUR__ID_TOUR__534D60F1">
+          <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
+          <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOUR">
+              <PropertyRef Name="ID_TOUR" />
+            </Principal>
+            <Dependent Role="SPTOUR">
+              <PropertyRef Name="ID_TOUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TourDLModelStoreContainer">
+          <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SPTOUR" EntityType="Self.SPTOUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR" EntityType="Self.TOUR" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__HOADON__ID_KH__571DF1D5" Association="Self.FK__HOADON__ID_KH__571DF1D5">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__ID_SPTou__5629CD9C" Association="Self.FK__HOADON__ID_SPTou__5629CD9C">
+            <End Role="SPTOUR" EntitySet="SPTOUR" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SPTOUR__ID_NV__52593CB8" Association="Self.FK__SPTOUR__ID_NV__52593CB8">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="SPTOUR" EntitySet="SPTOUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SPTOUR__ID_TOUR__534D60F1" Association="Self.FK__SPTOUR__ID_TOUR__534D60F1">
+            <End Role="TOUR" EntitySet="TOUR" />
+            <End Role="SPTOUR" EntitySet="SPTOUR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TourDLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="ID_HoaDon" />
+          </Key>
+          <Property Name="ID_HoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SLTreEm" Type="Int32" Nullable="false" />
+          <Property Name="TongTienTour" Type="Int32" Nullable="false" />
+          <Property Name="NgayDat" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TinhTrang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SLNguoiLon" Type="Int32" Nullable="false" />
+          <Property Name="TienKhuyenMai" Type="Int32" Nullable="false" />
+          <Property Name="TienPhaiTra" Type="Int32" Nullable="false" />
+          <Property Name="ID_SPTour" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ID_KH" Type="Int32" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__ID_KH__571DF1D5" FromRole="HOADON" ToRole="KHACHHANG" />
+          <NavigationProperty Name="SPTOUR" Relationship="Self.FK__HOADON__ID_SPTou__5629CD9C" FromRole="HOADON" ToRole="SPTOUR" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="ID_KH" />
+          </Key>
+          <Property Name="ID_KH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh_KH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgaySinh_KH" Type="DateTime" Precision="0" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="SDT_KH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Mail_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Diem" Type="Int32" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__ID_KH__571DF1D5" FromRole="KHACHHANG" ToRole="HOADON" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="ID_NV" />
+          </Key>
+          <Property Name="ID_NV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh_NV" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgaySinh_NV" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChucVu" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT_NV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SPTOURs" Relationship="Self.FK__SPTOUR__ID_NV__52593CB8" FromRole="NHANVIEN" ToRole="SPTOUR" />
+        </EntityType>
+        <EntityType Name="SPTOUR">
+          <Key>
+            <PropertyRef Name="ID_SPTour" />
+          </Key>
+          <Property Name="ID_SPTour" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSPTour" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GiaNguoiLon" Type="Int32" Nullable="false" />
+          <Property Name="NgayKhoiHanh" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NgayKetThuc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DiemTapTrung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DiemDen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SoNguoi" Type="Int32" Nullable="false" />
+          <Property Name="HinhAnh" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="GiaTreEm" Type="Int32" Nullable="false" />
+          <Property Name="ID_NV" Type="Int32" />
+          <Property Name="ID_TOUR" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__ID_SPTou__5629CD9C" FromRole="SPTOUR" ToRole="HOADON" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__SPTOUR__ID_NV__52593CB8" FromRole="SPTOUR" ToRole="NHANVIEN" />
+          <NavigationProperty Name="TOUR" Relationship="Self.FK__SPTOUR__ID_TOUR__534D60F1" FromRole="SPTOUR" ToRole="TOUR" />
+        </EntityType>
+        <EntityType Name="TOUR">
+          <Key>
+            <PropertyRef Name="ID_TOUR" />
+          </Key>
+          <Property Name="ID_TOUR" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenTour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GiaTour" Type="Int32" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HinhTour" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TinhThanh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoaiTour" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SPTOURs" Relationship="Self.FK__SPTOUR__ID_TOUR__534D60F1" FromRole="TOUR" ToRole="SPTOUR" />
+        </EntityType>
+        <Association Name="FK__HOADON__ID_KH__571DF1D5">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="ID_KH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="ID_KH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__ID_SPTou__5629CD9C">
+          <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPTOUR">
+              <PropertyRef Name="ID_SPTour" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="ID_SPTour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SPTOUR__ID_NV__52593CB8">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="ID_NV" />
+            </Principal>
+            <Dependent Role="SPTOUR">
+              <PropertyRef Name="ID_NV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SPTOUR__ID_TOUR__534D60F1">
+          <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
+          <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOUR">
+              <PropertyRef Name="ID_TOUR" />
+            </Principal>
+            <Dependent Role="SPTOUR">
+              <PropertyRef Name="ID_TOUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TourDLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="SPTOURs" EntityType="Self.SPTOUR" />
+          <EntitySet Name="TOURs" EntityType="Self.TOUR" />
+          <AssociationSet Name="FK__HOADON__ID_KH__571DF1D5" Association="Self.FK__HOADON__ID_KH__571DF1D5">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__ID_SPTou__5629CD9C" Association="Self.FK__HOADON__ID_SPTou__5629CD9C">
+            <End Role="SPTOUR" EntitySet="SPTOURs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SPTOUR__ID_NV__52593CB8" Association="Self.FK__SPTOUR__ID_NV__52593CB8">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="SPTOUR" EntitySet="SPTOURs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SPTOUR__ID_TOUR__534D60F1" Association="Self.FK__SPTOUR__ID_TOUR__534D60F1">
+            <End Role="TOUR" EntitySet="TOURs" />
+            <End Role="SPTOUR" EntitySet="SPTOURs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TourDLModelStoreContainer" CdmEntityContainer="TourDLEntities">
+          <EntitySetMapping Name="HOADONs">
+            <EntityTypeMapping TypeName="TourDLModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="ID_HoaDon" ColumnName="ID_HoaDon" />
+                <ScalarProperty Name="SLTreEm" ColumnName="SLTreEm" />
+                <ScalarProperty Name="TongTienTour" ColumnName="TongTienTour" />
+                <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="SLNguoiLon" ColumnName="SLNguoiLon" />
+                <ScalarProperty Name="TienKhuyenMai" ColumnName="TienKhuyenMai" />
+                <ScalarProperty Name="TienPhaiTra" ColumnName="TienPhaiTra" />
+                <ScalarProperty Name="ID_SPTour" ColumnName="ID_SPTour" />
+                <ScalarProperty Name="ID_KH" ColumnName="ID_KH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="TourDLModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="ID_KH" ColumnName="ID_KH" />
+                <ScalarProperty Name="HoTen_KH" ColumnName="HoTen_KH" />
+                <ScalarProperty Name="GioiTinh_KH" ColumnName="GioiTinh_KH" />
+                <ScalarProperty Name="NgaySinh_KH" ColumnName="NgaySinh_KH" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+                <ScalarProperty Name="SDT_KH" ColumnName="SDT_KH" />
+                <ScalarProperty Name="Mail_KH" ColumnName="Mail_KH" />
+                <ScalarProperty Name="Diem" ColumnName="Diem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="TourDLModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="ID_NV" ColumnName="ID_NV" />
+                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+                <ScalarProperty Name="GioiTinh_NV" ColumnName="GioiTinh_NV" />
+                <ScalarProperty Name="NgaySinh_NV" ColumnName="NgaySinh_NV" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="Mail_NV" ColumnName="Mail_NV" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPTOURs">
+            <EntityTypeMapping TypeName="TourDLModel.SPTOUR">
+              <MappingFragment StoreEntitySet="SPTOUR">
+                <ScalarProperty Name="ID_SPTour" ColumnName="ID_SPTour" />
+                <ScalarProperty Name="TenSPTour" ColumnName="TenSPTour" />
+                <ScalarProperty Name="GiaNguoiLon" ColumnName="GiaNguoiLon" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="DiemTapTrung" ColumnName="DiemTapTrung" />
+                <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />
+                <ScalarProperty Name="SoNguoi" ColumnName="SoNguoi" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="GiaTreEm" ColumnName="GiaTreEm" />
+                <ScalarProperty Name="ID_NV" ColumnName="ID_NV" />
+                <ScalarProperty Name="ID_TOUR" ColumnName="ID_TOUR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOURs">
+            <EntityTypeMapping TypeName="TourDLModel.TOUR">
+              <MappingFragment StoreEntitySet="TOUR">
+                <ScalarProperty Name="ID_TOUR" ColumnName="ID_TOUR" />
+                <ScalarProperty Name="TenTour" ColumnName="TenTour" />
+                <ScalarProperty Name="GiaTour" ColumnName="GiaTour" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="HinhTour" ColumnName="HinhTour" />
+                <ScalarProperty Name="TinhThanh" ColumnName="TinhThanh" />
+                <ScalarProperty Name="LoaiTour" ColumnName="LoaiTour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

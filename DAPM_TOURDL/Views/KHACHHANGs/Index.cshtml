@@ -1,0 +1,83 @@
+﻿@model IEnumerable<DAPM_TOURDL.Models.KHACHHANG>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen_KH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GioiTinh_KH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgaySinh_KH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CCCD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDT_KH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail_KH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diem)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen_KH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh_KH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgaySinh_KH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCCD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT_KH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail_KH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID_KH }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID_KH }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID_KH })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

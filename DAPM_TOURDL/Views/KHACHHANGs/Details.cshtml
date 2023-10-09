@@ -1,0 +1,90 @@
+﻿@model DAPM_TOURDL.Models.KHACHHANG
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>KHACHHANG</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.HoTen_KH)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HoTen_KH)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GioiTinh_KH)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GioiTinh_KH)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NgaySinh_KH)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NgaySinh_KH)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MatKhau)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CCCD)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CCCD)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SDT_KH)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SDT_KH)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Mail_KH)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Mail_KH)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Diem)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Diem)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID_KH }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
