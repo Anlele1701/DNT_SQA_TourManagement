@@ -1,4 +1,4 @@
-# :technologist: **PROJECT MÔN HỌC ĐAPM - ĐỀ TÀI WEBSITE TOUR DU LỊCH** :woman_technologist:
+# :technologist: **PROJECT MÔN HỌC ĐỒ ÁN PHẦN MỀM - ĐỀ TÀI WEBSITE TOUR DU LỊCH** :woman_technologist:
 ## :accessibility: Thành Viên Của Nhóm 9:
 | **Tên Thành Viên** | **MSSV** |
 | --- | --- |
@@ -21,4 +21,4 @@
   -	Thống kê các tour được đặt nhiều nhất và doanh thu cao nhất của các tour.
 
 ## :package: Công Nghệ Sử Dụng Trong Đề Tài:
-  Phần mềm này được phát triển bằng [HTML](https://vi.wikipedia.org/wiki/HTML), [CSS](https://vi.wikipedia.org/wiki/CSS) và [JavaScript](https://vi.wikipedia.org/wiki/JavaScript) dựa trên mô hình MVC.
+  Phần mềm này được phát triển bằng [C#](https://vi.wikipedia.org/wiki/C_Sharp_(ng%C3%B4n_ng%E1%BB%AF_l%E1%BA%ADp_tr%C3%ACnh)), [HTML](https://vi.wikipedia.org/wiki/HTML), [CSS](https://vi.wikipedia.org/wiki/CSS) và [JavaScript](https://vi.wikipedia.org/wiki/JavaScript) dựa trên mô hình MVC.
