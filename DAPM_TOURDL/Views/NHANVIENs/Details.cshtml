@@ -1,0 +1,74 @@
+﻿@model DAPM_TOURDL.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NHANVIEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChucVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChucVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT_NV)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_NV }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

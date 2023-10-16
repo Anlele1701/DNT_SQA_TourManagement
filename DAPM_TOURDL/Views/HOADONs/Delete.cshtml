@@ -1,0 +1,96 @@
+﻿@model DAPM_TOURDL.Models.HOADON
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>HOADON</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SLTreEm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLTreEm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongTienTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTienTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SLNguoiLon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLNguoiLon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TienKhuyenMai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienKhuyenMai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TienPhaiTra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienPhaiTra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen_KH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HoTen_KH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SPTOUR.TenSPTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPTOUR.TenSPTour)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

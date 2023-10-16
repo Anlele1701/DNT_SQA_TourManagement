@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DAPM_TOURDL.Models.TOUR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhThanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiTour)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaTour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HinhTour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhThanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiTour)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TOUR }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_TOUR }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TOUR })
+        </td>
+    </tr>
+}
+
+</table>

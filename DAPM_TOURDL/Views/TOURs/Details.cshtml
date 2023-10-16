@@ -1,0 +1,66 @@
+﻿@model DAPM_TOURDL.Models.TOUR
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TOUR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhThanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhThanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiTour)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_TOUR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

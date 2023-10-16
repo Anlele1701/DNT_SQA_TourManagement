@@ -1,0 +1,90 @@
+﻿@model DAPM_TOURDL.Models.HOADON
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HOADON</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SLTreEm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLTreEm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongTienTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTienTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SLNguoiLon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLNguoiLon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TienKhuyenMai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienKhuyenMai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TienPhaiTra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienPhaiTra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen_KH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HoTen_KH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SPTOUR.TenSPTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPTOUR.TenSPTour)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_HoaDon }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<DAPM_TOURDL.Models.SPTOUR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSPTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaNguoiLon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayKhoiHanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayKetThuc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemTapTrung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemDen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoNguoi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaTreEm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NHANVIEN.HoTen_NV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TOUR.TenTour)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSPTour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaNguoiLon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayKhoiHanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayKetThuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiemTapTrung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiemDen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoNguoi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HinhAnh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaTreEm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NHANVIEN.HoTen_NV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOUR.TenTour)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_SPTour }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_SPTour }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_SPTour })
+        </td>
+    </tr>
+}
+
+</table>

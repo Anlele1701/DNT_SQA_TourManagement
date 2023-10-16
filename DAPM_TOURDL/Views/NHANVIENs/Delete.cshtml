@@ -1,0 +1,80 @@
+﻿@model DAPM_TOURDL.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NHANVIEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChucVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChucVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT_NV)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

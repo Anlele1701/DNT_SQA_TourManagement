@@ -171,9 +171,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HOADONsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KHACHHANGsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NHANVIENsController.cs" />
+    <Compile Include="Controllers\SPTOURsController.cs" />
+    <Compile Include="Controllers\TOURsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,6 +314,26 @@
     <Content Include="Views\KHACHHANGs\Details.cshtml" />
     <Content Include="Views\KHACHHANGs\Edit.cshtml" />
     <Content Include="Views\KHACHHANGs\Index.cshtml" />
+    <Content Include="Views\SPTOURs\Create.cshtml" />
+    <Content Include="Views\SPTOURs\Delete.cshtml" />
+    <Content Include="Views\SPTOURs\Details.cshtml" />
+    <Content Include="Views\SPTOURs\Edit.cshtml" />
+    <Content Include="Views\SPTOURs\Index.cshtml" />
+    <Content Include="Views\HOADONs\Create.cshtml" />
+    <Content Include="Views\HOADONs\Delete.cshtml" />
+    <Content Include="Views\HOADONs\Details.cshtml" />
+    <Content Include="Views\HOADONs\Edit.cshtml" />
+    <Content Include="Views\HOADONs\Index.cshtml" />
+    <Content Include="Views\TOURs\Create.cshtml" />
+    <Content Include="Views\TOURs\Delete.cshtml" />
+    <Content Include="Views\TOURs\Details.cshtml" />
+    <Content Include="Views\TOURs\Edit.cshtml" />
+    <Content Include="Views\TOURs\Index.cshtml" />
+    <Content Include="Views\NHANVIENs\Create.cshtml" />
+    <Content Include="Views\NHANVIENs\Delete.cshtml" />
+    <Content Include="Views\NHANVIENs\Details.cshtml" />
+    <Content Include="Views\NHANVIENs\Edit.cshtml" />
+    <Content Include="Views\NHANVIENs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
