@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
 }
 
 <h2>Delete</h2>
@@ -82,10 +84,10 @@
         <dd>
             @Html.DisplayFor(model => model.SPTOUR.TenSPTour)
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

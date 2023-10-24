@@ -1,0 +1,45 @@
+﻿body {
+    background: #EEEDEC;
+}
+.box {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.searchBox {
+    margin-top: 15px;
+    width: 500px;
+}
+
+.btnCreate {
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+    .btnCreate a {
+        text-decoration: none;
+        color: white;
+    }
+
+.listTable {
+    border-width: thick;
+}
+
+.thead-dark {
+    background: black;
+    color: snow;
+}
+#listBox{
+    height:200px;
+    overflow-y:scroll
+}
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(254, 254, 254);
+    border-radius: 10px;
+}

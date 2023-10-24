@@ -1,7 +1,7 @@
 ﻿@model DAPM_TOURDL.Models.KHACHHANG
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -20,72 +20,72 @@
             <dt>
                 @Html.DisplayNameFor(model => model.HoTen_KH)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.HoTen_KH)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.GioiTinh_KH)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.GioiTinh_KH)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.NgaySinh_KH)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.NgaySinh_KH)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.MatKhau)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.MatKhau)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.CCCD)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.CCCD)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.SDT_KH)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.SDT_KH)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Mail_KH)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Mail_KH)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Diem)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Diem)
             </dd>
-    
         </dl>
-    
-        @using (Html.BeginForm()) {
+
+        @using (Html.BeginForm())
+        {
             @Html.AntiForgeryToken()
-    
+
             <div class="form-actions no-color">
                 <input type="submit" value="Delete" class="btn btn-default" /> |
                 @Html.ActionLink("Back to List", "Index")

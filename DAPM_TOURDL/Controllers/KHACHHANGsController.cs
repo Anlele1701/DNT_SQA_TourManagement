@@ -48,6 +48,7 @@ namespace DAPM_TOURDL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_KH,HoTen_KH,GioiTinh_KH,NgaySinh_KH,MatKhau,CCCD,SDT_KH,Mail_KH,Diem")] KHACHHANG kHACHHANG)
         {
+            kHACHHANG.Diem = 0;
             if (ModelState.IsValid)
             {
                 db.KHACHHANGs.Add(kHACHHANG);

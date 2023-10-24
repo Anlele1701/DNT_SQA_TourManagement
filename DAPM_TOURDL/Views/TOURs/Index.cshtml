@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
 }
 
 <h2>Index</h2>
@@ -32,32 +34,32 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenTour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaTour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HinhTour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TinhThanh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiTour)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TOUR }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_TOUR }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TOUR })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaTour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HinhTour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhThanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiTour)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_TOUR }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_TOUR }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_TOUR })
+            </td>
+        </tr>
+    }
 </table>

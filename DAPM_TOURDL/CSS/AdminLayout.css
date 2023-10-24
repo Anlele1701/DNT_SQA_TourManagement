@@ -1,0 +1,112 @@
+﻿﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+}
+
+.contain {
+    position: sticky;
+}
+
+.sidebar {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 110px;
+    height: 100%;
+    padding: 0 1.7rem;
+    color: white;
+    background: rgb(40, 40, 40);
+    overflow-x: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    transition: width 0.25s linear;
+    position: absolute;
+    z-index: 1;
+}
+
+    .sidebar .logo {
+        display: flex;
+        align-items: center;
+        transition: all 0.5s ease;
+        overflow: hidden;
+        padding-top: 20px;
+    }
+
+.logo img {
+    height: 45px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.logo span {
+    font-weight: bold;
+    padding: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.menu {
+    padding-top: 20px;
+}
+
+.main {
+    padding-left: 0px;
+}
+
+.menu li {
+    list-style: none;
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+}
+
+    .menu li i {
+        display: flex;
+        margin-left: 4px;
+    }
+
+    .menu li:hover,
+    .active {
+        background: rgb(106, 101, 101);
+        border-radius: 10px;
+    }
+
+.sidebar:hover {
+    width: 350px;
+    transition: width 0.25s linear;
+    z-index: 1;
+}
+
+.menu a {
+    align-items: center;
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: white;
+}
+
+    .menu a span {
+        overflow: hidden;
+    }
+
+.main-content {
+    width: 100vw;
+    margin-left: 110px;
+}
+
+.inner {
+    padding: 20px;
+}

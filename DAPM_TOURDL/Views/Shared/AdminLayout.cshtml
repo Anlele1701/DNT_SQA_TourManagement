@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin dashboard</title>
+    <link rel="stylesheet" href="~/CSS/AdminLayout.css" />
+    <!--Icon-->
+    <script src="https://kit.fontawesome.com/b94d6d5661.js"
+            crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="~/Images/logo3.jpg" alt="" />
+            <span> Quản lý du lịch </span>
+        </div>
+        <div class="menu">
+            <ul class="main">
+                @{{
+                        string controller = ViewContext.RouteData.Values["Controller"].ToString();
+                        string action = ViewContext.RouteData.Values["Action"].ToString();
+                        <li class="@((controller == "NHANVIENs" && action == "GetData") ? "active" : "")">
+                            <a href="@Url.Action("GetData","NHANVIENs")">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span> Trang chủ</span>
+                            </a>
+                        </li>
+                    } }
+                @{ {
+                        string controller = ViewContext.RouteData.Values["Controller"].ToString();
+                        string action = ViewContext.RouteData.Values["Action"].ToString();
+                        <li class="@((controller == "NHANVIENs" && action == "Index") ? "active" : "")">
+                            <a href="@Url.Action("Index","NHANVIENs")">
+                                <i class="fa-solid fa-users-gear"></i>
+                                <span>Quản lý nhân viên</span>
+                            </a>
+                        </li>
+                    }}
+
+                @{ {
+                        string controller = ViewContext.RouteData.Values["Controller"].ToString();
+                        string action = ViewContext.RouteData.Values["Action"].ToString();
+                        <li class="@((controller == "TOURs" && action=="Index" ) ? "active" : "" )">
+                            <a href="@Url.Action("Index","TOURs")">
+                                <i class="fa-solid fa-list-ul"></i>
+                                <span>Quản lý tour</span>
+                            </a>
+                        </li>
+                    }}
+                @{ {
+                        string controller = ViewContext.RouteData.Values["Controller"].ToString();
+                        string action = ViewContext.RouteData.Values["Action"].ToString();
+                        <li class="@((controller == "SPTOURs" && action=="Index" ) ? "active" : "" )">
+                            <a href="@Url.Action("Index","SPTOURs")">
+                                <i class="fa-solid fa-wind"></i>
+                                <span>Quản lý sản phẩm tour</span>
+                            </a>
+                        </li>
+                    }}
+                @{ {
+                        string controller = ViewContext.RouteData.Values["Controller"].ToString();
+                        string action = ViewContext.RouteData.Values["Action"].ToString();
+                        <li class="@((controller == "KHACHHANGs" && action=="Index" ) ? "active" : "" )">
+                            <a href="@Url.Action("Index","KHACHHANGs")">
+                                <i class="fa-solid fa-face-smile"></i>
+                                <span>Quản lý khách hàng</span>
+                            </a>
+                        </li>
+                    }}
+
+                @{ {
+                        string controller = ViewContext.RouteData.Values["Controller"].ToString();
+                        string action = ViewContext.RouteData.Values["Action"].ToString();
+                        <li class="@((controller == "HOADONs" && action=="Index" ) ? "active" : "" )">
+                            <a href="@Url.Action("Index","HOADONs")">
+                                <i class="fa-solid fa-file-contract"></i>
+                                <span>Quản lý hóa đơn</span>
+                            </a>
+                        </li>
+                    }}
+
+                <li class="logout">
+                    <a>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <nav class="navbar navbar-light bg-light" style=" padding: 10px; box-shadow: 5px 0px 10px">
+            <span class="navbar-brand mb-0 h1">ADMIN</span>
+            @if (Session["IDUserAdmin"] != null)
+            {
+                <span>Xin chào @Session["HoTen"]</span>
+            }
+        </nav>
+        <div class="inner">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

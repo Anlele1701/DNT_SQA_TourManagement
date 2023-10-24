@@ -1,7 +1,7 @@
 ﻿@model DAPM_TOURDL.Models.KHACHHANG
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -14,12 +14,11 @@
 <body>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm()) 
+
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
             <h4>KHACHHANG</h4>
             <hr />
@@ -31,7 +30,7 @@
                     @Html.ValidationMessageFor(model => model.HoTen_KH, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.GioiTinh_KH, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -39,7 +38,7 @@
                     @Html.ValidationMessageFor(model => model.GioiTinh_KH, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.NgaySinh_KH, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -47,7 +46,7 @@
                     @Html.ValidationMessageFor(model => model.NgaySinh_KH, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -55,7 +54,7 @@
                     @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.CCCD, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -63,7 +62,7 @@
                     @Html.ValidationMessageFor(model => model.CCCD, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.SDT_KH, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -71,7 +70,7 @@
                     @Html.ValidationMessageFor(model => model.SDT_KH, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Mail_KH, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -79,7 +78,7 @@
                     @Html.ValidationMessageFor(model => model.Mail_KH, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Diem, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -87,7 +86,7 @@
                     @Html.ValidationMessageFor(model => model.Diem, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-default" />
@@ -95,7 +94,7 @@
             </div>
         </div>
     }
-    
+
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

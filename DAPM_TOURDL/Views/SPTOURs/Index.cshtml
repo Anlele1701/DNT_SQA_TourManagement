@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
 }
 
 <h2>Index</h2>
@@ -50,50 +52,50 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenSPTour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaNguoiLon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayKhoiHanh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayKetThuc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiemTapTrung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiemDen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoNguoi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HinhAnh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaTreEm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NHANVIEN.HoTen_NV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TOUR.TenTour)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_SPTour }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_SPTour }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_SPTour })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSPTour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaNguoiLon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayKhoiHanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayKetThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiemTapTrung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiemDen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoNguoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HinhAnh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaTreEm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHANVIEN.HoTen_NV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TOUR.TenTour)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_SPTour }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_SPTour }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_SPTour })
+            </td>
+        </tr>
+    }
 </table>

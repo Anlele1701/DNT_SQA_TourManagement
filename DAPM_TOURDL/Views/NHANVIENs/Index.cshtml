@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
 }
 
 <h2>Index</h2>
@@ -35,35 +37,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoTen_NV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GioiTinh_NV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinh_NV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MatKhau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail_NV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChucVu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDT_NV)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_NV }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_NV }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_NV })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen_NV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh_NV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgaySinh_NV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail_NV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT_NV)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_NV }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_NV }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_NV })
+            </td>
+        </tr>
+    }
 </table>
