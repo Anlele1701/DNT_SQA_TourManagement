@@ -23,11 +23,13 @@
     </div>
     <div class="box mt-3">
         <div style="position:relative">
-            <h3 class="text-center">Danh Sách Khách Hàng</h3>    
-            <button class ="btn btn-dark" style="position:absolute; right:20px;top:3px;">Xuất Excel</button>
+            <h3 class="text-center">Danh Sách Khách Hàng</h3>
+            <button class="btn btn-dark" style="position:absolute; right:20px;top:3px;">
+                @Html.ActionLink("Xuất excel ", "ExportToExcel")
+            </button>
         </div>
         <div class="box mt-3" id="listBox">
-            <table class="table table-bordered table-sm table-striped text-center">
+            <table class="table table-bordered table-sm table-striped text-center table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th>
@@ -41,12 +43,6 @@
                         </th>
                         <th>
                             Ngày Sinh
-                        </th>
-                        <th>
-                            Mật Khẩu
-                        </th>
-                        <th>
-                            CCCD
                         </th>
                         <th>
                             SĐT
@@ -76,12 +72,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.NgaySinh_KH)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MatKhau)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CCCD)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.SDT_KH)

@@ -72,7 +72,6 @@ body {
     white-space: nowrap;
     transition: all 0.3s ease-in-out;
 }
-
     .menu li i {
         display: flex;
         margin-left: 4px;
@@ -96,6 +95,7 @@ body {
     gap: 15px;
     font-size: 14px;
     color: white;
+    text-decoration:none;
 }
 
     .menu a span {
