@@ -1,0 +1,102 @@
+﻿/*NAVBAR*/
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    transition: opacity 1s,visibility 1s;
+    z-index: 10;
+}
+
+.loader::after {
+    content: "";
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    box-shadow: inset 2px 0 0 white, -2px 0 0 white;
+    animation: loading 1s infinite linear;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#logo {
+    font-size: 36px;
+    font-weight: 300;
+    color: white;
+    text-shadow: 0px 1px 1px black;
+    margin-bottom: 5px;
+}
+
+
+.div-navbar {
+    z-index: 99;
+    position: fixed;
+    text-transform: uppercase;
+    padding: 0px;
+    height: auto;
+    width: 100%;
+    background-color: rgba(225,225,225,0.2);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+#logo span {
+    color: white;
+}
+
+.navbar-toggler span {
+    color: #0094ff;
+    font-weight: 700;
+}
+
+.nav-item .nav-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.5s ease;
+    opacity: 1;
+    justify-content: space-between;
+    margin: 0px 16px 0px 16px;
+}
+
+.nav-item .nav-link:hover {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 1;
+}
+
+
+#navbar form button {
+    background: #0094ff;
+    color: white;
+    border: none;
+}
+
+.div-ggmap {
+    height: auto;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
