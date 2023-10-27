@@ -26,5 +26,10 @@ namespace DAPM_TOURDL.Controllers
 
             return View();
         }
+
+        public ActionResult HomePage()
+        {
+            return View();
+        }
     }
 }

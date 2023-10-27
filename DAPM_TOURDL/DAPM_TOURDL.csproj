@@ -355,6 +355,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="CSS\AdminIndex.css" />
     <Content Include="CSS\AdminLayout.css" />
+    <Content Include="CSS\Client\CientLayout.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -395,6 +396,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Home\HomePage.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -455,6 +457,7 @@
     <Content Include="Views\NHANVIENs\Details.cshtml" />
     <Content Include="Views\NHANVIENs\Edit.cshtml" />
     <Content Include="Views\NHANVIENs\Index.cshtml" />
+    <Content Include="Views\Shared\ClientLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
