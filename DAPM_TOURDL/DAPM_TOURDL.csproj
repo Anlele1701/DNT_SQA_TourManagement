@@ -355,6 +355,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="CSS\AdminIndex.css" />
     <Content Include="CSS\AdminLayout.css" />
+    <Content Include="CSS\Client\AboutUs.css" />
     <Content Include="CSS\Client\CientLayout.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -370,6 +371,7 @@
       <DependentUpon>TOURDL.edmx</DependentUpon>
       <LastGenOutput>TOURDL.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\AnimationAboutUs.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
