@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TourDLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TourDLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="HOADON">
           <Key>
             <PropertyRef Name="ID_HoaDon" />
@@ -52,15 +52,15 @@
             <PropertyRef Name="ID_SPTour" />
           </Key>
           <Property Name="ID_SPTour" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TenSPTour" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="TenSPTour" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="GiaNguoiLon" Type="int" Nullable="false" />
           <Property Name="NgayKhoiHanh" Type="date" Nullable="false" />
           <Property Name="NgayKetThuc" Type="date" Nullable="false" />
-          <Property Name="MoTa" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="DiemTapTrung" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="DiemDen" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DiemTapTrung" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiemDen" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SoNguoi" Type="int" Nullable="false" />
-          <Property Name="HinhAnh" Type="varbinary(max)" />
+          <Property Name="HinhAnh" Type="varchar(max)" />
           <Property Name="GiaTreEm" Type="int" Nullable="false" />
           <Property Name="ID_NV" Type="int" />
           <Property Name="ID_TOUR" Type="char" MaxLength="2" Nullable="false" />
@@ -70,12 +70,12 @@
             <PropertyRef Name="ID_TOUR" />
           </Key>
           <Property Name="ID_TOUR" Type="char" MaxLength="2" Nullable="false" />
-          <Property Name="TenTour" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenTour" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="GiaTour" Type="int" Nullable="false" />
-          <Property Name="MoTa" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="HinhTour" Type="varbinary(max)" />
-          <Property Name="TinhThanh" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LoaiTour" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="HinhTour" Type="varchar(max)" />
+          <Property Name="TinhThanh" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoaiTour" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__HOADON__ID_KH__571DF1D5">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
@@ -89,7 +89,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__ID_SPTou__5629CD9C">
+        <Association Name="FK__HOADON__ID_SPTou__5FB337D6">
           <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,7 +101,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SPTOUR__ID_NV__52593CB8">
+        <Association Name="FK__SPTOUR__ID_NV__60A75C0F">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
           <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="*" />
           <ReferentialConstraint>
@@ -113,7 +113,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SPTOUR__ID_TOUR__534D60F1">
+        <Association Name="FK__SPTOUR__ID_TOUR__619B8048">
           <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
           <End Role="SPTOUR" Type="Self.SPTOUR" Multiplicity="*" />
           <ReferentialConstraint>
@@ -135,21 +135,20 @@
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__ID_SPTou__5629CD9C" Association="Self.FK__HOADON__ID_SPTou__5629CD9C">
+          <AssociationSet Name="FK__HOADON__ID_SPTou__5FB337D6" Association="Self.FK__HOADON__ID_SPTou__5FB337D6">
             <End Role="SPTOUR" EntitySet="SPTOUR" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__SPTOUR__ID_NV__52593CB8" Association="Self.FK__SPTOUR__ID_NV__52593CB8">
+          <AssociationSet Name="FK__SPTOUR__ID_NV__60A75C0F" Association="Self.FK__SPTOUR__ID_NV__60A75C0F">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="SPTOUR" EntitySet="SPTOUR" />
           </AssociationSet>
-          <AssociationSet Name="FK__SPTOUR__ID_TOUR__534D60F1" Association="Self.FK__SPTOUR__ID_TOUR__534D60F1">
+          <AssociationSet Name="FK__SPTOUR__ID_TOUR__619B8048" Association="Self.FK__SPTOUR__ID_TOUR__619B8048">
             <End Role="TOUR" EntitySet="TOUR" />
             <End Role="SPTOUR" EntitySet="SPTOUR" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TourDLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -204,15 +203,15 @@
             <PropertyRef Name="ID_SPTour" />
           </Key>
           <Property Name="ID_SPTour" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenSPTour" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSPTour" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GiaNguoiLon" Type="Int32" Nullable="false" />
           <Property Name="NgayKhoiHanh" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NgayKetThuc" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DiemTapTrung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DiemDen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiemTapTrung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiemDen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoNguoi" Type="Int32" Nullable="false" />
-          <Property Name="HinhAnh" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HinhAnh" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="GiaTreEm" Type="Int32" Nullable="false" />
           <Property Name="ID_NV" Type="Int32" />
           <Property Name="ID_TOUR" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
@@ -225,12 +224,12 @@
             <PropertyRef Name="ID_TOUR" />
           </Key>
           <Property Name="ID_TOUR" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="TenTour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenTour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GiaTour" Type="Int32" Nullable="false" />
-          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HinhTour" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="TinhThanh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LoaiTour" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HinhTour" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="TinhThanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoaiTour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SPTOURs" Relationship="Self.FK__SPTOUR__ID_TOUR__534D60F1" FromRole="TOUR" ToRole="SPTOUR" />
         </EntityType>
         <Association Name="FK__HOADON__ID_KH__571DF1D5">
