@@ -28,6 +28,10 @@
 #listBox {
     height: auto;
 }
+#tourBox{
+    height:380px;
+    overflow:auto;
+}
 /*table*/
 .fixTableHead {
     overflow-y: auto;

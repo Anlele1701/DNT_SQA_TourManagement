@@ -5,61 +5,62 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenTour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GiaTour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </th>
-        <th>
-            Hinh2 anh3
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TinhThanh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoaiTour)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenTour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaTour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MoTa)
-            </td>
-            <td>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quản lý Tour</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/CSS/Admin/AdminIndex.css" />
+</head>
+<div class="box">
+    <h2 style="">QUẢN LÝ TOUR</h2>
+    <form asp-action="Index" method="get">
+        <input type="text" name="SearchString" placeholder="Tìm kiếm qua tên tour" class="searchBox form-control" />
+    </form>
+    <button class="btnCreate btn btn-dark ">@Html.ActionLink("Thêm mới Tour", "Create")</button>
+</div>
+<div class="box mt-3">
+    <div style="position:relative">
+        <h3 class="text-center">Danh Sách Tour</h3>
+        <button class="excelbtn btn btn-dark" style="position:absolute; right:20px;top:3px;">
+            @Html.ActionLink("Xuất excel ", "ExportToExcel")
+        </button>
+    </div>
+    <div id="tourBox">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="border-color:gray; flex-direction:row; margin-bottom:20px; padding:10px; margin-top:20px; border-radius:30px;">
                 <img class="card-img-top" src="~/Images/Admin/TOUR/@item.HinhTour" alt="Card image cap" style="max-width:300px; padding:0.5em; border-radius:50%;" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TinhThanh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoaiTour)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID_TOUR }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID_TOUR }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID_TOUR })
-            </td>
-        </tr>
-    }
-</table>
+                <div class="card-body" style="padding-left:30px;">
+                    <h2 class=" card-header-pills">
+                        #@Html.DisplayFor(modelItem => item.ID_TOUR)
+                    </h2>
+                    <h4 class="card-title">@Html.DisplayFor(modelItem => item.TenTour) </h4>
+                    <p class="card-text"> Giá tour: @Html.DisplayFor(modelItem => item.GiaTour) </p>
+                    <p class="card-text">Loại tour: @Html.DisplayFor(modelItem => item.LoaiTour) </p>
+                    <p class="card-text">Tỉnh thành: @Html.DisplayFor(modelItem => item.TinhThanh)</p>
+                    <p class="card-text">Mô tả: @Html.DisplayFor(modelItem => item.MoTa)</p>
+                </div>
+                <p style="float:right;padding-top:15px;">
+                    <div class="dropdown">
+                        <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID_TOUR }, new { @class = "dropdown-item text-center" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Details", "Details", new { id = item.ID_TOUR }, new { @class = "dropdown-item text-center" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID_TOUR }, new { @class = "dropdown-item text-center" })
+                            </li>
+                        </ul>
+                    </div>
+                </p>
+            </div>
+        }
+    </div>
+    </div>
