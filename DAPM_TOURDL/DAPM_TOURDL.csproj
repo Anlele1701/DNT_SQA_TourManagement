@@ -356,6 +356,7 @@
     <Content Include="CSS\Admin\AdminIndex.css" />
     <Content Include="CSS\Admin\AdminLayout.css" />
     <Content Include="CSS\Client\CientLayout.css" />
+    <Content Include="CSS\Client\HomePage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
