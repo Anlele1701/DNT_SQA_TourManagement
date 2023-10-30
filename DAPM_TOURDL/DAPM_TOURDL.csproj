@@ -353,8 +353,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="CSS\AdminIndex.css" />
-    <Content Include="CSS\AdminLayout.css" />
+    <Content Include="CSS\Admin\AdminIndex.css" />
+    <Content Include="CSS\Admin\AdminLayout.css" />
     <Content Include="CSS\Client\CientLayout.css" />
     <Content Include="CSS\Client\HomePage.css" />
     <Content Include="favicon.ico" />
