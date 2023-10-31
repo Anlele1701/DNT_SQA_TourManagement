@@ -363,6 +363,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Client\AboutUs\Banner1.png" />
+    <Content Include="Images\Client\AboutUs\Banner2.png" />
+    <Content Include="Images\Client\AboutUs\Banner3.png" />
+    <Content Include="Images\Client\AboutUs\Banner4.png" />
+    <Content Include="Images\Client\AboutUs\Banner5.png" />
     <Content Include="Images\logo3.jpg" />
     <Content Include="Models\TOURDL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
