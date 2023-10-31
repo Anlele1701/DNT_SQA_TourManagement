@@ -29,7 +29,7 @@ namespace DAPM_TOURDL.Models
         public string DiemTapTrung { get; set; }
         public string DiemDen { get; set; }
         public int SoNguoi { get; set; }
-        public byte[] HinhAnh { get; set; }
+        public string HinhAnh { get; set; }
         public int GiaTreEm { get; set; }
         public Nullable<int> ID_NV { get; set; }
         public string ID_TOUR { get; set; }
