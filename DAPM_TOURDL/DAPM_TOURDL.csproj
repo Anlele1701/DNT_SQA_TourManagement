@@ -353,9 +353,12 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="CSS\Client\AboutUs.css" />
     <Content Include="CSS\Admin\AdminIndex.css" />
     <Content Include="CSS\Admin\AdminLayout.css" />
     <Content Include="CSS\Client\CientLayout.css" />
+    <Content Include="CSS\Client\Login.css" />
+    <Content Include="CSS\Client\ProfileUser.css" />
     <Content Include="CSS\Client\HomePage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -397,6 +400,7 @@
       <DependentUpon>TOURDL.edmx</DependentUpon>
       <LastGenOutput>TOURDL.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\AnimationAboutUs.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -424,6 +428,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\KHACHHANGs\DangNhap.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
