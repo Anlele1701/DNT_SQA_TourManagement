@@ -1,0 +1,39 @@
+﻿.card-tour {
+    display: flex;
+    margin: 5px;
+    border: none;
+    margin: 32px;
+}
+
+    .card-tour img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+.responsive {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.card-tour h3 {
+    color: black;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.card-tour p {
+    color: black;
+    font-weight: 200;
+    margin-left: 10px;
+}
+
+.back-image-gradients {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../../Images/beautiful-girl-standing-boat-looking-mountains-ratchaprapha-dam-khao-sok-national-park-surat-thani-province-thailand.jpg");
+}

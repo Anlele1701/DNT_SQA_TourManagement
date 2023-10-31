@@ -359,6 +359,7 @@
     <Content Include="CSS\Client\CientLayout.css" />
     <Content Include="CSS\Client\Login.css" />
     <Content Include="CSS\Client\ProfileUser.css" />
+    <Content Include="CSS\Client\HomePage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
