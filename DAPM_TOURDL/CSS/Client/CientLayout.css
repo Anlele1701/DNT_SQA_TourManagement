@@ -10,7 +10,7 @@
     justify-content: center;
     background-color: white;
     transition: opacity 1s,visibility 1s;
-    z-index: 10;
+    z-index: 100;
 }
 
 .loader::after {
@@ -50,7 +50,6 @@
     z-index: 99;
     position: fixed;
     text-transform: uppercase;
-    padding: 0px;
     height: auto;
     width: 100%;
     background-color: rgba(225,225,225,0.2);
@@ -70,19 +69,18 @@
 .nav-item .nav-link {
     font-size: 16px;
     font-weight: 700;
-    color: #bbbbbb;
+    color: #fff;
     letter-spacing: 1px;
     border-radius: 3px;
     transition: 0.5s ease;
     opacity: 1;
     justify-content: space-between;
     margin: 0px 16px 0px 16px;
+    cursor:pointer;
 }
 
     .nav-item .nav-link:hover {
-        color: #3876BF;
-        font-size: 18px;
-        font-weight: bold;
+        background-color: #0094ff;
         opacity: 1;
     }
 

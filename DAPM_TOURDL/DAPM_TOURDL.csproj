@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
@@ -381,7 +381,7 @@
     <Content Include="Images\Admin\TOUR\HN.jpg" />
     <Content Include="Images\Admin\TOUR\HoXuanHuong.jpg" />
     <Content Include="Images\Admin\TOUR\hue.jpg" />
-    <Content Include="Images\Admin\TOUR\sapa1.jpg" />
+    <Content Include="Images\Admin\TOUR\sapa.jpg" />
     <Content Include="Images\Admin\TOUR\sapa11.jpg" />
     <Content Include="Images\Admin\TOUR\SG.jpg" />
     <Content Include="Images\Admin\TOUR\suongmudalat.jpg" />
@@ -394,7 +394,19 @@
     <Content Include="Images\Client\AboutUs\Banner3.png" />
     <Content Include="Images\Client\AboutUs\Banner4.png" />
     <Content Include="Images\Client\AboutUs\Banner5.png" />
+    <Content Include="Images\Client\AboutUs\employee1.jpg" />
+    <Content Include="Images\Client\AboutUs\employee2.jpg" />
+    <Content Include="Images\Client\AboutUs\employee3.jpg" />
+    <Content Include="Images\Client\AboutUs\employee4.jpg" />
+    <Content Include="Images\Client\HomePage\Beach.png" />
+    <Content Include="Images\Client\HomePage\leaf.png" />
+    <Content Include="Images\Client\HomePage\Sun.png" />
+    <Content Include="Images\Client\Video\ocean.mp4" />
+    <Content Include="Images\Client\Video\ocean_-_65560 %28720p%29.mp4" />
+    <Content Include="Images\Client\Video\videoHome.mp4" />
+    <Content Include="Images\Client\Video\vietnam_-_25171 %28Original%29.mp4" />
     <Content Include="Images\logo3.jpg" />
+    <Content Include="Javascript\AnimationImage.js" />
     <Content Include="Models\TOURDL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TOURDL.edmx</DependentUpon>
