@@ -1,12 +1,12 @@
 ﻿body {
     background: #EEEDEC;
 }
+
 .box {
     background: #FFFFFF;
     border-radius: 10px;
     padding: 1rem;
 }
-
 .searchBox {
     margin-top: 15px;
     width: 500px;
@@ -17,22 +17,45 @@
     text-decoration: none;
 }
 
-    .btnCreate a {
-        text-decoration: none;
-        color: white;
+.btnCreate a {
+     text-decoration: none;
+     color: white;
+}
+.excelbtn a {
+    text-decoration: none;
+    color: white;
+}
+#listBox {
+    height: auto;
+}
+#tourBox{
+    height:380px;
+    overflow:auto;
+}
+/*table*/
+.fixTableHead {
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+    .fixTableHead thead th {
+        position: sticky;
+        top: 0;
     }
 
-.listTable {
-    border-width: thick;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.thead-dark {
-    background: black;
-    color: snow;
+th,
+td {
+    padding: 8px 15px;
 }
-#listBox{
-    height:200px;
-    overflow-y:scroll
+
+th {
+    background: black;
+    color: white;
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {

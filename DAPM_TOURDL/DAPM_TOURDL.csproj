@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
@@ -363,6 +363,32 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Admin\TOUR\Dalat.jpg" />
+    <Content Include="Images\Admin\TOUR\DaLat.png" />
+    <Content Include="Images\Admin\TOUR\dalat1.jpg" />
+    <Content Include="Images\Admin\TOUR\dalat2.jpg" />
+    <Content Include="Images\Admin\TOUR\dalat3.jpg" />
+    <Content Include="Images\Admin\TOUR\DaLatMain.jpg" />
+    <Content Include="Images\Admin\TOUR\dalattour.jpg" />
+    <Content Include="Images\Admin\TOUR\dalatvn.jpg" />
+    <Content Include="Images\Admin\TOUR\Danang.jpg" />
+    <Content Include="Images\Admin\TOUR\dao-binh-ba.jpg" />
+    <Content Include="Images\Admin\TOUR\halongbay.jpg" />
+    <Content Include="Images\Admin\TOUR\Hanoi.jpg" />
+    <Content Include="Images\Admin\TOUR\Hanoi1.jpg" />
+    <Content Include="Images\Admin\TOUR\hanoi2.jpg" />
+    <Content Include="Images\Admin\TOUR\hanoi3.jpg" />
+    <Content Include="Images\Admin\TOUR\HN.jpg" />
+    <Content Include="Images\Admin\TOUR\HoXuanHuong.jpg" />
+    <Content Include="Images\Admin\TOUR\hue.jpg" />
+    <Content Include="Images\Admin\TOUR\sapa1.jpg" />
+    <Content Include="Images\Admin\TOUR\sapa11.jpg" />
+    <Content Include="Images\Admin\TOUR\SG.jpg" />
+    <Content Include="Images\Admin\TOUR\suongmudalat.jpg" />
+    <Content Include="Images\Admin\TOUR\tphcm1.jpg" />
+    <Content Include="Images\Admin\TOUR\tphcm2.jpg" />
+    <Content Include="Images\Admin\TOUR\tphcm3.jpg" />
+    <Content Include="Images\Admin\TOUR\TravelDalat.png" />
     <Content Include="Images\Client\AboutUs\Banner1.png" />
     <Content Include="Images\Client\AboutUs\Banner2.png" />
     <Content Include="Images\Client\AboutUs\Banner3.png" />

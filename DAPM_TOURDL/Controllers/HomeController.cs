@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAPM_TOURDL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace DAPM_TOURDL.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var db = new TourDLEntities();
+            return View(db.TOURs.ToList());
         }
 
         public ActionResult About()
@@ -29,7 +31,8 @@ namespace DAPM_TOURDL.Controllers
 
         public ActionResult HomePage()
         {
-            return View();
+            var db = new TourDLEntities();
+            return View(db.TOURs.ToList());
         }
     }
 }

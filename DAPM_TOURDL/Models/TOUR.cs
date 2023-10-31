@@ -24,7 +24,7 @@ namespace DAPM_TOURDL.Models
         public string TenTour { get; set; }
         public int GiaTour { get; set; }
         public string MoTa { get; set; }
-        public byte[] HinhTour { get; set; }
+        public string HinhTour { get; set; }
         public string TinhThanh { get; set; }
         public string LoaiTour { get; set; }
     

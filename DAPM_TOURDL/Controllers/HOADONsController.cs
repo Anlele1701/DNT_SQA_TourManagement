@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ClosedXML.Excel;
 using DAPM_TOURDL.Models;
 
 namespace DAPM_TOURDL.Controllers
@@ -13,6 +15,40 @@ namespace DAPM_TOURDL.Controllers
     public class HOADONsController : Controller
     {
         private TourDLEntities db = new TourDLEntities();
+
+        public ActionResult ExportToExcel()
+        {
+            var hOADONs = db.HOADONs.Include(h => h.KHACHHANG).Include(h => h.SPTOUR);
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("HOADON");
+                var currentrow = 1;
+                worksheet.Cell(currentrow, 1).Value = "ID Hóa đơn";
+                worksheet.Cell(currentrow, 2).Value = "ID Khách hàng";
+                worksheet.Cell(currentrow, 3).Value = "Tên khách hàng";
+                worksheet.Cell(currentrow, 4).Value = "Tình trạng";
+                worksheet.Cell(currentrow, 5).Value = "Ngày đặt";
+                foreach (var hoadon in hOADONs)
+                {
+                    currentrow++;
+                    worksheet.Cell(currentrow, 1).Value = hoadon.ID_HoaDon;
+                    worksheet.Cell(currentrow, 2).Value = hoadon.ID_KH;
+                    worksheet.Cell(currentrow, 3).Value = hoadon.KHACHHANG.HoTen_KH;
+                    worksheet.Cell(currentrow, 4).Value = hoadon.TinhTrang;
+                    worksheet.Cell(currentrow, 5).Value = hoadon.NgayDat;
+                }
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    return File(
+                        content,
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "DanhSachHoaDon.xlsx"
+                        );
+                }
+            }
+        }
 
         // GET: HOADONs
         public ActionResult Index()
@@ -45,7 +81,7 @@ namespace DAPM_TOURDL.Controllers
         }
 
         // POST: HOADONs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -81,7 +117,7 @@ namespace DAPM_TOURDL.Controllers
         }
 
         // POST: HOADONs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
