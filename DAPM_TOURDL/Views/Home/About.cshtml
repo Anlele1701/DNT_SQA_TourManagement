@@ -1,9 +1,110 @@
 ﻿@{
     ViewBag.Title = "About";
+    Layout = null;
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+<link href="~/CSS/Client/AboutUs.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <p>Use this area to provide additional information.</p>
-</main>
+<section class="hr">
+    <div class="container">
+        <div class="hr-image">
+            <img src="https://s3-alpha-sig.figma.com/img/9393/6d1f/af63a659041623a4d4b30e573b3f0ba6?Expires=1698624000&Signature=LAJPO5Yk8EhL5FlkUuECU8rXDJSt3e7IoQPHOx0SrsR2po1IYqXd990pl-NDBHiLVqiuUge19BMRnfqPzzrsLP5tYSVyEzcepOhdDO4H335YsBUTh24DE3CXFELDXEzjpWkViEB1DVgNvf42HairdJMfZIVPamJIUoAhcxufzjsEGfq5a6LcdpWPH3jas89Nu4bswlZTeQ2OZ6wCgEJQWN7ExNmqRBT1v8kM8-Sqe1ViZzOJO7KXaODKpB9LkkThgRkwWONWlgm3DjjbbAgDd6Bz5wiyBiyl3Maoo9tvW43vhoC2uTRBBQmQHcNEJbkrad3WqnYiGRpenM2vHfYOhQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            <p>Travel Dalats - Đắm chìm trong vẻ đẹp thiên nhiên, vị ngọt của cuộc sống</p>
+        </div>
+        <a href="@Url.Action("Index","Home")"><i class="fa-solid fa-house"></i></a>
+    </div>
+</section>
+<div class="animate-css" style="background:#EEE2DE">
+    <section class="animate-css sec-1">
+        <div class="container">
+            <div class="hr-image animate">
+                <img src="https://s3-alpha-sig.figma.com/img/cd0e/7426/4b1ce7f73dfcd1712c5c5926cbd292c6?Expires=1698624000&Signature=Mgrm0ww6KZYcXkZ-dTQtpsnZ8gDx1zphpAINj7LxMSNxDhiS3CnlEoqP5x5qwXKJm5SOc1PcIaXhsU0O8G41832brDns8Hsc4aS~sZqQDXufdrczpYfipaJqQRvuVhnDFM7DD1wAslGtMpXPt0bUYX4BOWgJc~oNHB40mdng4W2EYf~jXgG5LyqaZqUFnwbBbRxiUcKcM2mp0T7jV0EUXNiOy5-aHShxgaCECeBjZvPUXvPe9Y3TkwBvorwDrKwqaNtEbk1ZZNmHt6b2R9a2LERrMgN7JcC-1R2mm35UU-59SU~pSYh0X1OjPbqfsLnHUKxT5dkngx6so27NsoId8A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            </div>
+            <div class="hr-content">
+                <h1 class="animate">Travel Dalats<i class="fa-solid fa-suitcase-rolling" style="margin-left: 20px; color: #7D7463 "></i></h1>
+                <p class="animate">
+                    Chào mừng đến với Travel Dalats - Công ty tổ chức du lịch chuyên nghiệp và đam mê tại Việt Nam!
+                    Chúng tôi là một công ty du lịch độc lập, thành lập với niềm đam mê cháy bỏng và ý tưởng mang đến những trải nghiệm du lịch độc đáo và đáng nhớ cho du khách.
+                    Travel Dalats đã được thành lập với mục tiêu tạo ra những hành trình đa dạng và tinh tế, từ những khám phá mạo hiểm đến những chuyến đi thư giãn, từ những trải nghiệm văn hóa độc đáo đến những đặc sản ẩm thực tuyệt vời.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="animate-css sec-2 show-animate">
+        <div class="container">
+            <div class="hr-content">
+                <h1 class="animate">
+                    Sứ mệnh của chúng tôi<i class="fas fa-rocket" style="color: #FD8D14; margin-left: 20px"></i>
+                </h1>
+                <p class="animate">
+                    Sứ mệnh của Travel Dalats là mang đến cho khách hàng những hành trình du lịch vượt trội, phong cách và đáng nhớ. Chúng tôi không chỉ muốn tạo ra những chuyến đi, mà còn muốn xây dựng những kỷ niệm vĩnh cửu trong lòng khách hàng. Chúng tôi tin rằng mỗi chuyến đi là một câu chuyện riêng, và chúng tôi muốn trở thành đối tác đồng hành đáng tin cậy trên hành trình khám phá thế giới của bạn.
+                </p>
+            </div>
+            <div class="hr-image animate">
+                <img src="https://s3-alpha-sig.figma.com/img/d44f/608b/64ff75f03db56becc45684b92c183503?Expires=1698624000&Signature=arIFUdf8WGvB6pHx5HGKMW2qE75SgzJfVKt6wtA0JXAkexM1bU3lCzLvO9uehsbCubyUgQCaBsBPBHEjGnlhkzC3RgeExNzOsDYj2FVwt7Shw5~CPrxZvgV-6Fhta38w1-nZVOOepn9C40eUdFiAYY6Tv2JgdB23RGl~rO2q12bYiEgher9JWerkg0MkvcndbzzX0EVfThe85hCQpvZyGvkiKYo3~P9nNBVps6q5nEpmQXiNcRrVDk9EgQr4-ELAADlHKjg26v9MqfZXc69kiVS3~uf6sHZn77WOsJGgVtVALvTIj1zGrZij9Z7wAzo54JVPFsG8rGqG1KhtOA1BhA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            </div>
+        </div>
+    </section>
+    <section class="animate-css sec-3">
+        <div class="container">
+            <div class="hr-image animate">
+                <img src="https://s3-alpha-sig.figma.com/img/d3c4/7df0/cf261995b6b350b6ee305c74c5ec9fe7?Expires=1698624000&Signature=TRN21TAwifXHBqEgbZXCmqpamrccAYe5Nt5Wr6-d6WB9pP-u7GsUbu4vkIzhN7MzoST2HkwSgd3eXo6hTIzD9ICvMqtEAm3xrmUl~a9SYoKZHgM15J0Ng-db7g0UzTeeGiCFkIYtffjxTC2COEaSWY1-bpagBJUkSqouvVNpQT34Ec1dMCTA8noS7bIWOEebj9Hudo9bwCUSR5OwIHAfQnMQH3x9ocHHm93U6jXbZu7DreGe49dsRJ-q67vPByW75l38H8zY8k6iFl6Bqbxx1hTF791OmPQXF1Sq2k7shn44dTrVNpaHXwT42OGvfuD6J0p5l5CLeWXYFzzoGu2iIg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            </div>
+            <div class="hr-content">
+                <h1 class="animate">
+                    Dịch vụ của chúng tôi<i class="fas fa-shield" style="color: #91C8E4; margin-left: 20px"></i>
+                </h1>
+                <p class="animate">
+                    Tại Travel Dalats, chúng tôi tự hào cung cấp một loạt các dịch vụ du lịch đa dạng và phong phú :
+                </p>
+                <p class="animate">Đặt tour trực tuyến<i class="fas fa-laptop" style="color:#ff6a00;margin-left:20px"></i></p>
+                <p class="animate">Tour tự chọn<i class="fas fa-suitcase" style="color:#ff6a00;margin-left:20px"></i></p>
+                <p class="animate">Hỗ trợ 24/7<i class="fas fa-headset" style="color:#ff6a00;margin-left:20px"></i></p>
+            </div>
+        </div>
+    </section>
+    <section class="animate-css sec-4">
+        <div class="container">
+            <div class="hr-content">
+                <h1 class="animate">
+                    Cam kết chất lượng <span style="color:yellow;font-size:38px">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                    <span class="showRight-animate" style="--i:1"></span>
+                </h1>
+                <p class="animate">
+                    <span class="showRight-animate" style="--i:3"></span>
+                    Chất lượng dịch vụ và sự hài lòng của khách hàng luôn là ưu tiên hàng đầu của Travel Dalats. Chúng tôi cam kết cung cấp những trải nghiệm du lịch đáng nhớ, đảm bảo sự an toàn và thoải mái cho mỗi hành trình. Với đội ngũ chuyên nghiệp, giàu kinh nghiệm và sự đam mê, chúng tôi tự tin rằng bạn sẽ có những trải nghiệm tuyệt vời nhất khi đồng hành cùng Travel Dalats.
+                </p>
+            </div>
+            <div class="hr-image animate">
+                <img src="https://s3-alpha-sig.figma.com/img/1bca/f98f/165ef0ac188ef346564f5ff281bab4f3?Expires=1698624000&Signature=KnOVSD~rDiXA9Mlg2dWrL6YFiJZAxm7OzYOjY0-KbztnNUd~kNVyzDa~4oodm0JWzfgo4eG4O1ZY3Ca3kefUitb61EHkxmlSMbFtfkCY8sTpLkfpgvL5cW66aggIrDQWMpmPwTFyR61pNM71iks-PfAQUF-qzVaa7eVDSzKr7UDHnVrYzD51uAP~IDtHLtY8AiF1RL8rnUvnNr-k1NaNrr7Bhz1vUUjv-0~6gZL4GcJLgvt9aHIuBqWwcZlX8w5upULepdv8T3iZKKcjFjiruwP9H8EcDfGjIRlboqJG5xN2hBvjSlal5nbgrJlDnYYnwPihf6XCEdx1vCMVTH8dwg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            </div>
+        </div>
+    </section>
+    <section class="animate-css sec-5">
+        <p class="images">
+            <img src="https://s3-alpha-sig.figma.com/img/598c/1dbc/58b6a23604b81c8e1f22b7862673cc24?Expires=1698624000&Signature=ByiSK4uKlsMQHfQKfFgH77umCj4u99VFiPyVtYW5Hx28wdJoYtD8bpo52YZeIfZD-zOV6BzTXmrEJ0MzwofD8cTklzpjW1IKyyo9QB9rx875ED~a-YHZTfGUGeRKA1exqE9xmPKa0wVawA7vv8Yi~pVPv~-Se2~HBVZ3M1SvL8hio5ToB1cdZXTGlUX9QpkHTr9HN4L3URTbacFqyg20xbLQUnQ4zYSN-GxD7FD5cfuLoMq6uq-dZd5eOSosRuqbk2HV44vo1GXpBuNKgH-7kGsH7o6RAAhiGQVONfLijBcMB2~yg4KyjsrhCqNT4CGntq38QHJhHSGMho9RBP4VmA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" class="animate" style="--i:0" />
+            <img src="https://s3-alpha-sig.figma.com/img/598c/1dbc/58b6a23604b81c8e1f22b7862673cc24?Expires=1698624000&Signature=ByiSK4uKlsMQHfQKfFgH77umCj4u99VFiPyVtYW5Hx28wdJoYtD8bpo52YZeIfZD-zOV6BzTXmrEJ0MzwofD8cTklzpjW1IKyyo9QB9rx875ED~a-YHZTfGUGeRKA1exqE9xmPKa0wVawA7vv8Yi~pVPv~-Se2~HBVZ3M1SvL8hio5ToB1cdZXTGlUX9QpkHTr9HN4L3URTbacFqyg20xbLQUnQ4zYSN-GxD7FD5cfuLoMq6uq-dZd5eOSosRuqbk2HV44vo1GXpBuNKgH-7kGsH7o6RAAhiGQVONfLijBcMB2~yg4KyjsrhCqNT4CGntq38QHJhHSGMho9RBP4VmA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" class="animate" style="--i:1" />
+            <img src="https://s3-alpha-sig.figma.com/img/70de/aca1/3e157d091a83746cf7b869efc83f4dc6?Expires=1698624000&Signature=PKb4edONsqbyjJNwIk4SYHRH3XHchEUtJfP6~oLep4Q0neiKAU4MHiUlC7jdmR2Yy95Cq6QtKsBjSmzU1Tw8Qvl3b~X70vQoMe4dwwiX3adAq9~WRrfdtkqV3iZPal4krBOdENvtDoMN-U7CS8mE2Iq5nJOqVon7lsERGhu8QlLiJItLyj5ajlMOeP1VlrzcTdYd5DmThnX2PYDw1XeSX0qkjSKcEQ~71VPVo2~xErwk35o2hTfANR7DKt4p72xQlBw2gqlE~qSaI~3uHwmU79TWMRDUtYK6YRb9YMrLzBo~RqJa6dpOnA4wvJEoMuMRLlEeHNt9EKXIKqkxx0ntzQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" class="animate" style="--i:2" />
+            <img src="https://s3-alpha-sig.figma.com/img/70de/aca1/3e157d091a83746cf7b869efc83f4dc6?Expires=1698624000&Signature=PKb4edONsqbyjJNwIk4SYHRH3XHchEUtJfP6~oLep4Q0neiKAU4MHiUlC7jdmR2Yy95Cq6QtKsBjSmzU1Tw8Qvl3b~X70vQoMe4dwwiX3adAq9~WRrfdtkqV3iZPal4krBOdENvtDoMN-U7CS8mE2Iq5nJOqVon7lsERGhu8QlLiJItLyj5ajlMOeP1VlrzcTdYd5DmThnX2PYDw1XeSX0qkjSKcEQ~71VPVo2~xErwk35o2hTfANR7DKt4p72xQlBw2gqlE~qSaI~3uHwmU79TWMRDUtYK6YRb9YMrLzBo~RqJa6dpOnA4wvJEoMuMRLlEeHNt9EKXIKqkxx0ntzQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" class="animate" style="--i:2" />
+        </p>
+        <div class="icon-css" style="margin:30px 30px 0px 30px">
+            <p>Travel Dalats xin cảm ơn sự tin tưởng và lựa chọn của bạn trong việc sử dụng ứng dụng Tour Du Lịch của chúng tôi</p>
+        </div>
+        <div class="icon-css">
+            <p>Travel Dalats cam kết mang đến cho bạn những trải nghiệm du lịch tuyệt vời và những chuyến đi đáng nhớ nhất</p>
+        </div>
+        <div class="icon-css">
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-tiktok"></i>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="icon-css" style="margin:100px auto;font-weight:bold">
+            <p style="font-size:32px;">Văn Phòng Công Ty: 828 Sư Vạn Hạnh, Quận 10, TPHCM</p>
+            <p style="font-size:32px;margin:20px auto;text-align:center">HOTLINE: 0345638164</p>
+        </div>
+    </section>
+</div>
+<script src="~/Scripts/AnimationAboutUs.js"></script>
