@@ -9,9 +9,10 @@ namespace DAPM_TOURDL.Controllers
 {
     public class HomeController : Controller
     {
+        private TourDLEntities db = new TourDLEntities();
+
         public ActionResult Index()
         {
-            var db = new TourDLEntities();
             return View(db.TOURs.ToList());
         }
 
@@ -31,8 +32,13 @@ namespace DAPM_TOURDL.Controllers
 
         public ActionResult HomePage()
         {
-            var db = new TourDLEntities();
             return View(db.TOURs.ToList());
+        }
+
+        public ActionResult DanhMucSanPham(string id)
+        {
+            var data = db.SPTOURs.Where(s => s.ID_TOUR == id);
+            return View(data.ToList());
         }
     }
 }

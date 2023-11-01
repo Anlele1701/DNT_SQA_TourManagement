@@ -126,8 +126,8 @@
                 <div class="col-md-4 col-tours">
                     <div class="wrapper">
                         <div class="wrapper-image">
-                            <a href="@Url.Action("DanhMucSanPham", "TOURs", new {id=item.ID_TOUR})">
-                                <img src="~/Images/@item.HinhTour" class="animate" alt="Card image cap" />
+                            <a href="@Url.Action("DanhMucSanPham", "Home", new {id=item.ID_TOUR})">
+                                <img src="~/Images/Admin/TOUR/@item.HinhTour" class="animate" alt="Card image cap" />
                                 <div class="wrapper-content">
                                     <h3> @Html.DisplayFor(modelItem => item.TenTour)</h3>
                                     <p>@Html.DisplayFor(modelItem => item.MoTa)</p>
