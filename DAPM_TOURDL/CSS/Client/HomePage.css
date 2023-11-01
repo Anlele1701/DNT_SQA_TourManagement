@@ -1,4 +1,331 @@
-﻿.card-tour {
+﻿@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+    font-family: 'Roboto',sans-serif;
+}
+
+
+/*<!-- Home start-- >*/
+.home {
+    width: 100%;
+    height: 90vh;
+    /*    background-image:url(~/Images/videoHome.mp4);
+*/ background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: content-box;
+}
+
+.back-video-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.home .content {
+    text-align: center;
+    padding-top: 200px;
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+    .home .content h5 {
+        color: white;
+        font-size: 40px;
+        font-weight: 500;
+        text-shadow: 0px 1px 1px black;
+    }
+
+    .home .content h1 {
+        color: white;
+        font-size: 70px;
+        font-weight: 600;
+        text-shadow: 0px 1px 1px black;
+        margin-top: 5px;
+        height: auto;
+        width: auto;
+    }
+
+    .home .content p {
+        color: white;
+        font-size: 20px;
+        text-shadow: 0px 1px 1px black;
+        margin-bottom: 30px;
+        text-transform: none;
+        font-style: italic;
+        margin-top: 5px;
+        font-weight: bold;
+        width: auto;
+        height: auto;
+    }
+
+.changecontent::after {
+    content: '';
+    color: #0094ff;
+    text-shadow: 0px 1px 1px black;
+    animation: changetext 20s infinite linear;
+}
+
+@keyframes changetext {
+    0% {
+        content: " Đà Lạt"
+    }
+
+    10% {
+        content: " Nha Trang"
+    }
+
+    20% {
+        content: " TP Hồ Chí Minh"
+    }
+
+    30% {
+        content: " Hà Nội"
+    }
+
+    40% {
+        content: " Đà Nẵng"
+    }
+
+    50% {
+        content: " Huế"
+    }
+
+    60% {
+        content: " Vũng Tàu"
+    }
+
+    70% {
+        content: " Bình Ba"
+    }
+
+    80% {
+        content: " Sa Pa"
+    }
+
+    90% {
+        content: " Phan Thiết"
+    }
+
+    100% {
+        content: " Phú Quốc"
+    }
+}
+
+@media (max-width:850px) {
+    .home {
+        background-position: 50%;
+    }
+    h1.title-wrap {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width:450px) {
+    .home .content h5 {
+        font-size: 25px;
+    }
+
+    .home .content h1 {
+        font-size: 40px;
+    }
+
+    .home .content p {
+        font-size: 15px;
+    }
+    h1.title-wrap{
+        font-size: 2rem;
+    }
+}
+
+
+.col-tours {
+    padding: 0px;
+}
+
+    .col-tours img {
+        object-fit: cover;
+        width: 100%;
+        height: 400px;
+        border: 1px solid white;
+        border-radius: 7px;
+    }
+
+    .col-tours h3 {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 45px;
+        --color-1: white;
+        --color-2: Orange;
+        --color-3: yellow;
+        animation: color-animation 4s linear infinite;
+    }
+
+@keyframes color-animation {
+    0% {
+        color: var(--color-1)
+    }
+
+    32% {
+        color: var(--color-1)
+    }
+
+    33% {
+        color: var(--color-2)
+    }
+
+    65% {
+        color: var(--color-2)
+    }
+
+    66% {
+        color: var(--color-3)
+    }
+
+    99% {
+        color: var(--color-3)
+    }
+
+    100% {
+        color: var(--color-1)
+    }
+}
+
+.col-tours p {
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+    padding: 0px;
+}
+
+.col-3 i {
+    font-size: 50px;
+    margin: 16px;
+    font-weight: 700;
+}
+
+.col-3 p {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+/*animation image overlay*/
+.wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.wrapper-image {
+    width: 500px;
+    position: relative;
+    object-fit: cover;
+}
+
+.wrapper-content {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.6s;
+}
+
+    .wrapper-content:hover {
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper-content > * {
+        transform: translateY(25px);
+        transition: transform 0.6s;
+    }
+
+    .wrapper-content:hover > * {
+        transform: translateY(0px);
+    }
+
+/*------------------------------------------Animation CSS for scrolling Page - TA Gaming----------------------------------------*/
+
+.sign-out {
+    padding: 0px 15px;
+    border: 1px solid none;
+    opacity: 0.7;
+    border-radius: 8px;
+    transition: 0.8s;
+}
+
+    .sign-out a {
+        color: white;
+        font-weight: bold;
+        transition: 0.8s;
+        text-decoration: none;
+    }
+
+    .sign-out:hover {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    .sign-out a:hover {
+        color: white !important;
+    }
+
+.sign-up {
+    padding: 0px 15px;
+    opacity: 0.7;
+    border-radius: 8px;
+    transition: 0.8s;
+    text-decoration: none;
+}
+
+    .sign-up a {
+        color: white;
+        font-weight: bold;
+        transition: 0.8s;
+        opacity: 1;
+        text-decoration: none;
+    }
+
+    .sign-up:hover {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    .sign-up a {
+        color: white !important;
+    }
+
+.card-tour {
     display: flex;
     margin: 5px;
     border: none;
@@ -11,29 +338,56 @@
         object-fit: cover;
     }
 
-.responsive {
+    .card-tour h3 {
+        color: black;
+        font-weight: 600;
+        font-size: 40px;
+    }
+
+    .card-tour p {
+        color: black;
+        font-weight: 200;
+        margin-left: 10px;
+    }
+
+/*Wrap image Beach và Cây*/
+.title-wrap {
+    font-size: 7rem;
+    color: white;
+    text-shadow: 0 0 5px black;
+}
+.wrap{
+    width:100vw;
+    height:100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective:10px;
+}
+    .wrap::-webkit-scrollbar {
+        display: none;
+    }
+.header-wrap{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index:-1;
+}
+.background-wrap, .foreground, .leftground {
+    position: absolute;
     width: 100%;
-    max-width: 400px;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
-
-.card-tour h3 {
-    color: black;
-    font-weight: 600;
-    font-size: 40px;
+.background-wrap{
+    transform:translateZ(-10px) scale(2);
 }
-
-.card-tour p {
-    color: black;
-    font-weight: 200;
-    margin-left: 10px;
+.foreground {
+    transform: translateZ(-10px) scale(2);
 }
-
-.back-image-gradients {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 50vh;
-    width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../../Images/beautiful-girl-standing-boat-looking-mountains-ratchaprapha-dam-khao-sok-national-park-surat-thani-province-thailand.jpg");
+.leftground{
+    transform: translateX(-100%) translateZ(-11px) scale(0.7);
 }
