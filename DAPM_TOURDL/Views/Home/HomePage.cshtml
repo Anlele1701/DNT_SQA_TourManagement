@@ -3,35 +3,29 @@
     ViewBag.Title = "HomePage";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
-<!DOCTYPE html>
-<html>
 <head>
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="~/CSS/Client/HomePage.css" />
 </head>
-</html>
 <body>
-    <div class="home">
-        <div class="content">
-            <video autoplay loop muted plays-inline class="back-video-image"><source src="~/Images/ocean.mp4" /></video>
-            <br /><br /><br /><br />
-            <div>
-                <h1>Bạn muốn đi du lịch<span class="changecontent"></span></h1>
-                <p>Cùng khám phá và trải nghiệm những điều thú vị mà chúng tôi sắp mang đến cho bạn</p>
+    <div class="wrap">
+        <div class="home">
+            <div class="content">
+                <video autoplay loop muted plays-inline class="back-video-image"><source src="~/Images/Client/Video/vietnam_-_25171 (Original).mp4" /></video>
+                <br /><br /><br /><br />
+                <div class="row col-sm-12 d-flex justify-content-center">
+                    <h1>Bạn muốn đi du lịch<span class="changecontent"></span></h1>
+                    <p>Cùng khám phá và trải nghiệm những điều thú vị mà chúng tôi sắp mang đến cho bạn</p>
+                </div>
+                @*<a href="#book">Đặt ngay</a>*@
             </div>
-            @*<a href="#book">Đặt ngay</a>*@
         </div>
-    </div>
-
-    <div class="animate-css" style="background:#fff">
-        <section class="animate-css sec-1">
+        <div class="mt-5 overflow-hidden bg-white">
             <div class="card mb-3 card-tour pt-5 py-5">
                 <div class="row g-0">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5 animate">
+                    <div class="col-md-6 animate">
                         <img src="https://www.weather2travel.com/images_blog/island-resort-in-the-maldives.jpg" class="img-fluid" alt="..." style="object-fit:cover;max-width:100%;height:auto; border-radius:20px;">
                     </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-4 animate">
+                    <div class="col-md-6 animate">
                         <div class="card-body" style="text-align:left">
                             <h3 class="card-title animate" style="text-transform:uppercase">chúng tôi <font color="#0094ff">cung cấp</font></h3>
                             <p class="animate" style="font-size:20px">
@@ -44,12 +38,9 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="animate-css sec-2">
             <div class="card mb-3 card-tour pt-5 py-5">
                 <div class="row g-0 ">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5 animate ">
+                    <div class="col-md-6 animate">
                         <div class="card-body" style="text-align:left">
                             <h3 class="card-title animate" style="text-transform:uppercase">chúng tôi <font color="#0094ff">đảm bảo</font> </h3>
                             <p class="animate" style="font-size:20px;">
@@ -60,83 +51,39 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5 animate">
-                        <img src="~/Images/Hanoi.jpg" class="img-fluid" alt="..." style="object-fit:cover;height:100%;width:100%; border-radius:20px;">
+                    <div class="col-md-6 animate">
+                        <img src="https://img.freepik.com/free-photo/peak-bamboo-lijiang-rural-mist_1417-410.jpg?w=1060&t=st=1698734762~exp=1698735362~hmac=33aab4d91230ea78af5cc3405139f1c8f62e8b82bf6056503fa86b3be11fac07" class="img-fluid" alt="..." style="object-fit:cover;height:100%;width:100%; border-radius:20px;">
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-    <div class="container-back-image img-fluid">
-        <div class="back-image-gradients">
-            @*<img class="img-fluid back-image" style="width:100vw;height:300px; filter:blur(1px);" src="~/Images/beautiful-girl-standing-boat-looking-mountains-ratchaprapha-dam-khao-sok-national-park-surat-thani-province-thailand.jpg" />*@
         </div>
-        <div class="row back-image-text" style="font-size:50px; top:100px !important;">
-            <div class="col-3 hover-icon">
-                <a href="@Url.Action("About","Home")">
-                    <i class="fa-solid fa-plane-departure" style="color:#0026ff"></i>
-                    <p>Hơn 7800 Tour đã hoàn thành</p>
-                </a>
-            </div>
-            <div class="col-3 hover-icon">
-                <a href="@Url.Action("About","Home")">
-                    <i class="fa-sharp fa-solid fa-star" style="color:yellow"></i>
-                    <p>Hơn 3800 lượt đánh giá 5 sao</p>
-                </a>
-            </div>
-            <div class="col-3 hover-icon">
-                <a href="@Url.Action("About","Home")">
-                    <i class="fa-solid fa-route" style="color:#0094ff"></i>
-                    <p>Hơn 1200 địa điểm du lịch</p>
-                </a>
-            </div>
-            <div class="col-3 hover-icon" style="color:#f9f9f9">
-                <a href="@Url.Action("About","Home")">
-                    <i class="fa-solid fa-comments"></i>
-                    <p>Giải đáp hơn 13400 thắc mắc</p>
-                </a>
-            </div>
+        <div class="header-wrap">
+            <img src="~/Images/Client/HomePage/Beach.png" class="background-wrap" />
+            <img src="~/Images/Client/HomePage/Sun.png" class="leftground" />
+            <img src="~/Images/Client/HomePage/leaf.png" class="foreground" />
+            <h1 class="title-wrap">Welcome Viet Travel!</h1>
         </div>
-    </div>
-    <div class="animate-css">
-        <section class="animate-css sec-4">
-            <div class="position-relative marquee-container animate" style=" border-bottom:solid;border-color:gainsboro;border-width:thin;">
-                <div class="marquee d-flex justify-content-around" style="font-size: 55px;font-weight:bold;text-transform:uppercase; ">
-                    <span>
-                        Khám phá thế giới cùng chúng tôi<span class="showRight-animate" style="--i: 1; background: #fff"></span>
-                    </span>
-                </div>
-                <div class="marquee marquee2 d-flex justify-content-around" style="font-size: 55px; font-weight:bold;text-transform:uppercase;">
-                    <span>
-                        Khám phá thế giới cùng chúng tôi<span class="showRight-animate" style="--i: 1; background: #fff"></span>
-                    </span>
-                </div>
-            </div>
-            <p class="animate" style="font-size: 30px;padding-top:20px;padding-left:20px; text-transform: uppercase; font-weight: bold; color:#5B5961">
-                Các tour chúng tôi đang có<span class="showRight-animate" style="--i:3;background:#fff"></span>
-            </p>
-        </section>
-    </div>
-    <div style="text-align:center">
-        <div class="row g-0" style="text-align:center">
-            @* xuất dữ liệu các tour từ database *@
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4 col-tours">
-                    <div class="wrapper">
-                        <div class="wrapper-image">
-                            <a href="@Url.Action("DanhMucSanPham", "Home", new {id=item.ID_TOUR})">
-                                <img src="~/Images/Admin/TOUR/@item.HinhTour" class="animate" alt="Card image cap" />
-                                <div class="wrapper-content">
-                                    <h3> @Html.DisplayFor(modelItem => item.TenTour)</h3>
-                                    <p>@Html.DisplayFor(modelItem => item.MoTa)</p>
-                                </div>
-                            </a>
+        <div style="text-align:center;background-color:#fff">
+            <div class="row g-0" style="text-align:center">
+                @* xuất dữ liệu các tour từ database *@
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 col-tours">
+                        <div class="wrapper">
+                            <div class="wrapper-image">
+                                <a href="@Url.Action("DanhMucSanPham", "TOURs", new {id=item.ID_TOUR})">
+                                    <img src="~/Images/Admin/TOUR/@item.HinhTour" class="animate" alt="Card image cap" />
+                                    <div class="wrapper-content">
+                                        <h3> @Html.DisplayFor(modelItem => item.TenTour)</h3>
+                                        @*                                    <p>@Html.DisplayFor(modelItem => item.MoTa)</p>
+                                        *@
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 </body>
