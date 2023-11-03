@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DAPM_TOURDL.Models.SPTOUR>
+@{
+    ViewBag.Title = "DanhMucSanPham";
+    Layout = "~/Views/Shared/ClientLayout.cshtml";
+}
+
+<h2>DanhMucSanPham</h2>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col col-danhmuctour">
+                <div class="card" style="margin:20px 40px;border-radius:15px;box-shadow:1px 0px 5px #808080">
+                    <img class="card-img-top" src="~/Images/Admin/SPTOUR/@item.HinhAnh" alt="Card image cap">
+                    <div class="card-body" style="text-align:left;">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.TenSPTour)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.GiaNguoiLon)VND</p>
+                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn btn-primary">Xem Chi Tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

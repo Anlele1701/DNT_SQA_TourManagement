@@ -1,0 +1,91 @@
+﻿body {
+}
+
+img {
+    background-attachment: fixed;
+    object-fit: cover;
+    border: 1px solid white;
+}
+
+.mySlides {
+    display: none;
+}
+
+.div-navbar {
+    text-transform: uppercase;
+    padding: 0px;
+    height: auto;
+    width: 100%;
+    -webkit-backdrop-filter: blur(3px);
+    background: #8CABFF;
+    /*background-color: rgba(225,225,225,0.1);
+    backdrop-filter: blur(3px);*/
+}
+
+.nav-item .nav-link:hover {
+    color: white;
+    font-weight: bold;
+    opacity: 1;
+}
+
+.chitiettour h3 {
+    font-weight: bold;
+}
+
+.chitiettour h3 {
+    font-weight: bold;
+}
+
+.chitiettour h5 {
+    font-weight: bold;
+}
+
+.chitiettour p {
+    font-style: italic;
+}
+
+.chitiettour img {
+    margin: 16px 0 16px 0;
+}
+
+.ngoaitour a {
+    border: 2px solid none;
+    background: dodgerblue;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    transition: 1s;
+}
+
+    .ngoaitour a:hover {
+        background: #4800ff;
+    }
+
+.title {
+    font-size: 48px;
+    color: black;
+    font-family: Arial;
+    text-transform: uppercase;
+}
+
+.particletext {
+    position: relative;
+    color: transparent;
+    font-weight: 800;
+    background-color: #1e80db !important;
+    background-position: 50% 50%;
+    background: url(https://i.imgur.com/OLQtRxV.png) repeat-y;
+    -webkit-background-clip: text;
+    animation: slide 2s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        background-position: 50% 50%;
+    }
+
+    100% {
+        background-position: 60% 100%;
+    }
+}
