@@ -40,5 +40,11 @@ namespace DAPM_TOURDL.Controllers
             var data = db.SPTOURs.Where(s => s.ID_TOUR == id);
             return View(data.ToList());
         }
+
+        public ActionResult ChiTietTour(string id)
+        {
+            var data = db.SPTOURs.Where(s => s.ID_SPTour == id);
+            return View(data);
+        }
     }
 }

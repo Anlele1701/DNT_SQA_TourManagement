@@ -16,7 +16,7 @@
                     <div class="card-body" style="text-align:left;">
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.TenSPTour)</h5>
                         <p class="card-text">@Html.DisplayFor(modelItem => item.GiaNguoiLon)VND</p>
-                        <a href="@Url.Action("ChiTietTour", "ChiTietTour", new { id = item.ID_SPTour })" class="btn btn-primary">Xem Chi Tiết</a>
+                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn btn-primary">Xem Chi Tiết</a>
                     </div>
                 </div>
             </div>
