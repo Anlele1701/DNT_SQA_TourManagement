@@ -16,7 +16,6 @@
                     <h1>Bạn muốn đi du lịch<span class="changecontent"></span></h1>
                     <p>Cùng khám phá và trải nghiệm những điều thú vị mà chúng tôi sắp mang đến cho bạn</p>
                 </div>
-                @*<a href="#book">Đặt ngay</a>*@
             </div>
         </div>
         <div class="mt-5 overflow-hidden bg-white">
@@ -61,22 +60,21 @@
             <img src="~/Images/Client/HomePage/Beach.png" class="background-wrap" />
             <img src="~/Images/Client/HomePage/Sun.png" class="leftground" />
             <img src="~/Images/Client/HomePage/leaf.png" class="foreground" />
-            <h1 class="title-wrap">Welcome Viet Travel!</h1>
+            <h1 class="title-wrap">Welcome To Viet Travel!</h1>
         </div>
-        <div style="text-align:center;background-color:#fff">
+
+        <div style="text-align:center;background-color:#fff; padding-top:50px;">
+            <h1>Bắt đầu hành trình của bạn</h1>
             <div class="row g-0" style="text-align:center">
-                @* xuất dữ liệu các tour từ database *@
                 @foreach (var item in Model)
                 {
                     <div class="col-md-4 col-tours">
                         <div class="wrapper">
                             <div class="wrapper-image">
-                                <a href="@Url.Action("DanhMucSanPham", "TOURs", new {id=item.ID_TOUR})">
+                                <a href="@Url.Action("DanhMucSanPham", "Home", new {id=item.ID_TOUR})">
                                     <img src="~/Images/Admin/TOUR/@item.HinhTour" class="animate" alt="Card image cap" />
                                     <div class="wrapper-content">
                                         <h3> @Html.DisplayFor(modelItem => item.TenTour)</h3>
-                                        @*                                    <p>@Html.DisplayFor(modelItem => item.MoTa)</p>
-                                        *@
                                     </div>
                                 </a>
                             </div>
@@ -86,7 +84,4 @@
             </div>
         </div>
     </div>
-
-
-
 </body>

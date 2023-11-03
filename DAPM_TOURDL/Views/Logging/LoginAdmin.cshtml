@@ -1,0 +1,35 @@
+﻿@model DAPM_TOURDL.Models.NHANVIEN
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginAdmin</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @using (Html.BeginForm("LoginAdmin", "Logging", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="card">
+                <h2>Đăng Nhập</h2>
+                <form>
+                    <label for="username">Username</label>
+                    <p>@Html.TextBoxFor(m => m.Mail_NV)</p>
+                    <label for="password">Password</label>
+                    <p>@Html.TextBoxFor(m => m.MatKhau)</p>
+
+                    @Html.ValidationMessageFor(m => m.MatKhau)
+                    @Html.AntiForgeryToken()
+                    <button value="login" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    }
+</body>
+</html>

@@ -245,6 +245,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\LoggingController.cs" />
     <Compile Include="Controllers\HOADONsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KHACHHANGsController.cs" />
@@ -356,6 +357,7 @@
     <Content Include="CSS\Client\AboutUs.css" />
     <Content Include="CSS\Admin\AdminIndex.css" />
     <Content Include="CSS\Admin\AdminLayout.css" />
+    <Content Include="CSS\Client\ChiTietTour.css" />
     <Content Include="CSS\Client\CientLayout.css" />
     <Content Include="CSS\Client\Login.css" />
     <Content Include="CSS\Client\ProfileUser.css" />
@@ -363,6 +365,34 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Admin\SPTOUR\Dalat.jpg" />
+    <Content Include="Images\Admin\SPTOUR\DaLat.png" />
+    <Content Include="Images\Admin\SPTOUR\dalat1.jpg" />
+    <Content Include="Images\Admin\SPTOUR\dalat2.jpg" />
+    <Content Include="Images\Admin\SPTOUR\dalat3.jpg" />
+    <Content Include="Images\Admin\SPTOUR\DaLatMain.jpg" />
+    <Content Include="Images\Admin\SPTOUR\dalattour.jpg" />
+    <Content Include="Images\Admin\SPTOUR\dalatvn.jpg" />
+    <Content Include="Images\Admin\SPTOUR\Danang.jpg" />
+    <Content Include="Images\Admin\SPTOUR\dao-binh-ba.jpg" />
+    <Content Include="Images\Admin\SPTOUR\halongbay.jpg" />
+    <Content Include="Images\Admin\SPTOUR\Hanoi.jpg" />
+    <Content Include="Images\Admin\SPTOUR\Hanoi1.jpg" />
+    <Content Include="Images\Admin\SPTOUR\hanoi2.jpg" />
+    <Content Include="Images\Admin\SPTOUR\hanoi3.jpg" />
+    <Content Include="Images\Admin\SPTOUR\HN.jpg" />
+    <Content Include="Images\Admin\SPTOUR\HoXuanHuong.jpg" />
+    <Content Include="Images\Admin\SPTOUR\hue.jpg" />
+    <Content Include="Images\Admin\SPTOUR\saigon.jpg" />
+    <Content Include="Images\Admin\SPTOUR\sapa.jpg" />
+    <Content Include="Images\Admin\SPTOUR\sapa1.jpg" />
+    <Content Include="Images\Admin\SPTOUR\sapa11.jpg" />
+    <Content Include="Images\Admin\SPTOUR\SG.jpg" />
+    <Content Include="Images\Admin\SPTOUR\suongmudalat.jpg" />
+    <Content Include="Images\Admin\SPTOUR\tphcm1.jpg" />
+    <Content Include="Images\Admin\SPTOUR\tphcm2.jpg" />
+    <Content Include="Images\Admin\SPTOUR\tphcm3.jpg" />
+    <Content Include="Images\Admin\SPTOUR\TravelDalat.png" />
     <Content Include="Images\Admin\TOUR\Dalat.jpg" />
     <Content Include="Images\Admin\TOUR\DaLat.png" />
     <Content Include="Images\Admin\TOUR\dalat1.jpg" />
@@ -446,6 +476,9 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Home\HomePage.cshtml" />
     <Content Include="Views\KHACHHANGs\DangNhap.cshtml" />
+    <Content Include="Views\Home\DanhMucSanPham.cshtml" />
+    <Content Include="Views\Home\ChiTietTour.cshtml" />
+    <Content Include="Views\Logging\LoginAdmin.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -537,6 +570,9 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

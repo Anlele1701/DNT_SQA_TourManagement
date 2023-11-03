@@ -38,19 +38,28 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto" style="color:white;float:right!important; flex-wrap:nowrap">
-                        <li class="nav-item" style="margin:0 40px 0 40px">
+                        @if (Session["IDUser"] != null)
+                        {
+                            <li class="nav-item" style="margin:0 40px 0 40px">
 
-                            <a style="text-decoration: none; color: white; font-weight: bolder;text-decoration:none">Xin chào</a>
-                        </li>
-                        <li class="nav-item" style="margin:0 40px 0 40px;">
-                            <div class="sign-out" style="color: white; font-weight: bolder; text-decoration: none"></div>
-                        </li>
-                        <li class="nav-item" style="margin:0 40px 0 40px;color:white">
-                            <div class="sign-up" style="color:white;font-weight:bold;text-decoration:none"></div>
-                        </li>
-                        <li class="nav-item" style="margin:0 40px 0 40px;color:white">
-                            <div class="sign-up" style="color: white; font-weight: bold; text-decoration: none"></div>
-                        </li>
+                                <a style="text-decoration: none; color: white; font-weight: bolder;text-decoration:none" href="@Url.Action("profile","Profile",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
+                            </li>
+                            <li class="nav-item" style="margin:0 40px 0 40px;">
+                                <div class="sign-out" style="color: white; font-weight: bolder; text-decoration: none">@Html.ActionLink("Đăng xuất", "DangXuat", "Login")</div>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item" style="margin:0 40px 0 40px;color:white">
+                                <div class="sign-up" style="color:white;font-weight:bold;text-decoration:none">@Html.ActionLink("Đăng ký", "Signup", "Login")</div>
+                            </li>
+                            <li class="nav-item" style="margin:0 40px 0 40px;color:white">
+                                <div class="sign-up" style="color: white; font-weight: bold; text-decoration: none">
+                                    @Html.ActionLink("Đăng nhập", "DangNhap", "Login")
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

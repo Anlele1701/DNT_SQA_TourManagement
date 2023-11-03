@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DAPM_TOURDL.Models.SPTOUR>
+
+@{
+    ViewBag.Title = "ChiTietTour";
+    Layout = "~/Views/Shared/ClientLayout.cshtml";
+}
+<link rel="stylesheet" href="~/CSS/Client/ChiTietTour.css" />
+<link href="~/Content/bootstrap5/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+@foreach (var item in Model)
+{
+    <div class="w3-content w3-display-container img-fluid chitiettour">
+        <img class="mySlides img-fluid" src="~/Images/Admin/SPTOUR/@item.HinhAnh" style="width: 100vw; height: auto;border-radius:15px">
+    </div>
+
+    <div class="card mb-3 card-tour chitiettour" style="border:none">
+        <div style="font-weight: bold; text-align: center;">
+            <h1 class="title"><span class="particletext">Detail TOUR</span></h1>
+        </div>
+        <div class="row g-0">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text">
+                <h3 class="fw-light text-black m-0" style="font-weight:bold!important">Tour du lịch: @Html.DisplayFor(modelItem => item.TenSPTour)</h3>
+                <h3>Giới thiệu</h3>
+                <p class="fw-light text-black m-0">@Html.DisplayFor(modelItem => item.MoTa)</p>
+                <p class="fw-light text-black m-0"><strong>Điểm tập trung:</strong> @Html.DisplayFor(modelItem => item.DiemTapTrung)</p>
+                <p class="fw-light text-black m-0">Điểm đến: @Html.DisplayFor(modelItem => item.DiemDen)</p>
+                <p class="fw-light text-black m-0">Ngày khởi hành: @Html.DisplayFor(modelItem => item.NgayKhoiHanh)</p>
+                <p class="fw-light text-black m-0">Ngày kết thúc: @Html.DisplayFor(modelItem => item.NgayKetThuc)</p>
+                <br /><hr />
+                <h3>Dịch vụ</h3>
+                <p class="fw-light text-black m-0">Tên Nhân Viên Chịu Trách nhiệm: @Html.DisplayFor(modelItem => item.NHANVIEN.HoTen_NV)</p>
+                <p class="fw-light text-black m-0">Giá người lớn: @Html.DisplayFor(modelItem => item.GiaNguoiLon)</p>
+                <p class="fw-light text-black m-0">Giá trẻ em: @Html.DisplayFor(modelItem => item.GiaTreEm)</p>
+            </div>
+
+            <div class="col-md-2"></div>
+        </div>
+        <div class="ngoaitour" style="text-align:center;">
+            <a style="color: white;text-decoration:none" href="@Url.Action("DatTour", "DatTour", new {id=item.ID_SPTour})">Đặt Tour</a>
+        </div>
+    </div>}
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+</script>

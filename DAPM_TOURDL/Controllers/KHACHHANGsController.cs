@@ -54,9 +54,14 @@ namespace DAPM_TOURDL.Controllers
         }
 
         // GET: KHACHHANGs
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            return View(db.KHACHHANGs.ToList());
+            var kh = db.KHACHHANGs.ToList();
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                kh = kh.Where(s => s.HoTen_KH.Contains(SearchString) || s.Mail_KH.Contains(SearchString)).ToList();
+            }
+            return View(kh);
         }
 
         // GET: KHACHHANGs/Details/5
@@ -163,17 +168,17 @@ namespace DAPM_TOURDL.Controllers
             }
             base.Dispose(disposing);
         }
+
         [HttpGet]
         public ActionResult DangNhap()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DangNhap(KHACHHANG khachhang)
         {
-
-
             var kiemTraDangNhap = db.KHACHHANGs.Where(x => x.Mail_KH.Equals(khachhang.Mail_KH) && x.MatKhau.Equals(khachhang.MatKhau)).FirstOrDefault();
             if (kiemTraDangNhap != null)
             {
