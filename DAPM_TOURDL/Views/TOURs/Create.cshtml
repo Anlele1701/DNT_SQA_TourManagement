@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HinhTour, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HinhTour, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.HinhTour, null, new { type = "file", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HinhTour, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -35,8 +35,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NgaySinh_NV, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NgaySinh_NV, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgaySinh_NV, "", new { @class = "text-danger" })
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(model => model.GioiTinh_NV, "Nam") Nam
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.GioiTinh_NV, "Nữ") Nữ
+                    </label>
+                </div>
             </div>
         </div>
 

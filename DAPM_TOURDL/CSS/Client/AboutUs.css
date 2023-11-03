@@ -1,0 +1,287 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial,sans-serif;
+}
+video {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    max-height: 90vh;
+    border: none;
+    object-fit: cover;
+}
+
+.hr {
+    background-color: #EEE2DE;
+    overflow: hidden;
+}
+
+    .hr a {
+        height: auto;
+        position: absolute;
+        top: 55px;
+        left: 30px;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        font-size: 28px;
+        background: #0094ff;
+        font-weight: bold;
+        color: white;
+        border-radius: 16px;
+        transition: 1s;
+    }
+
+        .hr a:hover {
+            background: #0094ff;
+            opacity: 0.6;
+        }
+
+.heading h1 {
+    color: #0094ff;
+    font-size: 55px;
+    text-align: center;
+    margin-top: 35px;
+    animation: zoom-out 4s ease;
+}
+
+.container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+
+.hr-content {
+    flex: 1;
+    width: 600px;
+    margin: 0px 25px;
+    animation: Up 4s ease;
+}
+
+    .hr-content h2 {
+        font-size: 38px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .hr-content p {
+        font-size: 24px;
+        line-height: 1.5;
+        margin-bottom: 40px;
+        color: #666;
+        margin: auto;
+    }
+
+    .hr-content button {
+        display: inline-block;
+        background-color: #0094ff;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 5px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+        .hr-content button:hover {
+            background-color: #ff6347;
+            transform: scale(1.1);
+        }
+
+.hr-image {
+    flex: 1;
+    width: 600px;
+    margin: auto;
+    animation: Right 4s ease;
+}
+
+.container .hr-image p {
+    position: absolute;
+    top: 40%;
+    font-size: 32px;
+    left: 15%;
+    color: white;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+.hr-image img {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    min-height: 80vh;
+    margin: 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: auto 20px;
+}
+
+@media screen and (max-width:768px) {
+    .heading h1 {
+        font-size: 45px;
+        margin-top: 30px;
+    }
+
+    .hr {
+        margin: 0px;
+    }
+
+    .container {
+        width: 100%;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0px 40px;
+        margin: auto 20px;
+    }
+
+    .hr-content {
+        width: 100%;
+        margin: 35px 0px;
+    }
+
+        .hr-content h2 {
+            font-size: 30px;
+        }
+
+        .hr-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .hr-content button {
+            font-size: 16px;
+            padding: 8px 16px;
+        }
+
+    .hr-image {
+        width: 100%;
+    }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+/*------------------------------------------Animation CSS for scrolling Page - TA Gaming----------------------------------------*/
+
+.animate-css section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #EEE2DE;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+    .animate-css section .animate {
+        opacity: 0;
+        transition: 1.5s;
+        filter: blur(3px);
+    }
+
+section.show-animate .animate {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.animate-css h1 {
+    position: relative;
+    font-size: 55px;
+    font-weight: bold;
+    color: #0094ff;
+}
+
+.animate-css p {
+    position: relative;
+    font-size: 24px;
+    color: #666;
+}
+
+.sec-1 .animate {
+    transform: translateX(-1000px);
+}
+
+.sec-1.show-animate .animate {
+    transform: translateX(0);
+}
+
+.sec-2 .animate {
+    transform: translateX(1000px);
+}
+
+.sec-2.show-animate .animate {
+    transform: translateX(0);
+}
+
+.sec-3 .animate {
+    transform: scale(0.6);
+}
+
+.sec-3.show-animate .animate {
+    transform: scale(1);
+}
+
+.sec-4 .showRight-animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #EEE2DE;
+    transition: 2.5s;
+    transition-delay: calc(0.2s * var(--i));
+}
+
+.sec-4.show-animate .showRight-animate {
+    width: 0;
+}
+
+.sec-5.show-animate .images img {
+    transform: translateX(0);
+}
+
+.sec-5 .images img {
+    align-items: center;
+    align-content: center;
+    width: 300px;
+    height: 350px;
+    object-fit: contain;
+    margin: auto auto;
+    transform: translateX(-100%);
+    transition-delay: calc(0.2s * var(--i));
+}
+
+.icon-css {
+    color: #666;
+}
+
+    .icon-css p {
+        color: #666;
+    }
+
+    .icon-css i {
+        position: relative;
+        text-align: center;
+        font-size: 50px;
+        margin: 30px;
+        color: black;
+        opacity: 0.8;
+    }

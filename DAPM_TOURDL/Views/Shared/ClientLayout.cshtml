@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿    <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -61,7 +61,7 @@
     <div>@RenderBody()</div>
 
     <!-- Footer -->
-    <div class="footer-wrap">
+    <div class="footer-wrap" id="footer">
         <div class="footer">
             <div class="container">
                 <div class="row d-flex justify-content-between">
@@ -113,7 +113,10 @@
             const loader = document.querySelector(".loader");
             document.querySelector(".loader").classList.add("loader-hidden");
             document.querySelector(".loader").addEventListener("transitionend", () => {
-                document.body.removeChild(document.querySelector(".loader"));
+/*                document.body.removeChild(document.querySelector(".loader"));
+*/                if (loader.parentElement) {
+                    loader.parentElement.removeChild(loader);
+                }
             });
         });
 

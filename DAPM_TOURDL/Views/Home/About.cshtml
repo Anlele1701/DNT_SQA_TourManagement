@@ -1,9 +1,110 @@
 ﻿@{
     ViewBag.Title = "About";
+    Layout = null;
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+<link href="~/CSS/Client/AboutUs.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <p>Use this area to provide additional information.</p>
-</main>
+<section class="hr">
+    <div class="container">
+        <div class="hr-image">
+            <img src="~/Images/Client/AboutUs/Banner1.png" />
+            <p>Travel Dalats - Đắm chìm trong vẻ đẹp thiên nhiên, vị ngọt của cuộc sống</p>
+        </div>
+        <a href="@Url.Action("Index","Home")"><i class="fa-solid fa-house"></i></a>
+    </div>
+</section>
+<div class="animate-css" style="background:#EEE2DE">
+    <section class="animate-css sec-1">
+        <div class="container">
+            <div class="hr-image animate">
+                <img src="~/Images/Client/AboutUs/Banner2.png" />
+            </div>
+            <div class="hr-content">
+                <h1 class="animate">Travel Dalats<i class="fa-solid fa-suitcase-rolling" style="margin-left: 20px; color: #7D7463 "></i></h1>
+                <p class="animate">
+                    Chào mừng đến với Travel Dalats - Công ty tổ chức du lịch chuyên nghiệp và đam mê tại Việt Nam!
+                    Chúng tôi là một công ty du lịch độc lập, thành lập với niềm đam mê cháy bỏng và ý tưởng mang đến những trải nghiệm du lịch độc đáo và đáng nhớ cho du khách.
+                    Travel Dalats đã được thành lập với mục tiêu tạo ra những hành trình đa dạng và tinh tế, từ những khám phá mạo hiểm đến những chuyến đi thư giãn, từ những trải nghiệm văn hóa độc đáo đến những đặc sản ẩm thực tuyệt vời.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="animate-css sec-2 show-animate">
+        <div class="container">
+            <div class="hr-content">
+                <h1 class="animate">
+                    Sứ mệnh của chúng tôi<i class="fas fa-rocket" style="color: #FD8D14; margin-left: 20px"></i>
+                </h1>
+                <p class="animate">
+                    Sứ mệnh của Travel Dalats là mang đến cho khách hàng những hành trình du lịch vượt trội, phong cách và đáng nhớ. Chúng tôi không chỉ muốn tạo ra những chuyến đi, mà còn muốn xây dựng những kỷ niệm vĩnh cửu trong lòng khách hàng. Chúng tôi tin rằng mỗi chuyến đi là một câu chuyện riêng, và chúng tôi muốn trở thành đối tác đồng hành đáng tin cậy trên hành trình khám phá thế giới của bạn.
+                </p>
+            </div>
+            <div class="hr-image animate">
+                <img src="~/Images/Client/AboutUs/Banner3.png" />
+            </div>
+        </div>
+    </section>
+    <section class="animate-css sec-3">
+        <div class="container">
+            <div class="hr-image animate">
+                <img src="~/Images/Client/AboutUs/Banner4.png"/>
+            </div>
+            <div class="hr-content">
+                <h1 class="animate">
+                    Dịch vụ của chúng tôi<i class="fas fa-shield" style="color: #91C8E4; margin-left: 20px"></i>
+                </h1>
+                <p class="animate">
+                    Tại Travel Dalats, chúng tôi tự hào cung cấp một loạt các dịch vụ du lịch đa dạng và phong phú :
+                </p>
+                <p class="animate">Đặt tour trực tuyến<i class="fas fa-laptop" style="color:#ff6a00;margin-left:20px"></i></p>
+                <p class="animate">Tour tự chọn<i class="fas fa-suitcase" style="color:#ff6a00;margin-left:20px"></i></p>
+                <p class="animate">Hỗ trợ 24/7<i class="fas fa-headset" style="color:#ff6a00;margin-left:20px"></i></p>
+            </div>
+        </div>
+    </section>
+    <section class="animate-css sec-4">
+        <div class="container">
+            <div class="hr-content">
+                <h1 class="animate">
+                    Cam kết chất lượng <span style="color:yellow;font-size:38px">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                    <span class="showRight-animate" style="--i:1"></span>
+                </h1>
+                <p class="animate">
+                    <span class="showRight-animate" style="--i:3"></span>
+                    Chất lượng dịch vụ và sự hài lòng của khách hàng luôn là ưu tiên hàng đầu của Travel Dalats. Chúng tôi cam kết cung cấp những trải nghiệm du lịch đáng nhớ, đảm bảo sự an toàn và thoải mái cho mỗi hành trình. Với đội ngũ chuyên nghiệp, giàu kinh nghiệm và sự đam mê, chúng tôi tự tin rằng bạn sẽ có những trải nghiệm tuyệt vời nhất khi đồng hành cùng Travel Dalats.
+                </p>
+            </div>
+            <div class="hr-image animate">
+                <img src="~/Images/Client/AboutUs/Banner5.png"/>
+            </div>
+        </div>
+    </section>
+    <section class="animate-css sec-5">
+        <p class="images">
+            <img src="~/Images/Client/AboutUs/employee1.jpg" alt="" class="animate" style="--i:0" />
+            <img src="~/Images/Client/AboutUs/employee2.jpg" alt="" class="animate" style="--i:1" />
+            <img src="~/Images/Client/AboutUs/employee3.jpg" alt="" class="animate" style="--i:2" />
+            <img src="~/Images/Client/AboutUs/employee4.jpg" alt="" class="animate" style="--i:2" />
+        </p>
+        <div class="icon-css" style="margin:30px 30px 0px 30px">
+            <p>Travel Dalats xin cảm ơn sự tin tưởng và lựa chọn của bạn trong việc sử dụng ứng dụng Tour Du Lịch của chúng tôi</p>
+        </div>
+        <div class="icon-css">
+            <p>Travel Dalats cam kết mang đến cho bạn những trải nghiệm du lịch tuyệt vời và những chuyến đi đáng nhớ nhất</p>
+        </div>
+        <div class="icon-css">
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-tiktok"></i>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="icon-css" style="margin:100px auto;font-weight:bold">
+            <p style="font-size:32px;">Văn Phòng Công Ty: 828 Sư Vạn Hạnh, Quận 10, TPHCM</p>
+            <p style="font-size:32px;margin:20px auto;text-align:center">HOTLINE: 0345638164</p>
+        </div>
+    </section>
+</div>
+<script src="~/Scripts/AnimationAboutUs.js"></script>
