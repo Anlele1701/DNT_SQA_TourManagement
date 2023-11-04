@@ -1,4 +1,4 @@
-﻿/*NAVBAR*/
+/*NAVBAR*/
 .loader {
     position: fixed;
     top: 0;
@@ -87,6 +87,10 @@
         background-color: #0094ff;
         opacity: 1;
     }
+    .nav-item div.nav-link a{
+        color: white;
+    }
+    
 
 .nav-item div.nav-link a {
     color: white;

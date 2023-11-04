@@ -13,6 +13,17 @@ namespace DAPM_TOURDL
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+                name: "Login",
+                url: "Login", // Đường dẫn đến trang đăng nhập
+                defaults: new { controller = "KHACHHANGs", action = "DangNhap" }
+            );
+            routes.MapRoute(
+                name: "LoginComplete",
+                url: "", // Đường dẫn đến trang chủ sau khi đăng nhập
+                defaults: new { controller = "Home", action = "HomePage", id = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "Login",
                 url: "Login", // Đường dẫn đến trang đăng nhập
@@ -28,6 +39,7 @@ namespace DAPM_TOURDL
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "HomePage", id = UrlParameter.Optional }
             );
+
         }
     }
 }
