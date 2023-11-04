@@ -188,7 +188,7 @@ namespace DAPM_TOURDL.Controllers
                 Session["GioiTinh"] = kiemTraDangNhap.GioiTinh_KH;
                 Session["SDT"] = kiemTraDangNhap.SDT_KH.ToString();
                 return RedirectToAction
-                    ("Index", "Home", new { id = Session["IDUser"] });
+                    ("HomePage","Home", new { id = Session["IDUser"] });
             }
             else
             {
