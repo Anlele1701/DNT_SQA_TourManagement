@@ -49,6 +49,9 @@
 .div-navbar {
     z-index: 99;
     position: fixed;
+    top:0;
+    right:0;
+    left:0;
     text-transform: uppercase;
     height: auto;
     width: 100%;

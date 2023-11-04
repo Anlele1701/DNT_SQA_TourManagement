@@ -42,10 +42,10 @@
                         {
                             <li class="nav-item">
 
-                                <a class="nav-link no-hover" href="@Url.Action("profile","Profile",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
+                                <a class="nav-link no-hover" href="@Url.Action("Profile","Home",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
                             </li>
                             <li class="nav-item">
-                                @Html.ActionLink("Đăng xuất", "DangXuat", "Login", new { @class = "nav-link" })
+                                @Html.ActionLink("Đăng xuất","DangXuat","Home",null, new { @class = "nav-link" })
                             </li>
 
                         }
@@ -55,7 +55,7 @@
                                 @Html.ActionLink("Đăng ký", "Signup", "Login", new { @class = "nav-link" })
                             </li>
                             <li class="nav-item">
-                                @Html.ActionLink("Đăng nhập", "DangNhap", "KHACHHANGs", null, new { @class = "nav-link" })
+                                @Html.ActionLink("Đăng nhập", "DangNhap", "Home", null, new { @class = "nav-link" })
                             </li>
                         }
                     </ul>

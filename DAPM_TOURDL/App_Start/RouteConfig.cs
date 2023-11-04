@@ -17,27 +17,12 @@ namespace DAPM_TOURDL
             routes.MapRoute(
                 name: "Login",
                 url: "Login", // Đường dẫn đến trang đăng nhập
-                defaults: new { controller = "KHACHHANGs", action = "DangNhap" }
-            );
-            routes.MapRoute(
-                name: "LoginComplete",
-                url: "", // Đường dẫn đến trang chủ sau khi đăng nhập
-                defaults: new { controller = "Home", action = "HomePage", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Login",
-                url: "Login", // Đường dẫn đến trang đăng nhập
-                defaults: new { controller = "KHACHHANGs", action = "DangNhap" }
-            );
-            routes.MapRoute(
-                name: "LoginComplete",
-                url: "", // Đường dẫn đến trang chủ sau khi đăng nhập
-                defaults: new { controller = "Home", action = "HomePage", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "DangNhap" }
             );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "HomePage", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "HomePage", id=UrlParameter.Optional }
             );
 
         }
