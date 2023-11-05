@@ -5,67 +5,95 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.HoTen_NV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GioiTinh_NV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinh_NV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MatKhau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mail_NV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChucVu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDT_NV)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoTen_NV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GioiTinh_NV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgaySinh_NV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatKhau)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mail_NV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChucVu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SDT_NV)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID_NV }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID_NV }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID_NV })
-            </td>
-        </tr>
-    }
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quản lý khách hàng</title>
+    <link rel="stylesheet" href="~/CSS/Admin/AdminIndex.css" />
+</head>
+    <body>
+        <div class="box">
+            <h2 style="">QUẢN LÝ NHÂN VIÊN</h2>
+            <form asp-action="Index" method="get">
+                <input type="text" name="SearchString" placeholder="Tìm kiếm qua gmail hoặc tên" class="searchBox form-control" />
+            </form>
+            <button class="btnCreate btn btn-dark ">@Html.ActionLink("Thêm mới nhân viên", "Create")</button>
+        </div>
+        <div class="box mt-3">
+            <div style="position:relative">
+                <h3 class="text-center">Danh Sách Nhân Viên</h3>
+                <button class="excelbtn btn btn-dark" style="position:absolute; right:20px;top:3px;">
+                    @Html.ActionLink("Xuất excel ", "ExportToExcel")
+                </button>
+            </div>
+            <div class="box mt-3" id="listBox">
+                <div class="fixTableHead">
+                    <table class=" table-bordered table-sm table-striped text-center table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID Nhân Viên
+                                </th>
+                                <th>
+                                    Họ và Tên
+                                </th>
+                                <th>
+                                    Giới Tính
+                                </th>
+                                <th>
+                                    Ngày Sinh
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Chức Vụ
+                                </th>
+                                <th>
+                                    SĐT
+                                </th>
+                                <th>
+                                    Hành Động
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                             {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ID_NV)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HoTen_NV)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GioiTinh_NV)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgaySinh_NV)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Mail_NV)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ChucVu)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SDT_NV)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID_NV }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.ID_NV }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID_NV })
+                                    </td>
+                                </tr>
+                             }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

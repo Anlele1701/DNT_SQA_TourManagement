@@ -11,7 +11,8 @@ namespace DAPM_TOURDL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class KHACHHANG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +24,8 @@ namespace DAPM_TOURDL.Models
         public int ID_KH { get; set; }
         public string HoTen_KH { get; set; }
         public string GioiTinh_KH { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> NgaySinh_KH { get; set; }
         public string MatKhau { get; set; }
         public string CCCD { get; set; }

@@ -46,5 +46,42 @@ namespace DAPM_TOURDL.Controllers
             var data = db.SPTOURs.Where(s => s.ID_SPTour == id);
             return View(data);
         }
+        [HttpGet]
+        public ActionResult DangNhap()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DangNhap(KHACHHANG khachhang)
+        {
+            var kiemTraDangNhap = db.KHACHHANGs.Where(x => x.Mail_KH.Equals(khachhang.Mail_KH) && x.MatKhau.Equals(khachhang.MatKhau)).FirstOrDefault();
+            if (kiemTraDangNhap != null)
+            {
+                Session["IDUser"] = kiemTraDangNhap.ID_KH;
+                Session["EmailUserSS"] = kiemTraDangNhap.Mail_KH.ToString();
+                Session["UsernameSS"] = kiemTraDangNhap.HoTen_KH.ToString();
+                Session["GioiTinh"] = kiemTraDangNhap.GioiTinh_KH;
+                Session["SDT"] = kiemTraDangNhap.SDT_KH.ToString();
+                return RedirectToAction
+                    ("HomePage", "Home", new { id = Session["IDUser"] });
+            }
+            else
+            {
+                ViewBag.Notification = "Tài khoản và mật khẩu không đúng";
+            }
+            return View();
+        }
+        public ActionResult DangXuat()
+        {
+            Session.Clear();
+            return RedirectToAction("HomePage", "Home");
+        }
+        public ActionResult Profile(int id)
+        {
+            var data = db.KHACHHANGs.Find(id);
+            return View(data);
+        }
     }
 }

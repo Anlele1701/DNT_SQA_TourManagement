@@ -475,10 +475,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Home\HomePage.cshtml" />
-    <Content Include="Views\KHACHHANGs\DangNhap.cshtml" />
     <Content Include="Views\Home\DanhMucSanPham.cshtml" />
     <Content Include="Views\Home\ChiTietTour.cshtml" />
     <Content Include="Views\Logging\LoginAdmin.cshtml" />
+    <Content Include="Views\Home\DangNhap.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

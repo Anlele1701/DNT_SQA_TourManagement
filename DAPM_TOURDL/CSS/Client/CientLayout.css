@@ -1,4 +1,4 @@
-﻿/*NAVBAR*/
+/*NAVBAR*/
 .loader {
     position: fixed;
     top: 0;
@@ -13,14 +13,14 @@
     z-index: 100;
 }
 
-.loader::after {
-    content: "";
-    width: 75px;
-    height: 75px;
-    border-radius: 100%;
-    box-shadow: inset 2px 0 0 white, -2px 0 0 white;
-    animation: loading 1s infinite linear;
-}
+    .loader::after {
+        content: "";
+        width: 75px;
+        height: 75px;
+        border-radius: 100%;
+        box-shadow: inset 2px 0 0 white, -2px 0 0 white;
+        animation: loading 1s infinite linear;
+    }
 
 @keyframes loading {
     0% {
@@ -47,9 +47,11 @@
 
 
 .div-navbar {
-    z-index: 2;
+    z-index: 99;
     position: fixed;
     top:0;
+    right:0;
+    left:0;
     text-transform: uppercase;
     height: auto;
     width: 100%;
@@ -67,6 +69,10 @@
     font-weight: 700;
 }
 
+.no-hover:hover {
+    background: none !important;
+}
+
 .nav-item .nav-link {
     font-size: 16px;
     font-weight: 700;
@@ -77,13 +83,23 @@
     opacity: 1;
     justify-content: space-between;
     margin: 0px 16px 0px 16px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
     .nav-item .nav-link:hover {
         background-color: #0094ff;
         opacity: 1;
     }
+    .nav-item div.nav-link a{
+        color: white;
+    }
+    
+
+.nav-item div.nav-link a {
+    color: white;
+}
+
+
 
 
 #navbar form button {
@@ -126,9 +142,9 @@ ul {
     flex-wrap: wrap;
 }
 
-.row p {
-    color: #bbbbbb;
-}
+    .row p {
+        color: #bbbbbb;
+    }
 
 .footer {
     background-color: #494949;
@@ -140,71 +156,71 @@ ul {
     padding: 0 15px;
 }
 
-.footer-col h4 {
-    font-size: 30px;
-    margin-bottom: 30px;
-    position: relative;
-    font-weight: 500;
-}
+    .footer-col h4 {
+        font-size: 30px;
+        margin-bottom: 30px;
+        position: relative;
+        font-weight: 500;
+    }
 
-.footer-col h4::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    background-color: #f7f9fb;
-    height: 3px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    width: 90px;
-    box-shadow: 0 0 5px #ffffff;
-}
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #f7f9fb;
+            height: 3px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            width: 90px;
+            box-shadow: 0 0 5px #ffffff;
+        }
 
-.footer-col ul li {
-    font-size: 16px;
-    color: #bbbbbb;
-    display: block;
-    transition: all 0.5s ease;
-}
+    .footer-col ul li {
+        font-size: 16px;
+        color: #bbbbbb;
+        display: block;
+        transition: all 0.5s ease;
+    }
 
-.footer-col ul li:hover {
-    color: #F9F9F9;
-    padding-left: 8px;
-}
+        .footer-col ul li:hover {
+            color: #F9F9F9;
+            padding-left: 8px;
+        }
 
-.footer-col ul li a {
-    font-size: 16px;
-    color: #bbbbbb;
-    display: block;
-}
+        .footer-col ul li a {
+            font-size: 16px;
+            color: #bbbbbb;
+            display: block;
+        }
 
-.footer-col ul li a:hover {
-    color: #F9F9F9;
-    padding-left: 6px;
-}
+            .footer-col ul li a:hover {
+                color: #F9F9F9;
+                padding-left: 6px;
+            }
 
-.footer-col ul li:not(:last-child) {
-    margin-bottom: 10px;
-}
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
 
-.footer-col .social-links a {
-    font-size: 1.5rem;
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 0 15px 10px 0;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    transition: all 0.6s ease;
-}
+    .footer-col .social-links a {
+        font-size: 1.5rem;
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: 0 15px 10px 0;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        transition: all 0.6s ease;
+    }
 
-.footer-col .social-links a:hover {
-    color: #494949;
-    background-color: #F9F9F9;
-    box-shadow: 0 0 10px #ffffffd1;
-}
+        .footer-col .social-links a:hover {
+            color: #494949;
+            background-color: #F9F9F9;
+            box-shadow: 0 0 10px #ffffffd1;
+        }
 
 /* RESPONSIVE */
 @media(max-width: 767px) {
