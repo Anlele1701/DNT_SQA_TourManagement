@@ -54,7 +54,7 @@
                         <button>Đổi mật khẩu</button>
                     </div>
                     <div class="col-5 col-md-6">
-                        <button>Chỉnh sửa thông tin cá nhân</button>
+                        <a href="@Url.Action("EditProfile","Home",new { id = Session["IDUser"] })">Chỉnh sửa thông tin cá nhân</a>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,12 @@
 ﻿using DAPM_TOURDL.Models;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -64,8 +69,9 @@ namespace DAPM_TOURDL.Controllers
                 Session["UsernameSS"] = kiemTraDangNhap.HoTen_KH.ToString();
                 Session["GioiTinh"] = kiemTraDangNhap.GioiTinh_KH;
                 Session["SDT"] = kiemTraDangNhap.SDT_KH.ToString();
+                ViewBag.idkh = kiemTraDangNhap.ID_KH;
                 return RedirectToAction
-                    ("HomePage", "Home", new { id = Session["IDUser"] });
+                    ("HomePage", "Home", new { id = khachhang.ID_KH });
             }
             else
             {
@@ -82,6 +88,35 @@ namespace DAPM_TOURDL.Controllers
         {
             var data = db.KHACHHANGs.Find(id);
             return View(data);
+        }
+        [HttpGet]
+        public ActionResult EditProfile(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            KHACHHANG course = db.KHACHHANGs.Find(id);
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+            return View(course);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfile([Bind(Include = "ID_KH,HoTen_KH,GioiTinh_KH,NgaySinh_KH,MatKhau,CCCD,SDT_KH,Mail_KH,Diem")] KHACHHANG khachhang)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(khachhang).State = EntityState.Modified;
+                db.SaveChanges();
+                Session["UsernameSS"] = khachhang.HoTen_KH.ToString();
+                Session["GioiTinh"] = khachhang.GioiTinh_KH;
+                return RedirectToAction("Profile","Home", new { id = khachhang.ID_KH });
+            }
+            return View(khachhang);
         }
     }
 }
