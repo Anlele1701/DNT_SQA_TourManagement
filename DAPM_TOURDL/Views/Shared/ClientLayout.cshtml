@@ -1,4 +1,4 @@
-﻿    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -23,7 +23,7 @@
                     <span><i class="fa-solid fa-bars"></i></span>
                 </button>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="navbar-nav me-auto" style="color:white">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link">Home</a>
                         </li>
@@ -37,27 +37,25 @@
                             <a class="nav-link">Về chúng tôi</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto" style="color:white;float:right!important; flex-wrap:nowrap">
+                    <ul class="navbar-nav ms-auto">
                         @if (Session["IDUser"] != null)
                         {
-                            <li class="nav-item" style="margin:0 40px 0 40px">
+                            <li class="nav-item">
 
-                                <a style="text-decoration: none; color: white; font-weight: bolder;text-decoration:none" href="@Url.Action("profile","Profile",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
+                                <a class="nav-link no-hover" href="@Url.Action("Profile","Home",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
                             </li>
-                            <li class="nav-item" style="margin:0 40px 0 40px;">
-                                <div class="sign-out" style="color: white; font-weight: bolder; text-decoration: none">@Html.ActionLink("Đăng xuất", "DangXuat", "Login")</div>
+                            <li class="nav-item">
+                                @Html.ActionLink("Đăng xuất","DangXuat","Home",null, new { @class = "nav-link" })
                             </li>
 
                         }
                         else
                         {
-                            <li class="nav-item" style="margin:0 40px 0 40px;color:white">
-                                <div class="sign-up" style="color:white;font-weight:bold;text-decoration:none">@Html.ActionLink("Đăng ký", "Signup", "Login")</div>
+                            <li class="nav-item">
+                                @Html.ActionLink("Đăng ký", "Signup", "Login", new { @class = "nav-link" })
                             </li>
-                            <li class="nav-item" style="margin:0 40px 0 40px;color:white">
-                                <div class="sign-up" style="color: white; font-weight: bold; text-decoration: none">
-                                    @Html.ActionLink("Đăng nhập", "DangNhap", "Login")
-                                </div>
+                            <li class="nav-item">
+                                @Html.ActionLink("Đăng nhập", "DangNhap", "Home", null, new { @class = "nav-link" })
                             </li>
                         }
                     </ul>
@@ -110,7 +108,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-md-12 text-center">
-                    <hr class="mx-4"/>
+                    <hr class="mx-4" />
                     <p>Copyright © 2023 Viet Travel Company. All rights reserved.</p>
                 </div>
             </div>
