@@ -75,10 +75,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-
                         @Html.LabelFor(model => model.MatKhau, new { @class = "profile_details_text" })
                         <span>xác nhận thay đổi thông tin cá nhân</span>
-                        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @required = "required" })
+                        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @required = "required",@value = "*" })
                         @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                     </div>
                     <div class="row">
@@ -88,7 +87,10 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <label style="color:red;text-align:center">@ViewBag.Notification</label>
+                                    @if (ViewBag.Notification != null)
+                                    {
+                                        <div class="alert alert-danger" role="alert">@ViewBag.Notification</div>
+                                    }
                                 </div>
                             </div>
                         </div>
