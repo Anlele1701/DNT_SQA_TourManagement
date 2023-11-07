@@ -42,7 +42,7 @@
                         {
                             <li class="nav-item">
 
-                                <a class="nav-link no-hover" href="@Url.Action("Profile","Home",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
+                                <a class="nav-link no-hover" href="@Url.Action("ThongTinCaNhan","Home",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
                             </li>
                             <li class="nav-item">
                                 @Html.ActionLink("Đăng xuất","DangXuat","Home",null, new { @class = "nav-link" })

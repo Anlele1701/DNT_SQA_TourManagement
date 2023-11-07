@@ -1,0 +1,127 @@
+﻿.div-navbar {
+    display: none;
+}
+div.btn-back-profile a {
+    padding: 6px 15px;
+    border: 1px solid;
+    border-radius: 10px;
+    background: #0094ff;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 1.2s;
+}
+
+    div.btn-back-profile a:hover {
+        background: blue;
+    }
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    overflow-x:hidden;
+}
+
+.profile-content,
+.profile-info {
+    background: #fff;
+    position: relative;
+    border-radius: 20px;
+    height: 666px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.profile-content {
+    text-align: center;
+}
+
+    .profile-content h4 {
+        font-weight: bold;
+    }
+
+    .profile-content .bottom-paragraph {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .profile-content img {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        object-fit: fill;
+        margin-bottom: 40px;
+    }
+
+.border-input {
+    display: flex;
+    padding: 5px 10px;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #f1f5ff;
+}
+
+    .border-input span {
+        color: black;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .border-input i {
+        margin: 0 5px;
+    }
+
+.profile-info button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ccc;
+    transition: 0.8s;
+    font-weight: bolder;
+}
+
+.b-button button {
+    background-color: #80b3ff;
+}
+
+    .b-button button:hover {
+        background-color: #5272f2 !important;
+    }
+
+.profile-info button:hover {
+    background-color: #b3a492;
+}
+
+.b-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+@media only screen and (max-width: 576px) {
+    .profile-content img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    i {
+        display: none !important;
+    }
+
+    * {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 767.5px) {
+    .profile-content img {
+        height: 150px;
+        width: 150px;
+    }
+}

@@ -1,0 +1,26 @@
+﻿.div-navbar {
+    display: none;
+}
+div.btn-back-profile a {
+    padding: 6px 15px;
+    border: 1px solid;
+    border-radius: 10px;
+    background: #0094ff;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 1.2s;
+}
+
+    div.btn-back-profile a:hover {
+        background: blue;
+    }
+
+.row p{
+    color:black!important;
+}
+@media only screen and (max-width: 500px){
+    th,td{
+        font-size:11px;
+    }
+}
