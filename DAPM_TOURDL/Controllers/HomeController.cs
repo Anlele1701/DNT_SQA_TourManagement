@@ -84,13 +84,13 @@ namespace DAPM_TOURDL.Controllers
             Session.Clear();
             return RedirectToAction("HomePage", "Home");
         }
-        public ActionResult Profile(int id)
+        public ActionResult ThongTinCaNhan(int id)
         {
             var data = db.KHACHHANGs.Find(id);
             return View(data);
         }
         [HttpGet]
-        public ActionResult EditProfile(int? id)
+        public ActionResult ChinhSuaThongTinCaNhan(int? id)
         {
             if (id == null)
             {
@@ -106,7 +106,7 @@ namespace DAPM_TOURDL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditProfile([Bind(Include = "ID_KH,HoTen_KH,GioiTinh_KH,NgaySinh_KH,MatKhau,CCCD,SDT_KH,Mail_KH,Diem")] KHACHHANG khachhang)
+        public ActionResult ChinhSuaThongTinCaNhan([Bind(Include = "ID_KH,HoTen_KH,GioiTinh_KH,NgaySinh_KH,MatKhau,CCCD,SDT_KH,Mail_KH,Diem")] KHACHHANG khachhang)
         {
             DateTime ngayTruocKhiDu16Tuoi = DateTime.Now.AddYears(-16);
             if (!(khachhang.GioiTinh_KH == "Nam" || khachhang.GioiTinh_KH == "Nữ"))
@@ -147,10 +147,29 @@ namespace DAPM_TOURDL.Controllers
                 db.SaveChanges();
                 Session["UsernameSS"] = khachhang.HoTen_KH.ToString();
                 Session["GioiTinh"] = khachhang.GioiTinh_KH;
-                return RedirectToAction("Profile", "Home", new { id = khachhang.ID_KH });
+                return RedirectToAction("ThongTinCaNhan", "Home", new { id = khachhang.ID_KH });
             }
-
             return View(khachhang);
+        }
+        public ActionResult LichSuDatTour(int id)
+        {
+            var data = db.HOADONs.Where(t=>t.ID_KH==id).ToList();
+            return View(data);
+        }
+        public ActionResult HuyTourDaDat(int id)
+        {
+            var data = db.HOADONs.Find(id);
+            db.HOADONs.Remove(data);
+            db.SaveChanges();
+            return RedirectToAction("HomePage", "Home");
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                 db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

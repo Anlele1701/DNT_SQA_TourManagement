@@ -1,0 +1,91 @@
+﻿@model IEnumerable<DAPM_TOURDL.Models.HOADON>
+
+@{
+    ViewBag.Title = "LichSuDatTour";
+    Layout = "~/Views/Shared/ClientLayout.cshtml";
+}
+<link rel="stylesheet" href="~/CSS/Client/LichSuDatTour.css" />
+
+<div class="btn-back-profile m-4">
+    @Html.ActionLink("Quay lại", "ThongTinCaNhan", new { id = Session["IDUser"] })
+</div>
+<h2 class="text-center text-uppercase fw-bold">Lịch sử tour đã đặt</h2>
+@foreach (var item in Model)
+{
+    var currentTime = DateTime.Now;
+    var paymentTime = currentTime.AddDays(7);
+    string formatTongTien = String.Format("{0:C}", item.TongTienTour);
+    string formatTienPhaiTra = String.Format("{0:C}", item.TienPhaiTra);
+    string formatTienKhuyenMai = String.Format("{0:C}", item.TienKhuyenMai);
+    var Vat = item.TienPhaiTra - item.TongTienTour;
+    string formatVat = String.Format("{0:C}", Vat);
+    var soluong = item.SLNguoiLon + item.SLTreEm;
+    <div class="container-md border my-2">
+        <div class="d-flex justify-content-between">
+            <h3 class="fw-semibold">Travel Viet</h3>
+            <h4 class="fw-semibold">Hoá đơn #@Html.DisplayFor(itemModel => item.ID_HoaDon)</h4>
+        </div>
+        <div class="row g-2">
+            <div class="col-6">
+                <p class="fw-bold">Số hoá đơn: #@Html.DisplayFor(itemModel => item.ID_HoaDon)</p>
+            </div>
+            <div class="col-6">
+                <p>Ngày đặt: @Html.DisplayFor(itemModel => item.NgayDat)</p>
+            </div>
+            <div class="col-6">
+                <p>Khách hàng: @Html.DisplayFor(itemModel => item.KHACHHANG.HoTen_KH)</p>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-center">
+                <thead class="table-info">
+                    <tr>
+                        <th scope="col">Tên sản phẩm tour</th>
+                        <th scope="col">Số người</th>
+                        <th scope="col">Số lượng người lớn</th>
+                        <th scope="col">Số lượng trẻ em</th>
+                        <th scope="col">Tình trạng thanh toán</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.DisplayFor(itemModel => item.SPTOUR.TenSPTour)</td>
+                        <td>@Html.DisplayFor(itemModel => soluong)</td>
+                        <td>@Html.DisplayFor(itemModel => item.SLNguoiLon)</td>
+                        <td>@Html.DisplayFor(itemModel => item.SLTreEm)</td>
+                        <td>@Html.DisplayFor(itemModel => item.TinhTrang)</td>
+                        <td>@Html.DisplayFor(itemModel => formatTongTien)</td>
+                        <td>
+                            @if (item.NgayDat > currentTime)
+                            {
+                                @Html.ActionLink("Huỷ", "HuyTourDaDat", new { id = item.ID_HoaDon }, new { @class = "btn btn-danger" })
+                                <a class="btn btn-primary">Thanh Toán</a>
+                            }
+                            else
+                            {
+
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row g-2">
+            @if (item.TienKhuyenMai <= 0)
+            {
+                <p>Tiền giảm giá: 0đ</p>
+            }
+            else
+            {
+                <p>Tiền giảm giá: @Html.DisplayFor(itemModel => formatTienKhuyenMai)</p>
+            }
+            <p>VAT: @Html.DisplayFor(itemModel => formatVat)</p>
+            <div class="d-flex justify-content-between">
+                <p>Tổng tiền: @Html.DisplayFor(itemModel => formatTongTien)</p>
+                <p class="fw-bolder">Tổng tiền phải trả: @Html.DisplayFor(itemModel => formatTienPhaiTra)</p>
+            </div>
+        </div>
+    </div>
+}
