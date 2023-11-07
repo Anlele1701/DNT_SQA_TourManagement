@@ -153,7 +153,7 @@ namespace DAPM_TOURDL.Controllers
         }
         public ActionResult LichSuDatTour(int id)
         {
-            var data = db.HOADONs.Where(t=>t.ID_KH==id).ToList();
+            var data = db.HOADONs.Where(t => t.ID_KH == id).ToList();
             return View(data);
         }
         public ActionResult HuyTourDaDat(int id)
@@ -163,11 +163,16 @@ namespace DAPM_TOURDL.Controllers
             db.SaveChanges();
             return RedirectToAction("HomePage", "Home");
         }
+        public ActionResult ThanhToanMomo(int id)
+        {
+            var data = db.HOADONs.Find(id);
+            return PartialView(data);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                 db.Dispose();
+                db.Dispose();
             }
             base.Dispose(disposing);
         }

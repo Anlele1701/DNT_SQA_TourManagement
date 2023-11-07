@@ -433,6 +433,7 @@
     <Content Include="Images\Client\HomePage\Beach.png" />
     <Content Include="Images\Client\HomePage\leaf.png" />
     <Content Include="Images\Client\HomePage\Sun.png" />
+    <Content Include="Images\Client\Momo\momoTA.jpg" />
     <Content Include="Images\Client\Video\ocean.mp4" />
     <Content Include="Images\Client\Video\ocean_-_65560 %28720p%29.mp4" />
     <Content Include="Images\Client\Video\videoHome.mp4" />
@@ -485,6 +486,7 @@
     <Content Include="Views\Home\ChinhSuaThongTinCaNhan.cshtml" />
     <Content Include="Views\Home\LichSuDatTour.cshtml" />
     <Content Include="Views\Home\HuyTourDaDat.cshtml" />
+    <Content Include="Views\Home\ThanhToanMomo.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
