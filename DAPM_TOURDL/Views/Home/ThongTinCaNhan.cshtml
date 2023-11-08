@@ -1,0 +1,76 @@
+﻿@model DAPM_TOURDL.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "ThongTinCaNhan";
+    Layout = "~/Views/Shared/ClientLayout.cshtml";
+}
+<link rel="stylesheet" href="~/CSS/Client/ThongTinCaNhan.css" />
+<div class="btn-back-profile m-4">
+    @Html.ActionLink("Quay lại", "HomePage", new { id = Model.ID_KH })
+</div>
+<div class="container">
+    <div class="row my-4">
+        <div class="col-5">
+            <div class="profile-content pt-5">
+                <img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                     alt="Image Profile">
+                <p>ID: @Html.DisplayFor(m => m.ID_KH)</p>
+                <h4>@Html.DisplayFor(m => m.HoTen_KH)</h4>
+                <p class="bottom-paragraph">Điểm: @Html.DisplayFor(m => m.Diem)</p>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="profile-info pt-5">
+                <div class="row d-flex justify-content-center gy-5">
+                    <div class="col-7 col-md-6">
+                        <div class="border-input">
+                            <i class="fa-solid fa-id-badge"></i>
+                            @Html.DisplayFor(m => m.CCCD)
+                        </div>
+                    </div>
+                    <div class="col-5 col-md-4">
+                        <div class="border-input"><i class="fa-solid fa-venus-mars"></i>@Html.DisplayFor(m => m.GioiTinh_KH)</div>
+                    </div>
+                    <div class="col-6 col-md-5">
+                        <div class="border-input">
+                            <i class="fa-solid fa-cake-candles"></i>@Html.DisplayFor(m => m.NgaySinh_KH)
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-5">
+                        <div class="border-input"><i class="fa-solid fa-mobile"></i>@Html.DisplayFor(m => m.SDT_KH)</div>
+                    </div>
+                    <div class="col-6 col-md-7">
+                        <div class="border-input">
+                            <i class="fa-solid fa-lock"></i><div class="mx-2" id="passwordField">
+                                @Html.DisplayFor(m => m.MatKhau)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3"></div>
+                <div class="col-12 col-md-10">
+                    <div class="border-input">
+                        <i class="fa-solid fa-at"></i>@Html.DisplayFor(m => m.Mail_KH)
+                    </div>
+                </div>
+                <div class="b-button row d-flex justify-content-center pb-5">
+                    <div class="col-5 col-md-4">
+                        <a href="@Url.Action("LichSuDatTour","Home",new { id = Session["IDUser"] })">Lịch sử đặt tour</a>
+                    </div>
+                    <div class="col-5 col-md-6">
+                        <a href="@Url.Action("ChinhSuaThongTinCaNhan","Home",new { id = Session["IDUser"] })">Chỉnh sửa thông tin cá nhân</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+        var passwordField = document.getElementById("passwordField");
+        var passwordValue = passwordField.textContent.trim();
+        var maskedPassword = "*".repeat(passwordValue.length);
+        passwordField.textContent = maskedPassword;
+    });
+</script>
