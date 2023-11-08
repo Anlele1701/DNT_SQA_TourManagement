@@ -75,7 +75,10 @@
                                     @Html.DisplayFor(modelItem => item.SPTOUR.TenSPTour)
                                 </td>
                                 <td>
-                                    @*@Html.DisplayFor(modelItem => item.SLNguoiLon + modelItem => item.SLTreEm)*@
+                                    @{ 
+                                        var total = item.SLNguoiLon + item.SLTreEm;
+                                    }
+                                    @Html.DisplayFor(modelItem => total);
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.TienPhaiTra)
