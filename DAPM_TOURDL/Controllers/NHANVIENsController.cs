@@ -54,9 +54,14 @@ namespace DAPM_TOURDL.Controllers
         }
 
         // GET: NHANVIENs
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            return View(db.NHANVIENs.ToList());
+            var nv = db.NHANVIENs.ToList();
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                nv = nv.Where(s => s.HoTen_NV.Contains(SearchString) || s.Mail_NV.Contains(SearchString)).ToList();
+            }
+            return View(nv);
         }
 
         // GET: NHANVIENs/Details/5

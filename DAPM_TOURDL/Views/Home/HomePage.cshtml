@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/CSS/Client/HomePage.css" />
 </head>
 <body>
-    <div class="wrap">  
+    <div class="wrap">
         <div class="home">
             <div class="content">
                 <video autoplay loop muted plays-inline class="back-video-image"><source src="~/Images/Client/Video/vietnam_-_25171 (Original).mp4" /></video>
@@ -71,7 +71,7 @@
                     <div class="col-md-4 col-tours">
                         <div class="wrapper">
                             <div class="wrapper-image">
-                                <a href="@Url.Action("DanhMucSanPham", "TOURs", new {id=item.ID_TOUR})">
+                                <a href="@Url.Action("DanhMucSanPham", "Home", new {id=item.ID_TOUR})">
                                     <img src="~/Images/Admin/TOUR/@item.HinhTour" class="animate" alt="Card image cap" />
                                     <div class="wrapper-content">
                                         <h3> @Html.DisplayFor(modelItem => item.TenTour)</h3>
@@ -84,7 +84,4 @@
             </div>
         </div>
     </div>
-
-
-
 </body>
