@@ -1,4 +1,4 @@
-/*NAVBAR*/
+﻿/*NAVBAR*/
 .loader {
     position: fixed;
     top: 0;
@@ -69,10 +69,6 @@
     font-weight: 700;
 }
 
-.no-hover:hover {
-    background: none !important;
-}
-
 .nav-item .nav-link {
     font-size: 16px;
     font-weight: 700;
@@ -85,11 +81,6 @@
     margin: 0px 16px 0px 16px;
     cursor: pointer;
 }
-
-    .nav-item .nav-link:hover {
-        background-color: #0094ff;
-        opacity: 1;
-    }
     .nav-item div.nav-link a{
         color: white;
     }

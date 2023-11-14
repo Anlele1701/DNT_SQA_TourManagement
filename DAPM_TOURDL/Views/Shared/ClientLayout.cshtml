@@ -14,6 +14,7 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+
 </head>
 <body>
     <!-- Navbar Start-->
@@ -31,13 +32,13 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link">Home</a>
+                            @Html.ActionLink("Home", "HomePage", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Tất cả tour</a>
+                            @Html.ActionLink("Tất cả tour", "DanhMucTour", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Danh Mục Tour</a>
+                            @Html.ActionLink("Danh mục tour", "DanhMucSanPham", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Về chúng tôi</a>
@@ -51,7 +52,7 @@
                                 <a class="nav-link no-hover" href="@Url.Action("ThongTinCaNhan","Home",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
                             </li>
                             <li class="nav-item">
-                                @Html.ActionLink("Đăng xuất","DangXuat","Home",null, new { @class = "nav-link" })
+                                @Html.ActionLink("Đăng xuất", "DangXuat", "Home", null, new { @class = "nav-link" })
                             </li>
 
                         }

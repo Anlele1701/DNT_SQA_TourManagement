@@ -30,5 +30,7 @@ namespace DAPM_TOURDL.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SPTOUR> SPTOURs { get; set; }
-    }
+
+/*        public static implicit operator TOUR(TOUR v) => throw new NotImplementedException();
+*/    }
 }

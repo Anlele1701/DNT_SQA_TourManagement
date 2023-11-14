@@ -365,6 +365,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     perspective: 10px;
+    transition: 0.8s;
 }
 
     .wrap::-webkit-scrollbar {
@@ -399,4 +400,40 @@ body {
 
 .leftground {
     transform: translateX(-100%) translateZ(-11px) scale(0.7);
+}
+/*button nhấp nháy*/
+.button-grow {
+    border: 1px transparent;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+    color: #eeeeee;
+    cursor: none;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 8px 30px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 20px;
+    -webkit-animation: glowing 1300ms infinite;
+    -moz-animation: glowing 1300ms infinite;
+    -o-animation: glowing 1300ms infinite;
+    animation: glowing 1300ms infinite;
+}
+
+@keyframes glowing {
+    0% {
+        background-color: #0091b2;
+        box-shadow: 0 0 3px #0091b2;
+    }
+
+    50% {
+        background-color: #21c7ed;
+        box-shadow: 0 0 15px #21c7ed;
+    }
+
+    100% {
+        background-color: #0091b2;
+        box-shadow: 0 0 3px #0091b2;
+    }
 }

@@ -59,6 +59,12 @@
       <HintPath>..\packages\Irony.NetCore.1.0.11\lib\net461\Irony.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
       <HintPath>..\packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
     </Reference>
@@ -261,6 +267,7 @@
       <DependentUpon>TOURDL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ID_TOUR.cs" />
     <Compile Include="Models\KHACHHANG.cs">
       <DependentUpon>TOURDL.tt</DependentUpon>
     </Compile>
@@ -313,6 +320,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -359,8 +367,11 @@
     <Content Include="CSS\Admin\AdminLayout.css" />
     <Content Include="CSS\Client\ChiTietTour.css" />
     <Content Include="CSS\Client\CientLayout.css" />
+    <Content Include="CSS\Client\DanhMucTour.css" />
+    <Content Include="CSS\Client\DatTour.css" />
     <Content Include="CSS\Client\LichSuDatTour.css" />
     <Content Include="CSS\Client\Login.css" />
+    <Content Include="CSS\Client\Modal.css" />
     <Content Include="CSS\Client\ThongTinCaNhan.css" />
     <Content Include="CSS\Client\HomePage.css" />
     <Content Include="CSS\Client\ChinhSuaThongTinCaNhan.css" />
@@ -430,9 +441,20 @@
     <Content Include="Images\Client\AboutUs\employee2.jpg" />
     <Content Include="Images\Client\AboutUs\employee3.jpg" />
     <Content Include="Images\Client\AboutUs\employee4.jpg" />
+    <Content Include="Images\Client\DatTour\mastercard.png" />
+    <Content Include="Images\Client\DatTour\momo.png" />
+    <Content Include="Images\Client\DatTour\zalo.png" />
     <Content Include="Images\Client\HomePage\Beach.png" />
     <Content Include="Images\Client\HomePage\leaf.png" />
     <Content Include="Images\Client\HomePage\Sun.png" />
+    <Content Include="Images\Client\Profile\arrow.png" />
+    <Content Include="Images\Client\Profile\cityHCM.jpg" />
+    <Content Include="Images\Client\Profile\facebook.png" />
+    <Content Include="Images\Client\Profile\invoice.png" />
+    <Content Include="Images\Client\Profile\pen.png" />
+    <Content Include="Images\Client\Profile\instagram.png" />
+    <Content Include="Images\Client\Profile\user-pic.jpg" />
+    <Content Include="Images\Client\Profile\zalo.png" />
     <Content Include="Images\Client\Momo\momoTA.jpg" />
     <Content Include="Images\Client\Video\ocean.mp4" />
     <Content Include="Images\Client\Video\ocean_-_65560 %28720p%29.mp4" />
@@ -487,6 +509,8 @@
     <Content Include="Views\Home\LichSuDatTour.cshtml" />
     <Content Include="Views\Home\HuyTourDaDat.cshtml" />
     <Content Include="Views\Home\ThanhToanMomo.cshtml" />
+    <Content Include="Views\Home\DatTour.cshtml" />
+    <Content Include="Views\Home\DanhMucTour.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
