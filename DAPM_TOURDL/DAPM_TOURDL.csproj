@@ -485,6 +485,7 @@
     <Content Include="Views\Home\ChinhSuaThongTinCaNhan.cshtml" />
     <Content Include="Views\Home\LichSuDatTour.cshtml" />
     <Content Include="Views\Home\HuyTourDaDat.cshtml" />
+    <Content Include="Views\NHANVIENs\GetData.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
