@@ -1,5 +1,7 @@
 ﻿using DAPM_TOURDL.Models;
 using DocumentFormat.OpenXml.Office2010.Excel;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -42,8 +44,8 @@ namespace DAPM_TOURDL.Controllers
 
         public ActionResult DanhMucSanPham(string id)
         {
-            var data = db.SPTOURs.Where(s => s.ID_TOUR == id);
-            return View(data.ToList());
+            var data = db.TOURs.ToList();
+            return View(data);
         }
 
         public ActionResult ChiTietTour(string id)
@@ -62,6 +64,7 @@ namespace DAPM_TOURDL.Controllers
         public ActionResult DangNhap(KHACHHANG khachhang)
         {
             var kiemTraDangNhap = db.KHACHHANGs.Where(x => x.Mail_KH.Equals(khachhang.Mail_KH) && x.MatKhau.Equals(khachhang.MatKhau)).FirstOrDefault();
+
             if (kiemTraDangNhap != null)
             {
                 Session["IDUser"] = kiemTraDangNhap.ID_KH;
@@ -69,6 +72,7 @@ namespace DAPM_TOURDL.Controllers
                 Session["UsernameSS"] = kiemTraDangNhap.HoTen_KH.ToString();
                 Session["GioiTinh"] = kiemTraDangNhap.GioiTinh_KH;
                 Session["SDT"] = kiemTraDangNhap.SDT_KH.ToString();
+                Session["CCCD"] = kiemTraDangNhap.CCCD.ToString();
                 ViewBag.idkh = kiemTraDangNhap.ID_KH;
                 return RedirectToAction
                     ("HomePage", "Home", new { id = khachhang.ID_KH });
@@ -77,6 +81,7 @@ namespace DAPM_TOURDL.Controllers
             {
                 ViewBag.Notification = "Tài khoản và mật khẩu không đúng";
             }
+
             return View();
         }
         public ActionResult DangXuat()
@@ -153,7 +158,7 @@ namespace DAPM_TOURDL.Controllers
         }
         public ActionResult LichSuDatTour(int id)
         {
-            var data = db.HOADONs.Where(t=>t.ID_KH==id).ToList();
+            var data = db.HOADONs.Where(t => t.ID_KH == id).ToList();
             return View(data);
         }
         public ActionResult HuyTourDaDat(int id)
@@ -163,11 +168,117 @@ namespace DAPM_TOURDL.Controllers
             db.SaveChanges();
             return RedirectToAction("HomePage", "Home");
         }
+        public ActionResult ThanhToanMomo(int id)
+        {
+            var data = db.HOADONs.Find(id);
+            return PartialView(data);
+        }
+        [HttpGet]
+        public ActionResult DatTour(string id)
+        {
+            var data = db.SPTOURs.Find(id);
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult DatTour(FormCollection form, string id)
+        {
+            HOADON hOADON = new HOADON();
+            var sptour = db.SPTOURs.FirstOrDefault(s => s.ID_SPTour == id);
+            if (Session["IDUser"] == null)
+            {
+                return View(sptour);
+            }
+            else if (sptour.SoNguoi <= 0)
+            {
+                ViewBag.Noti = "Hết số lượng chỗ ngồi";
+                return View(sptour);
+            }
+            else
+            {
+                hOADON.ID_SPTour = form["idsptour"];
+                hOADON.NgayDat = DateTime.Now;
+                hOADON.TinhTrang = "Chưa TT";
+                hOADON.ID_KH = int.Parse(form["idkh"]);
+
+                hOADON.SLNguoiLon = int.Parse(form["songuoilon"]);
+                hOADON.SLTreEm = int.Parse(form["sotreem"]);
+
+                int slnguoilon = int.Parse(form["songuoilon"]);
+                int sltreem = int.Parse(form["sotreem"]);
+
+                int giaguoilon = int.Parse(form["gianguoilon"]);
+                int giatreem = int.Parse(form["giatreem"]);
+
+                int tongtien = (slnguoilon * giaguoilon) + (sltreem * giatreem);
+                int soluong = slnguoilon + sltreem;
+                Session["SoLuong"] = soluong;
+                hOADON.TongTienTour = tongtien;
+                ////////////////
+
+                int SoLuongSPTOUR = (int)sptour.SoNguoi;
+                SoLuongSPTOUR -= soluong;
+                sptour.SoNguoi = SoLuongSPTOUR;
+                db.Entry(sptour).State = EntityState.Modified;
+                db.SaveChanges();
+
+                db.HOADONs.Add(hOADON);
+                db.SaveChanges();
+            }
+            return RedirectToAction("HoaDon", "HOADONs", new { id = hOADON.ID_HoaDon });
+        }
+        [HttpGet]
+        public ActionResult DanhMucTour(string name, int? to, int? from, int page = 1)
+        {
+
+            page = page < 1 ? 1 : page;/////
+            int pageSize = 9;/////////
+            var tours = from t in db.SPTOURs select t;
+            if (!string.IsNullOrEmpty(name))
+            {
+                if (to != null && from != null)
+                {
+                    tours = tours.Where(x => x.TenSPTour.StartsWith(name) && x.GiaNguoiLon >= to && x.GiaNguoiLon <= from);
+                }
+                else
+                {
+                    tours = tours.Where(x => x.TenSPTour.StartsWith(name));
+                }
+                if (to != null)
+                {
+                    tours = tours.Where(x => x.TenSPTour.StartsWith(name) && x.GiaNguoiLon >= to);
+                }
+                if (from != null)
+                {
+                    tours = tours.Where(x => x.TenSPTour.StartsWith(name) && x.GiaNguoiLon <= from);
+                }
+            }
+            else
+            {
+                if (to != null || from != null)
+                {
+                    if (to != null && from != null)
+                    {
+                        tours = tours.Where(x => x.GiaNguoiLon >= to && x.GiaNguoiLon <= from);
+                    }
+                    else if (to != null)
+                    {
+                        tours = tours.Where(x => x.GiaNguoiLon >= to);
+                    }
+                    else if (from != null)
+                    {
+                        tours = tours.Where(x => x.GiaNguoiLon <= from);
+                    }
+                }
+            }
+            tours = tours.OrderBy(item => item.GiaNguoiLon);
+            var toursPage = tours.ToPagedList(page, pageSize);
+            return View(toursPage);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                 db.Dispose();
+                db.Dispose();
             }
             base.Dispose(disposing);
         }

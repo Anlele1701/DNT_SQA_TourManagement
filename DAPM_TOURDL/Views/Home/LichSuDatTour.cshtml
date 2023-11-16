@@ -9,6 +9,14 @@
 <div class="btn-back-profile m-4">
     @Html.ActionLink("Quay lại", "ThongTinCaNhan", new { id = Session["IDUser"] })
 </div>
+
+<!-- Popup -->
+<div class="modal fade" id="myModal" aria-hidden="true" role="dialog" data-url="@Url.Action("ThanhToanMomo","Home")">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+<!-- Popup -->
 <h2 class="text-center text-uppercase fw-bold">Lịch sử tour đã đặt</h2>
 @foreach (var item in Model)
 {
@@ -20,7 +28,7 @@
     var Vat = item.TienPhaiTra - item.TongTienTour;
     string formatVat = String.Format("{0:C}", Vat);
     var soluong = item.SLNguoiLon + item.SLTreEm;
-    <div class="container-md border my-2">
+    <div class="container-md border my-5 shadow-sm rounded">
         <div class="d-flex justify-content-between">
             <h3 class="fw-semibold">Travel Viet</h3>
             <h4 class="fw-semibold">Hoá đơn #@Html.DisplayFor(itemModel => item.ID_HoaDon)</h4>
@@ -29,7 +37,7 @@
             <div class="col-6">
                 <p class="fw-bold">Số hoá đơn: #@Html.DisplayFor(itemModel => item.ID_HoaDon)</p>
             </div>
-            <div class="col-6">
+            <div class="col-6 d-flex justify-content-end">
                 <p>Ngày đặt: @Html.DisplayFor(itemModel => item.NgayDat)</p>
             </div>
             <div class="col-6">
@@ -61,7 +69,7 @@
                             @if (item.NgayDat > currentTime)
                             {
                                 @Html.ActionLink("Huỷ", "HuyTourDaDat", new { id = item.ID_HoaDon }, new { @class = "btn btn-danger" })
-                                <a class="btn btn-primary">Thanh Toán</a>
+                                <a class="btn btn-primary" id="@item.ID_HoaDon" onclick="ShowMomo(this.id)">Thanh Toán</a>
                             }
                             else
                             {
@@ -73,6 +81,13 @@
             </table>
         </div>
         <div class="row g-2">
+            <div class="row row-cols-2 g-2">
+                <p>Điểm đi: @Html.DisplayFor(m => item.SPTOUR.DiemTapTrung)</p>
+                <p>Điểm đến: @Html.DisplayFor(m => item.SPTOUR.DiemDen)</p>
+                <p>Ngày khởi hành: @Html.DisplayFor(m => item.SPTOUR.NgayKhoiHanh)</p>
+                <p>Ngàyk kết thúc: @Html.DisplayFor(m => item.SPTOUR.NgayKetThuc)</p>
+            </div>
+            <hr />
             @if (item.TienKhuyenMai <= 0)
             {
                 <p>Tiền giảm giá: 0đ</p>
@@ -84,8 +99,20 @@
             <p>VAT: @Html.DisplayFor(itemModel => formatVat)</p>
             <div class="d-flex justify-content-between">
                 <p>Tổng tiền: @Html.DisplayFor(itemModel => formatTongTien)</p>
-                <p class="fw-bolder">Tổng tiền phải trả: @Html.DisplayFor(itemModel => formatTienPhaiTra)</p>
+                <p class="fw-bolder fs-5">Tổng tiền phải trả: @Html.DisplayFor(itemModel => formatTienPhaiTra)</p>
             </div>
         </div>
     </div>
 }
+    <script type="text/javascript">
+        function ShowMomo(id) {
+            $.get("@Url.Action("ThanhToanMomo","Home")/" + id,
+                function (data) {
+                    $('#myModal').html(data);
+                })
+            $('#myModal').modal('show');
+        }
+        $('#myModal').on('hidden.bs.modal', function (e) {
+            $('.modal-content').html("")
+        })
+    </script>

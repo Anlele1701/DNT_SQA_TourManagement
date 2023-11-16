@@ -18,7 +18,6 @@ namespace DAPM_TOURDL.Models
         public int ID_HoaDon { get; set; }
         public int SLTreEm { get; set; }
         public int TongTienTour { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime NgayDat { get; set; }
         public string TinhTrang { get; set; }
         public int SLNguoiLon { get; set; }

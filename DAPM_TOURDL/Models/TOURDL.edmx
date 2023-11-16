@@ -12,7 +12,7 @@
           <Property Name="ID_HoaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SLTreEm" Type="int" Nullable="false" />
           <Property Name="TongTienTour" Type="int" Nullable="false" />
-          <Property Name="NgayDat" Type="date" Nullable="false" />
+          <Property Name="NgayDat" Type="datetime" Nullable="false" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="SLNguoiLon" Type="int" Nullable="false" />
           <Property Name="TienKhuyenMai" Type="int" Nullable="false" />
@@ -159,7 +159,7 @@
           <Property Name="ID_HoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SLTreEm" Type="Int32" Nullable="false" />
           <Property Name="TongTienTour" Type="Int32" Nullable="false" />
-          <Property Name="NgayDat" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NgayDat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TinhTrang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SLNguoiLon" Type="Int32" Nullable="false" />
           <Property Name="TienKhuyenMai" Type="Int32" Nullable="false" />

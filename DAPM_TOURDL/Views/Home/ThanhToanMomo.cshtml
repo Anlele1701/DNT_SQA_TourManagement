@@ -1,0 +1,28 @@
+﻿@model DAPM_TOURDL.Models.HOADON
+
+<!-- Modal -->
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Quét mã QR</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row g-0">
+                <div class="col-6">
+                    <img src="~/Images/Client/Momo/momoTA.jpg" class="img-fluid" alt="...">
+                </div>
+                <div class="col-6 text-center fw-bold">
+                    <p>ID Hoá Đơn: @Html.DisplayFor(item => Model.ID_HoaDon)</p>
+                    <p>Điểm đi: @Html.DisplayFor(item => Model.SPTOUR.DiemTapTrung)</p>
+                    <p>Điểm đến: @Html.DisplayFor(item => Model.SPTOUR.DiemDen)</p>
+                    <p>Tổng tiền: @Html.DisplayFor(item => Model.TienPhaiTra)</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
