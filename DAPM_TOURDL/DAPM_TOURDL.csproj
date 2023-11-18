@@ -542,6 +542,7 @@
     <Content Include="Views\Home\PartialDanhMucTour.cshtml" />
     <Content Include="Views\Home\HoaDon.cshtml" />
     <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\NHANVIENs\GetData.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

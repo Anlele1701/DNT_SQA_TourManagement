@@ -51,10 +51,14 @@ namespace DAPM_TOURDL.Controllers
         }
 
         // GET: HOADONs
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            var hOADONs = db.HOADONs.Include(h => h.KHACHHANG).Include(h => h.SPTOUR);
-            return View(hOADONs.ToList());
+            var hd = db.HOADONs.ToList();
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                hd = hd.Where(s => s.KHACHHANG.HoTen_KH.Contains(SearchString) || s.KHACHHANG.Mail_KH.Contains(SearchString)).ToList();
+            }
+            return View(hd);
         }
 
         // GET: HOADONs/Details/5
