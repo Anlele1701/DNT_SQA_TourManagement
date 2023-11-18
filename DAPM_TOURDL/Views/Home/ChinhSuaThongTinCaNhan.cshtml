@@ -36,7 +36,7 @@
                                         new SelectListItem { Text = "Nam", Value = "Nam" },
                                         new SelectListItem { Text = "Nữ", Value = "Nữ" },
                                         // Các lựa chọn khác nếu cần
-                                    }, "Value", "Text"),
+                                    }, "Value", "Text",Model.GioiTinh_KH),
                                     new { @class = "form-control", autocomplete = "off", @required = "required" }
                                 )
                                 @Html.ValidationMessageFor(model => model.GioiTinh_KH, "", new { @class = "text-danger" })
@@ -84,7 +84,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.MatKhau, new { @class = "profile_details_text" })
                         <span>xác nhận thay đổi thông tin cá nhân</span>
-                        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @required = "required",@value = "*" })
+                        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @required = "required",@value = "" })
                         @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                     </div>
                     <div class="row">

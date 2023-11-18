@@ -179,7 +179,7 @@ namespace DAPM_TOURDL.Controllers
         public ActionResult ChinhSuaThongTinCaNhan([Bind(Include = "ID_KH,HoTen_KH,GioiTinh_KH,NgaySinh_KH,MatKhau,CCCD,SDT_KH,Mail_KH,Diem")] KHACHHANG khachhang)
         {
             DateTime ngayTruocKhiDu16Tuoi = DateTime.Now.AddYears(-16);
-            if (!(khachhang.GioiTinh_KH == "Nam" || khachhang.GioiTinh_KH == "Nữ"))
+            if ((khachhang.GioiTinh_KH != "Nam" && khachhang.GioiTinh_KH != "Nữ"))
             {
                 ViewBag.Notification = "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'";
             }
