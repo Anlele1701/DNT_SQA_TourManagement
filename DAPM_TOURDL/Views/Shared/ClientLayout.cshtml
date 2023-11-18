@@ -4,16 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/CSS/Client/CientLayout.css" />
+    @*bootstrap*@
+    @*bootstrap*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
 </head>
 <body>
     <!-- Navbar Start-->
     <div class="loader">
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb253Y3Y3dnhnZnp1ZW9yNGJxYjZtNjh5YjBzZnNkejg1ZzkzNmpwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/dYUslDahf6Uw71gH3t/giphy.gif"
-             style="max-width:50%; max-height:50%" />
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb253Y3Y3dnhnZnp1ZW9yNGJxYjZtNjh5YjBzZnNkejg1ZzkzNmpwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/dYUslDahf6Uw71gH3t/giphy.gif"/>
     </div>
     <div class="div-navbar">
         <nav class="navbar navbar-expand-lg" id="navbar">
@@ -25,16 +29,16 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link">Home</a>
+                            @Html.ActionLink("Home", "HomePage", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Tất cả tour</a>
+                            @Html.ActionLink("Tất cả tour", "DanhMucTour", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Danh Mục Tour</a>
+                            @Html.ActionLink("Danh mục tour", "DanhMucSanPham", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Về chúng tôi</a>
+                            @Html.ActionLink("Về chúng tôi","About","Home",null, new { @class="nav-link"})
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
@@ -45,14 +49,14 @@
                                 <a class="nav-link no-hover" href="@Url.Action("ThongTinCaNhan","Home",new { id = Session["IDUser"] })">Xin chào, @Session["UsernameSS"]</a>
                             </li>
                             <li class="nav-item">
-                                @Html.ActionLink("Đăng xuất","DangXuat","Home",null, new { @class = "nav-link" })
+                                @Html.ActionLink("Đăng xuất", "DangXuat", "Home", null, new { @class = "nav-link" })
                             </li>
 
                         }
                         else
                         {
                             <li class="nav-item">
-                                @Html.ActionLink("Đăng ký", "Signup", "Login", new { @class = "nav-link" })
+                                @Html.ActionLink("Đăng ký", "DangKy", "Home", new { @class = "nav-link" })
                             </li>
                             <li class="nav-item">
                                 @Html.ActionLink("Đăng nhập", "DangNhap", "Home", null, new { @class = "nav-link" })
@@ -126,19 +130,6 @@
                 }
             });
         });
-
-
-        function toggleDropdown() {
-            var dropdown = document.getElementById("dropdown");
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
-        }
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 </body>
 </html>

@@ -1,127 +1,105 @@
-﻿.div-navbar {
-    display: none;
-}
-div.btn-back-profile a {
-    padding: 6px 15px;
-    border: 1px solid;
-    border-radius: 10px;
-    background: #0094ff;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: 1.2s;
-}
-
-    div.btn-back-profile a:hover {
-        background: blue;
-    }
-body {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: monospace;
-    overflow-x:hidden;
+    font-family: "poppins", sans-serif;
 }
 
-.profile-content,
-.profile-info {
-    background: #fff;
+body {
+    overflow-x: hidden;
+    /*background: url(../../Images/Client/Profile/cityHCM.jpg) !important;*/
+    background: linear-gradient(to bottom right, #70c1ff, #7c8696);
+}
+#footer{
+    display:none;
+}
+.containers {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-box {
+    background: #0094ff;
+    text-align: center;
+    padding: 40px 90px;
+    color: #fff;
     position: relative;
     border-radius: 20px;
-    height: 666px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
-
-.profile-content {
-    text-align: center;
-}
-
-    .profile-content h4 {
-        font-weight: bold;
+    .profile-box a{
+        text-decoration:none;
+        color:white;
+        font-weight:500;
     }
-
-    .profile-content .bottom-paragraph {
+    .invoice-icon {
+        width: 25px;
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        left: 40px;
+        top: 40px;
+        cursor: pointer;
     }
 
-    .profile-content img {
-        height: 200px;
-        width: 200px;
-        border-radius: 50%;
-        object-fit: fill;
-        margin-bottom: 40px;
-    }
-
-.border-input {
-    display: flex;
-    padding: 5px 10px;
-    justify-content: flex-start;
-    align-items: center;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background-color: #f1f5ff;
-}
-
-    .border-input span {
-        color: black;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-    }
-
-    .border-input i {
-        margin: 0 5px;
-    }
-
-.profile-info button {
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #ccc;
-    transition: 0.8s;
-    font-weight: bolder;
-}
-
-.b-button button {
-    background-color: #80b3ff;
-}
-
-    .b-button button:hover {
-        background-color: #5272f2 !important;
-    }
-
-.profile-info button:hover {
-    background-color: #b3a492;
-}
-
-.b-button {
+.pen-icon {
+    width: 25px;
     position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
 }
 
-@media only screen and (max-width: 576px) {
-    .profile-content img {
-        height: 100px !important;
-        width: 100px !important;
-    }
-
-    i {
-        display: none !important;
-    }
-
-    * {
-        font-size: 13px;
-    }
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 55%;
+    background: #fff;
+    padding: 6px;
+    margin-top: 40px;
 }
 
-@media only screen and (max-width: 767.5px) {
-    .profile-content img {
-        height: 150px;
-        width: 150px;
-    }
+.social-media img {
+    width: 30px;
+    margin: 30px 5px;
+    cursor: pointer;
+}
+
+.profile-bottom {
+    background: #fff;
+    color: #999;
+    padding: 60px 0px;
+    margin-right: -90px;
+    margin-left: -90px;
+    margin-bottom: -40px;
+    border-radius: 20px;
+    border: 2px solid #0094ff;
+    margin-top: -10px;
+}
+/*
+.profile-box button {
+    background: #fff;
+    color: #0094ff;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 10px rgba(60, 170, 255, 0.5);
+    padding: 15px 60px;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-bottom: -50px;
+    font-weight: 700;
+    font-size: 16px;
+}*/
+.profile-box h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 20px 0 10px 0;
+}
+.profile-bottom p{
+    color: #999;
+    font-weight:bold;
+    font-size:16px;
 }

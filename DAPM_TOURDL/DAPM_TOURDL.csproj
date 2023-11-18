@@ -59,6 +59,12 @@
       <HintPath>..\packages\Irony.NetCore.1.0.11\lib\net461\Irony.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
       <HintPath>..\packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
     </Reference>
@@ -261,6 +267,7 @@
       <DependentUpon>TOURDL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ID_TOUR.cs" />
     <Compile Include="Models\KHACHHANG.cs">
       <DependentUpon>TOURDL.tt</DependentUpon>
     </Compile>
@@ -313,6 +320,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -359,8 +367,12 @@
     <Content Include="CSS\Admin\AdminLayout.css" />
     <Content Include="CSS\Client\ChiTietTour.css" />
     <Content Include="CSS\Client\CientLayout.css" />
+    <Content Include="CSS\Client\DanhMucTour.css" />
+    <Content Include="CSS\Client\DatTour.css" />
+    <Content Include="CSS\Client\HoaDon.css" />
     <Content Include="CSS\Client\LichSuDatTour.css" />
-    <Content Include="CSS\Client\Login.css" />
+    <Content Include="CSS\Client\LoginAndSignUp.css" />
+    <Content Include="CSS\Client\Modal.css" />
     <Content Include="CSS\Client\ThongTinCaNhan.css" />
     <Content Include="CSS\Client\HomePage.css" />
     <Content Include="CSS\Client\ChinhSuaThongTinCaNhan.css" />
@@ -401,6 +413,7 @@
     <Content Include="Images\Admin\TOUR\dalat2.jpg" />
     <Content Include="Images\Admin\TOUR\dalat3.jpg" />
     <Content Include="Images\Admin\TOUR\DaLatMain.jpg" />
+    <Content Include="Images\Admin\TOUR\DaLatSuong.jpg" />
     <Content Include="Images\Admin\TOUR\dalattour.jpg" />
     <Content Include="Images\Admin\TOUR\dalatvn.jpg" />
     <Content Include="Images\Admin\TOUR\Danang.jpg" />
@@ -410,9 +423,11 @@
     <Content Include="Images\Admin\TOUR\Hanoi1.jpg" />
     <Content Include="Images\Admin\TOUR\hanoi2.jpg" />
     <Content Include="Images\Admin\TOUR\hanoi3.jpg" />
+    <Content Include="Images\Admin\TOUR\HaNoiNganNam.jpg" />
     <Content Include="Images\Admin\TOUR\HN.jpg" />
     <Content Include="Images\Admin\TOUR\HoXuanHuong.jpg" />
     <Content Include="Images\Admin\TOUR\hue.jpg" />
+    <Content Include="Images\Admin\TOUR\PhuQuoc.jpg" />
     <Content Include="Images\Admin\TOUR\sapa.jpg" />
     <Content Include="Images\Admin\TOUR\sapa11.jpg" />
     <Content Include="Images\Admin\TOUR\SG.jpg" />
@@ -430,9 +445,23 @@
     <Content Include="Images\Client\AboutUs\employee2.jpg" />
     <Content Include="Images\Client\AboutUs\employee3.jpg" />
     <Content Include="Images\Client\AboutUs\employee4.jpg" />
+    <Content Include="Images\Client\DatTour\mastercard.png" />
+    <Content Include="Images\Client\DatTour\momo.png" />
+    <Content Include="Images\Client\DatTour\zalo.png" />
     <Content Include="Images\Client\HomePage\Beach.png" />
     <Content Include="Images\Client\HomePage\leaf.png" />
+    <Content Include="Images\Client\HomePage\NhaTrang.jpg" />
     <Content Include="Images\Client\HomePage\Sun.png" />
+    <Content Include="Images\Client\HomePage\VinhHaLong.jpg" />
+    <Content Include="Images\Client\Profile\arrow.png" />
+    <Content Include="Images\Client\Profile\cityHCM.jpg" />
+    <Content Include="Images\Client\Profile\facebook.png" />
+    <Content Include="Images\Client\Profile\invoice.png" />
+    <Content Include="Images\Client\Profile\pen.png" />
+    <Content Include="Images\Client\Profile\instagram.png" />
+    <Content Include="Images\Client\Profile\user-pic.jpg" />
+    <Content Include="Images\Client\Profile\zalo.png" />
+    <Content Include="Images\Client\Momo\momoTA.jpg" />
     <Content Include="Images\Client\Video\ocean.mp4" />
     <Content Include="Images\Client\Video\ocean_-_65560 %28720p%29.mp4" />
     <Content Include="Images\Client\Video\videoHome.mp4" />
@@ -450,12 +479,6 @@
       <LastGenOutput>TOURDL.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\AnimationAboutUs.js" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.esm.js" />
-    <Content Include="Scripts\bootstrap.esm.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\TOURDL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TOURDL.Designer.cs</LastGenOutput>
@@ -463,6 +486,34 @@
     <Content Include="Models\TOURDL.edmx.diagram">
       <DependentUpon>TOURDL.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -485,6 +536,12 @@
     <Content Include="Views\Home\ChinhSuaThongTinCaNhan.cshtml" />
     <Content Include="Views\Home\LichSuDatTour.cshtml" />
     <Content Include="Views\Home\HuyTourDaDat.cshtml" />
+    <Content Include="Views\Home\ThanhToanMomo.cshtml" />
+    <Content Include="Views\Home\DatTour.cshtml" />
+    <Content Include="Views\Home\DanhMucTour.cshtml" />
+    <Content Include="Views\Home\PartialDanhMucTour.cshtml" />
+    <Content Include="Views\Home\HoaDon.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\NHANVIENs\GetData.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
@@ -549,32 +606,11 @@
     <Content Include="Views\Shared\ClientLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>

@@ -11,7 +11,8 @@ namespace DAPM_TOURDL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SPTOUR
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +24,9 @@ namespace DAPM_TOURDL.Models
         public string ID_SPTour { get; set; }
         public string TenSPTour { get; set; }
         public int GiaNguoiLon { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime NgayKhoiHanh { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime NgayKetThuc { get; set; }
         public string MoTa { get; set; }
         public string DiemTapTrung { get; set; }

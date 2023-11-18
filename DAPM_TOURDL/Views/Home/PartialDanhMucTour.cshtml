@@ -1,0 +1,10 @@
+﻿
+<select class="form-select form-select-sm" name="name" id="tourNames">
+    <option value="">Tên tour</option>
+    @foreach (var item in ViewBag.TourNameList)
+    {
+        {
+            <option value="@item.TenTour">@item.TenTour</option>
+        }
+    }
+</select>

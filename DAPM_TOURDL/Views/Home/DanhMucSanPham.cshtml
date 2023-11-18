@@ -1,22 +1,23 @@
-﻿@model IEnumerable<DAPM_TOURDL.Models.SPTOUR>
+﻿@model  IEnumerable<DAPM_TOURDL.Models.TOUR>
 @{
     ViewBag.Title = "DanhMucSanPham";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
-
-<h2>DanhMucSanPham</h2>
-
-<div class="container">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+<link rel="stylesheet" href="~/CSS/Client/DanhMucTour.css" />
+<div class="head">
+    <div class="content-main">Danh mục sản phẩm </div>
+    <video autoplay loop muted plays-inline class="hero-image"><source src="~/Images/Client/Video/ocean.mp4" /></video>
+</div>
+<div class="container" style="width:100%;height:auto;">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
         @foreach (var item in Model)
         {
             <div class="col col-danhmuctour">
                 <div class="card" style="margin:20px 40px;border-radius:15px;box-shadow:1px 0px 5px #808080">
-                    <img class="card-img-top" src="~/Images/Admin/SPTOUR/@item.HinhAnh" alt="Card image cap">
+                    <img class="card-img-top" src="~/Images/Admin/TOUR/@item.HinhTour" alt="Card image cap">
                     <div class="card-body" style="text-align:left;">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.TenSPTour)</h5>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.GiaNguoiLon)VND</p>
-                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn btn-primary">Xem Chi Tiết</a>
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.TenTour)</h5>
+                        <a href="@Url.Action("DanhMucTour", "Home" , new { name = item.TenTour})" class="btn btn-primary">Xem Thêm</a>
                     </div>
                 </div>
             </div>

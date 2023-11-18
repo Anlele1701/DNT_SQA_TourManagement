@@ -1,0 +1,158 @@
+﻿@model DAPM_TOURDL.Models.SPTOUR
+
+@{
+    ViewBag.Title = "DatTour";
+    Layout = "~/Views/Shared/ClientLayout.cshtml";
+}
+<link href="~/CSS/Client/DatTour.css" rel="stylesheet" />
+<link href="~/CSS/Client/Modal.css" rel="stylesheet" />
+
+<div class="head">
+    <div class="content-main">Thông tin đặt tour</div>
+    <video autoplay loop muted plays-inline class="hero-image"><source src="~/Images/Client/Video/ocean.mp4" /></video>
+</div>
+<div class="container-sm my-3">
+    @using (Html.BeginForm("DatTour", "Home", FormMethod.Post))
+    {
+        <div class="row row-cols-1 gx-5">
+            <div class="col-md-7 mb-3">
+                <div class="content-tour">
+                    <p class="paragraph-title">Thông tin đặt tour</p>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" value="@Session["UsernameSS"]" readonly>
+                        <label>Họ tên: <span>*</span></label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" value="@Session["SDT"]" readonly>
+                        <label>Số điện thoại: <span>*</span></label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" value="@Session["EmailUserSS"]" readonly>
+                        <label>Email: <span>*</span></label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" value="@Session["CCCD"]" readonly>
+                        <label>CCCD: <span>*</span></label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" name="songuoilon" min="1" required placeholder="Số lượng người lớn">
+                        <label>Số người lớn: <span>*</span></label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" name="sotreem" value="0" required>
+                        <label>Số trẻ em: <span class="no-style">Tuỳ chọn</span></label>
+                    </div>
+                </div>
+                <input type="hidden" name="idkh" value="@Session["IDUser"]" />
+                <input type="hidden" name="gianguoilon" value="@Model.GiaNguoiLon" />
+                <input type="hidden" name="giatreem" value="@Model.GiaTreEm" />
+                <input type="hidden" name="idsptour" value="@Model.ID_SPTour" />
+                @if (ViewBag.Noti != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Noti</div>
+
+                }
+                @if (ViewBag.SoLuong != null)
+                {
+                    <div class="alert alert-warning">@ViewBag.SoLuong</div>
+                }
+                <div class="p-3">
+                    <h4 class="header-pay">Hỗ trợ thanh toán</h4>
+                    <div class="payment-gate my-2">
+                        <img class="logo-x2" src="~/Images/Client/DatTour/mastercard.png" alt="">
+                        <img src="~/Images/Client/DatTour/momo.png" alt="">
+                        <img src="~/Images/Client/DatTour/zalo.png" alt="">
+                    </div>
+                    <h5 class="paragraph-pay">Thanh toán tại văn phòng</h5>
+                    <p>Địa chỉ: 828 Sư Vạn Hạnh, Phường 5, Quận 10, TP.HCM</p>
+                </div>
+            </div>
+            <div class="col-md-5 mb-3">
+                <div class="pay-tour">
+                    <p class="paragraph-title">Thông tin tour</p>
+                    <div class="card">
+                        <div class="row g-2">
+                            <div class="col-5">
+                                <img class="img-tour"
+                                     src="~/Images/Admin/SPTOUR/@Model.HinhAnh"
+                                     alt="@Model.TenSPTour">
+                            </div>
+                            <div class="col-7">
+                                <div class="info-tour">
+                                    <p class="title-info-tour">Tên tour</p>
+                                    <p>Điểm đi: @Model.DiemTapTrung</p>
+                                    <p>Điểm đến: @Model.DiemDen</p>
+                                    <p>Ngày khởi hành: @Model.NgayKhoiHanh</p>
+                                    <p>Ngày kết thúc: @Model.NgayKetThuc</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="privacy-text">Privacy Policy <i class="fa-solid fa-circle-exclamation"></i></p>
+                </div>
+                <div class="pay-tour">
+                    <h6 class="paragraph-title">Bản thông tin</h6>
+                    <div class="display-info-pay">
+                        <div class="info-tour">
+                            <p>Giá trẻ em:</p>
+                            <p>Giá người lớn:</p>
+                            <p>Số ghế còn:</p>
+                        </div>
+                        <div class="info-tour">
+                            <p>@Model.GiaTreEm VND</p>
+                            <p>@Model.GiaNguoiLon VND</p>
+                            <p>@Model.SoNguoi</p>
+                        </div>
+                    </div>
+
+                    @if (Session["IDUser"] != null)
+                    {
+                        <button type="submit" class="btn-dat-tour" id="myBtn">Đặt Tour</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn-dat-tour" id="myBtn">Đặt Tour</button>
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4>Travel Viet</h4>
+                                    <span class="close">&times;</span>
+                                </div>
+                                <div class="modal-body">
+                                    <h2>Vui lòng đăng nhập để đặt tour</h2>
+                                    <a href="@Url.Action("DangNhap","Home")">Đăng nhập</a>
+                                </div>
+                                <div class="modal-footer">
+                                    <i class="fa-solid fa-clover"></i>
+                                    <h5>Xin cảm ơn !</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<script type="text/javascript">
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>

@@ -1,0 +1,126 @@
+﻿body {
+    background-color: #f2f2f2;
+}
+
+.div-navbar {
+    text-transform: uppercase;
+    padding: 0px;
+    height: auto;
+    width: 100%;
+    background-image: linear-gradient(to bottom right, #00FFB4 0%, #0EB0DC 48%, #1D43B7 80%, #06006D 100%);
+    padding: 25px 0 25px 0;
+}
+
+.nav-item .nav-link:hover {
+    color: white;
+    font-weight: bold;
+    opacity: 1;
+}
+
+.invoice {
+    background-color: #fff;
+    width: 800px; /* Adjust width to match standard invoice size */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.invoice-form {
+    margin-bottom: 20px;
+}
+
+    .invoice-form label {
+        display: inline-block;
+        width: 150px; /* Adjust label width as needed */
+        font-weight: bold;
+        color: #333;
+        vertical-align: middle;
+    }
+
+    .invoice-form input[type="text"],
+    .invoice-form input[type="number"] {
+        width: calc(100% - 200px); /* Adjust input width based on label width */
+        height: 30px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        color: #555;
+        vertical-align: middle;
+    }
+
+    .invoice-form textarea {
+        width: calc(100% - 200px); /* Adjust textarea width based on label width */
+        height: 50px; /* Adjust textarea height as needed */
+        padding: 5px;
+        border: none;
+        border-radius: 4px;
+        background-color: #000;
+        color: #fff;
+        font-size: 18px; /* Adjust textarea font size as needed */
+        vertical-align: middle;
+    }
+
+    .invoice-form hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+
+.invoice-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+    .invoice-footer .box {
+        border: 1px solid #000;
+        padding: 10px;
+        width: 150px;
+        height: 100px;
+    }
+
+.print-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    .print-button button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .print-button button:hover {
+            background-color: #45a049;
+        }
+
+@media print {
+    .print-button {
+        display: none;
+    }
+}
+
+.back-home a {
+    border-radius: 5px;
+    background: #0094ff;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: 1s;
+}
+
+    .back-home a:hover {
+        background: #0026ff;
+    }

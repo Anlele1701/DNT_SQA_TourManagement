@@ -1,4 +1,7 @@
-﻿.div-navbar {
+﻿body{
+    overflow-x:hidden;
+}
+.div-navbar {
     display: none;
 }
 div.btn-back-profile a {
@@ -21,6 +24,6 @@ div.btn-back-profile a {
 }
 @media only screen and (max-width: 500px){
     th,td{
-        font-size:11px;
+        font-size:11px !important;
     }
 }

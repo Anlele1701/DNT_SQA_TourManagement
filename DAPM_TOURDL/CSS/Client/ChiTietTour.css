@@ -1,14 +1,5 @@
 ﻿body {
-}
-
-img {
-    background-attachment: fixed;
-    object-fit: cover;
-    border: 1px solid white;
-}
-
-.mySlides {
-    display: none;
+    overflow-x: hidden;
 }
 
 .div-navbar {
@@ -16,18 +7,30 @@ img {
     padding: 0px;
     height: auto;
     width: 100%;
+    background-color: rgba(225,225,225,0.1);
     -webkit-backdrop-filter: blur(3px);
-    background: #8CABFF;
-    /*background-color: rgba(225,225,225,0.1);
-    backdrop-filter: blur(3px);*/
+    backdrop-filter: blur(3px);
+    position: absolute;
+    z-index: 3;
 }
 
 .nav-item .nav-link:hover {
-    color: white;
-    font-weight: bold;
-    opacity: 1;
+    color: rgba(0,0,0,0.7);
 }
-
+.content-img-details{
+    margin: 16px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+.img-details{
+    width:70%;
+    height:550px;
+    object-fit:cover;
+    object-position:50% 50%;
+    border-radius:15px;
+    transition:0.8s;
+}
 .chitiettour h3 {
     font-weight: bold;
 }
@@ -41,13 +44,33 @@ img {
 }
 
 .chitiettour p {
-    font-style: italic;
+    font-style: normal;
+    font-weight: 500;
+    color:black;
 }
 
-.chitiettour img {
-    margin: 16px 0 16px 0;
+.head {
+    height: 40vh;
+    position: relative;
 }
-
+.hero-image {
+    height: 40vh;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(99%)blur(0.5px);
+}
+.content-main {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    z-index: 1;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    color: white
+}
 .ngoaitour a {
     border: 2px solid none;
     background: dodgerblue;
@@ -79,6 +102,9 @@ img {
     -webkit-background-clip: text;
     animation: slide 2s linear infinite;
 }
+.text-right{
+    float: right;
+}
 
 @keyframes slide {
     0% {
@@ -87,5 +113,10 @@ img {
 
     100% {
         background-position: 60% 100%;
+    }
+}
+@media only screen and (max-width: 576px){
+    .img-details{
+        width: 100%;
     }
 }
