@@ -16,14 +16,13 @@
                     <h1>Bạn muốn đi du lịch<span class="changecontent"></span></h1>
                     <p>Cùng khám phá và trải nghiệm những điều thú vị mà chúng tôi sắp mang đến cho bạn</p>
                 </div>
-                @*<a href="#book">Đặt ngay</a>*@
             </div>
         </div>
         <div class="mt-5 overflow-hidden bg-white">
             <div class="card mb-3 card-tour pt-5 py-5">
                 <div class="row g-0">
                     <div class="col-md-6 animate">
-                        <img src="https://www.weather2travel.com/images_blog/island-resort-in-the-maldives.jpg" class="img-fluid" alt="..." style="object-fit:cover;max-width:100%;height:auto; border-radius:20px;">
+                        <img src="~/Images/Client/HomePage/NhaTrang.jpg" class="img-fluid image-view" alt="Nha Trang">
                     </div>
                     <div class="col-md-6 animate">
                         <div class="card-body" style="text-align:left">
@@ -52,7 +51,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 animate">
-                        <img src="https://img.freepik.com/free-photo/peak-bamboo-lijiang-rural-mist_1417-410.jpg?w=1060&t=st=1698734762~exp=1698735362~hmac=33aab4d91230ea78af5cc3405139f1c8f62e8b82bf6056503fa86b3be11fac07" class="img-fluid" alt="..." style="object-fit:cover;height:100%;width:100%; border-radius:20px;">
+                        <img src="~/Images/Client/HomePage/VinhHaLong.jpg" class="img-fluid image-view" alt="Vịnh Hạ Long">
                     </div>
                 </div>
             </div>
@@ -63,33 +62,27 @@
             <img src="~/Images/Client/HomePage/leaf.png" class="foreground" />
             <h1 class="title-wrap">Welcome Viet Travel!</h1>
         </div>
-        <div style="text-align:center;background-color:#fff">
-            <div class="row g-0" style="text-align:center">
-                @* xuất dữ liệu các tour từ database *@
-                @foreach (var item in Model)
-                {
-                    <div class="col-md-4 col-tours">
-                        <div class="wrapper">
-                            <div class="wrapper-image">
-                                <a href="@Url.Action("DanhMucSanPham", "TOURs", new {id=item.ID_TOUR})">
-                                    <img src="~/Images/Admin/TOUR/@item.HinhTour" class="animate" alt="Card image cap" />
-                                    <div class="wrapper-content">
-                                        <h3> @Html.DisplayFor(modelItem => item.TenTour)</h3>
-                                    </div>
-                                </a>
-                            </div>
+        <div class="row g-0 bg-white">
+            @* xuất dữ liệu các tour từ database *@
+            @foreach (var item in Model)
+            {
+                <p class="title-tours">@item.TenTour</p>
+                <div class="col-md-4 col-tours">
+                    <div class="wrapper">
+                        <div class="wrapper-image">
+                            <a href="@Url.Action("DanhMucTour", "Home", new {name = item.TenTour})">
+                                <img src="~/Images/Admin/TOUR/@item.HinhTour" class="animate" alt="@item.TenTour" />
+                                <div class="wrapper-content">
+                                    <h3>@Html.DisplayFor(modelItem => item.TenTour)</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                }
-            </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <div class="button-grow">
-                About
-            </div>
+                </div>
+            }
         </div>
     </div>
-
-
-
 </body>
+<script type="text/javascript">
+    var titleTours = document.getElementById("title-tour")
+</script>

@@ -12,11 +12,12 @@
     transition: opacity 1s,visibility 1s;
     z-index: 100;
 }
-
+.loader img{
+    width: 400px;
+    height: 400px;
+}
     .loader::after {
         content: "";
-        width: 75px;
-        height: 75px;
         border-radius: 100%;
         box-shadow: inset 2px 0 0 white, -2px 0 0 white;
         animation: loading 1s infinite linear;
@@ -218,6 +219,10 @@ ul {
     .footer-col {
         width: 50%;
         margin-bottom: 30px;
+    }
+    .loader img {
+        width: 250px;
+        height: 250px;
     }
 }
 

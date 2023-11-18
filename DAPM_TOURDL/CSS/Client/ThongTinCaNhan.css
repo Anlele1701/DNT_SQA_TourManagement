@@ -4,13 +4,14 @@
     box-sizing: border-box;
     font-family: "poppins", sans-serif;
 }
-.div-navbar{
-    display:none
-}
+
 body {
     overflow-x: hidden;
-    background: url(../../Images/Client/Profile/cityHCM.jpg) !important;
-    
+    /*background: url(../../Images/Client/Profile/cityHCM.jpg) !important;*/
+    background: linear-gradient(to bottom right, #70c1ff, #7c8696);
+}
+#footer{
+    display:none;
 }
 .containers {
     width: 100%;

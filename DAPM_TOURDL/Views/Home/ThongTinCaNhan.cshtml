@@ -7,16 +7,26 @@
 <link rel="stylesheet" href="~/CSS/Client/ThongTinCaNhan.css" />
 
 <body>
-    <div class="btn-back-profile m-4">
-        @Html.ActionLink("Quay lại", "HomePage", new { id = Model.ID_KH })
-    </div>
     <div class="containers shadow-sm rounded">
         <div class="profile-box">
             <img id="invoice-icon" src="~/Images/Client/Profile/invoice.png" class="invoice-icon" />
             <img id="pen-icon" src="~/Images/Client/Profile/pen.png" class="pen-icon">
-            <img src="~/Images/Client/Profile/user-pic.jpg" class="profile-pic">
-            <h3>@Html.DisplayFor(model => model.HoTen_KH)</h3>
-            <p>@Html.DisplayFor(model => model.Mail_KH)</p>
+            @{
+                if (Model.GioiTinh_KH == "Nam")
+                {
+                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="profile-pic" alt="User-Profile-Image">
+                }
+                else if (Model.GioiTinh_KH == "Nữ")
+                {
+                    <img src="https://img.icons8.com/bubbles/50/blond-long-hair-business-lady.png" class="profile-pic" alt="User-Profile-Image">
+                }
+                else
+                {
+                    <img src="https://img.icons8.com/bubbles/50/gender-neutral-user.png" class="profile-pic" alt="User-Profile-Image">
+                }
+            }
+            <h3>@Model.HoTen_KH</h3>
+            <p>@Model.Mail_KH</p>
             <div class="social-media">
                 <img src="~/Images/Client/Profile/facebook.png">
                 <img src="~/Images/Client/Profile/instagram.png">
@@ -25,16 +35,16 @@
             <div class="profile-bottom">
                 <div class="row row-cols-2 px-3">
                     <p>
-                        Ngày sinh: @Html.DisplayFor(m => m.NgaySinh_KH)
+                        Ngày sinh: @Model.NgaySinh_KH
                     </p>
                     <p>
-                        Giới tính: @Html.DisplayFor(m => m.GioiTinh_KH)
+                        Giới tính: @Model.GioiTinh_KH
                     </p>
                     <p>
-                        Số điện thoại: @Html.DisplayFor(m => m.SDT_KH)
+                        Số điện thoại: @Model.SDT_KH
                     </p>
                     <p>
-                        CCCD: @Html.DisplayFor(m => m.CCCD)
+                        CCCD: @Model.CCCD
                     </p>
                 </div>
             </div>
@@ -42,22 +52,15 @@
     </div>
 </body>
 <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", () => {
-        var passwordField = document.getElementById("passwordField");
-        var passwordValue = passwordField.textContent.trim();
-        var maskedPassword = "*".repeat(passwordValue.length);
-        passwordField.textContent = maskedPassword;
-    });
-
 
     var invoiceIcon = document.getElementById('invoice-icon');
     var penIcon = document.getElementById('pen-icon');
     invoiceIcon.addEventListener('click', () => {
-        var idUser = '@Session["IDUser"]';
+        var idUser = '@Model.ID_KH';
         window.location.href = '@Url.Action("LichSuDatTour", "Home")/' + idUser;
     });
     penIcon.addEventListener('click', () => {
-        var idUser = '@Session["IDUser"]';
+        var idUser = '@Model.ID_KH';
         window.location.href = '@Url.Action("ChinhSuaThongTinCaNhan", "Home")/' + idUser;
     })
 </script>
