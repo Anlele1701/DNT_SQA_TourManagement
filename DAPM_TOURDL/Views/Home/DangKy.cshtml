@@ -45,17 +45,8 @@
 
                     <div class="form-group margin-page">
                         <div class="col-md-10">
-                            @Html.LabelFor(model => model.GioiTinh_KH, new { @class = "profile_details_text" })
-                            @Html.DropDownListFor(model => model.GioiTinh_KH,
-                                new SelectList(new List<SelectListItem>
-                                {
-                                    new SelectListItem { Text = "Choose" , Value = ""},
-                                    new SelectListItem { Text = "Nam", Value = "Nam" },
-                                    new SelectListItem { Text = "Nữ", Value = "Nữ" },
-                                    // Các lựa chọn khác nếu cần
-                                }, "Value", "Text"),
-                                new { @class = "form-control", autocomplete = "off", @required = "required" }
-                            )
+                            @Html.LabelFor(model => model.GioiTinh_KH, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.GioiTinh_KH, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.GioiTinh_KH, "", new { @class = "text-danger" })
                         </div>
                     </div>

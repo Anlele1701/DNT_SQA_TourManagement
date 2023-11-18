@@ -55,6 +55,7 @@ namespace DAPM_TOURDL.Controllers
         public ActionResult DangKy(KHACHHANG khachhang)
         {
             DateTime ngayHienTai = DateTime.Now;
+            DateTime ngaySinh18 = ngayHienTai.AddYears(-15);
             if (db.KHACHHANGs.Any(x => x.Mail_KH == khachhang.Mail_KH))
             {
                 ViewBag.Notification = "Tài khoản đã tồn tại";
@@ -67,9 +68,9 @@ namespace DAPM_TOURDL.Controllers
             {
                 ViewBag.Notification = "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'";
             }
-            else if (khachhang.NgaySinh_KH > ngayHienTai)
+            else if (khachhang.NgaySinh_KH > ngaySinh18)
             {
-                ViewBag.Notification = "Ngày sinh phải nhỏ hơn ngày hiện tại";
+                ViewBag.Notification = "Yêu cầu lớn hơn 15+";
             }
             else if (khachhang.CCCD.Length != 12 || !Regex.IsMatch(khachhang.CCCD, @"^[0-9]+$"))
             {
@@ -78,6 +79,18 @@ namespace DAPM_TOURDL.Controllers
             else if (khachhang.SDT_KH.Length != 10 || !Regex.IsMatch(khachhang.SDT_KH, @"^[0-9]+$"))
             {
                 ViewBag.Notification = "Số điện thoại phải có 10 số và không bao gồm chữ,kí tự";
+            }
+            else if(db.KHACHHANGs.Any(x=>x.CCCD == khachhang.CCCD))
+            {
+                ViewBag.Notification = "Căn Cước Công Dân này đã tồn tại";
+            }
+            else if(db.KHACHHANGs.Any(x=>x.SDT_KH == khachhang.SDT_KH))
+            {
+                ViewBag.Notification = "Số Điện Thoại này đã tồn tại";
+            }
+            else if (!MatKhauManh(khachhang.MatKhau))
+            {
+                ViewBag.Notification = "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt";
             }
             else
             {
@@ -90,6 +103,11 @@ namespace DAPM_TOURDL.Controllers
                 return RedirectToAction("DangNhap", "Home");
             }
             return View();
+        }
+        private bool MatKhauManh(string password)
+        {
+            return password.Length >= 8 &&
+                Regex.IsMatch(password, @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).*$");
         }
         [HttpGet]
         public ActionResult DangNhap()
