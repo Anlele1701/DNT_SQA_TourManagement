@@ -1,0 +1,233 @@
+﻿@{
+    ViewBag.Title = "GetData";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chart Example</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="flex-direction: row; padding: 20px; border-radius: 30px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="107" height="100" viewBox="0 0 107 100" fill="none">
+                        <rect width="107" height="100" rx="30" fill="#43A659" />
+                        <mask id="mask0_317_190" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="14" y="9" width="83" height="83">
+                            <rect x="14" y="9" width="82.3452" height="82.3452" fill="#D9D9D9" />
+                        </mask>
+                        <g mask="url(#mask0_317_190)">
+                            <path d="M32.5246 74.0347C29.6038 74.0347 27.1212 73.034 25.0766 71.0325C23.0321 69.0311 22.0098 66.6008 22.0098 63.7416H15V32.8621C15 30.975 15.6864 29.3596 17.0591 28.0157C18.4319 26.6719 20.0821 26 22.0098 26H71.0786L92.1081 46.5863V63.7416H85.0983C85.0983 66.6008 84.076 69.0311 82.0315 71.0325C79.9869 73.034 77.5043 74.0347 74.5835 74.0347C71.6628 74.0347 69.1801 73.034 67.1356 71.0325C65.0911 69.0311 64.0688 66.6008 64.0688 63.7416H43.0393C43.0393 66.6008 42.017 69.0311 39.9725 71.0325C37.928 73.034 35.4453 74.0347 32.5246 74.0347ZM64.0688 43.1553H78.0884L67.5737 32.8621H64.0688V43.1553ZM43.0393 43.1553H57.059V32.8621H43.0393V43.1553ZM22.0098 43.1553H36.0295V32.8621H22.0098V43.1553ZM32.5246 68.0304C33.7513 68.0304 34.7882 67.6158 35.6352 66.7866C36.4822 65.9574 36.9057 64.9424 36.9057 63.7416C36.9057 62.5407 36.4822 61.5257 35.6352 60.6965C34.7882 59.8673 33.7513 59.4527 32.5246 59.4527C31.2978 59.4527 30.261 59.8673 29.414 60.6965C28.5669 61.5257 28.1434 62.5407 28.1434 63.7416C28.1434 64.9424 28.5669 65.9574 29.414 66.7866C30.261 67.6158 31.2978 68.0304 32.5246 68.0304ZM74.5835 68.0304C75.8102 68.0304 76.8471 67.6158 77.6941 66.7866C78.5412 65.9574 78.9647 64.9424 78.9647 63.7416C78.9647 62.5407 78.5412 61.5257 77.6941 60.6965C76.8471 59.8673 75.8102 59.4527 74.5835 59.4527C73.3568 59.4527 72.3199 59.8673 71.4729 60.6965C70.6259 61.5257 70.2024 62.5407 70.2024 63.7416C70.2024 64.9424 70.6259 65.9574 71.4729 66.7866C72.3199 67.6158 73.3568 68.0304 74.5835 68.0304ZM22.0098 56.8795H24.8138C25.8068 55.8501 26.9459 55.021 28.231 54.3919C29.5162 53.7629 30.9474 53.4484 32.5246 53.4484C34.1018 53.4484 35.533 53.7629 36.8181 54.3919C38.1032 55.021 39.2423 55.8501 40.2354 56.8795H66.8727C67.8658 55.8501 69.0049 55.021 70.29 54.3919C71.5751 53.7629 73.0063 53.4484 74.5835 53.4484C76.1607 53.4484 77.5919 53.7629 78.8771 54.3919C80.1622 55.021 81.3013 55.8501 82.2943 56.8795H85.0983V50.0174H22.0098V56.8795Z" fill="#FDFCFF" />
+                        </g>
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight:bold; font-size:25px;">Tours được book</h5>
+                        <p class="card-text" style="font-size:20px;" id="bookedToursCount"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="flex-direction: row; padding: 20px; border-radius: 30px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="107" height="100" viewBox="0 0 107 100" fill="none">
+                        <rect width="107" height="100" rx="30" fill="#A3C423" />
+                        <mask id="mask0_420_51" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="13" y="5" width="82" height="82">
+                            <rect x="13" y="5" width="82" height="82" fill="#D9D9D9" />
+                        </mask>
+                        <g mask="url(#mask0_420_51)">
+                            <path d="M53.9218 50.3333C50.0825 50.3333 46.7959 48.9951 44.0619 46.3188C41.3279 43.6424 39.9609 40.425 39.9609 36.6667C39.9609 32.9083 41.3279 29.691 44.0619 27.0146C46.7959 24.3382 50.0825 23 53.9218 23C57.761 23 61.0476 24.3382 63.7816 27.0146C66.5156 29.691 67.8826 32.9083 67.8826 36.6667C67.8826 40.425 66.5156 43.6424 63.7816 46.3188C61.0476 48.9951 57.761 50.3333 53.9218 50.3333ZM26 77.6667V68.1C26 66.1639 26.509 64.3844 27.527 62.7615C28.545 61.1385 29.8974 59.9 31.5844 59.0458C35.1909 57.2806 38.8556 55.9566 42.5785 55.074C46.3014 54.1913 50.0825 53.75 53.9218 53.75C57.761 53.75 61.5421 54.1913 65.265 55.074C68.9879 55.9566 72.6526 57.2806 76.2592 59.0458C77.9461 59.9 79.2986 61.1385 80.3165 62.7615C81.3345 64.3844 81.8435 66.1639 81.8435 68.1V77.6667H26ZM32.9804 70.8333H74.8631V68.1C74.8631 67.4736 74.7031 66.9042 74.3832 66.3917C74.0632 65.8792 73.6415 65.4806 73.118 65.1958C69.9768 63.6583 66.8065 62.5052 63.6071 61.7365C60.4078 60.9677 57.1793 60.5833 53.9218 60.5833C50.6642 60.5833 47.4358 60.9677 44.2364 61.7365C41.037 62.5052 37.8667 63.6583 34.7256 65.1958C34.202 65.4806 33.7803 65.8792 33.4603 66.3917C33.1404 66.9042 32.9804 67.4736 32.9804 68.1V70.8333ZM53.9218 43.5C55.8414 43.5 57.4847 42.8309 58.8517 41.4927C60.2187 40.1545 60.9022 38.5458 60.9022 36.6667C60.9022 34.7875 60.2187 33.1788 58.8517 31.8406C57.4847 30.5024 55.8414 29.8333 53.9218 29.8333C52.0021 29.8333 50.3588 30.5024 48.9918 31.8406C47.6248 33.1788 46.9413 34.7875 46.9413 36.6667C46.9413 38.5458 47.6248 40.1545 48.9918 41.4927C50.3588 42.8309 52.0021 43.5 53.9218 43.5Z" fill="white" />
+                        </g>
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight:bold; font-size:25px;">Thành viên</h5>
+                        <p class="card-text" id="employCount" style="font-size:20px;"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="flex-direction: row; padding: 20px; border-radius: 30px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="107" height="100" viewBox="0 0 107 100" fill="none">
+                        <rect width="107" height="100" rx="30" fill="#CD8129" />
+                        <mask id="mask0_317_232" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="20" y="18" width="69" height="69">
+                            <rect x="20" y="18" width="69" height="69" fill="#D9D9D9" />
+                        </mask>
+                        <g mask="url(#mask0_317_232)">
+                            <path d="M51.9125 72.625H56.9438V69.0312C59.3396 68.6 61.4 67.6656 63.125 66.2281C64.85 64.7906 65.7125 62.6583 65.7125 59.8312C65.7125 57.8188 65.1375 55.974 63.9875 54.2969C62.8375 52.6198 60.5375 51.1583 57.0875 49.9125C54.2125 48.9542 52.224 48.1156 51.1219 47.3969C50.0198 46.6781 49.4688 45.6958 49.4688 44.45C49.4688 43.2042 49.912 42.2219 50.7984 41.5031C51.6849 40.7844 52.9667 40.425 54.6438 40.425C56.1771 40.425 57.375 40.7964 58.2375 41.5391C59.1 42.2818 59.7229 43.2042 60.1063 44.3062L64.7062 42.4375C64.1792 40.7604 63.2089 39.299 61.7953 38.0531C60.3818 36.8073 58.8125 36.1125 57.0875 35.9688V32.375H52.0563V35.9688C49.6604 36.4958 47.7917 37.55 46.45 39.1312C45.1083 40.7125 44.4375 42.4854 44.4375 44.45C44.4375 46.7021 45.0964 48.5229 46.4141 49.9125C47.7318 51.3021 49.8042 52.5 52.6313 53.5063C55.65 54.6083 57.7464 55.5906 58.9203 56.4531C60.0943 57.3156 60.6813 58.4417 60.6813 59.8312C60.6813 61.4125 60.1182 62.5745 58.9922 63.3172C57.8661 64.0599 56.5125 64.4313 54.9313 64.4313C53.35 64.4313 51.9484 63.9401 50.7266 62.9578C49.5047 61.9755 48.6063 60.5021 48.0312 58.5375L43.2875 60.4062C43.9583 62.7062 45.0005 64.563 46.4141 65.9766C47.8276 67.3901 49.6604 68.3604 51.9125 68.8875V72.625ZM54.5 81.25C50.5229 81.25 46.7854 80.4953 43.2875 78.9859C39.7896 77.4766 36.7469 75.4281 34.1594 72.8406C31.5719 70.2531 29.5234 67.2104 28.0141 63.7125C26.5047 60.2146 25.75 56.4771 25.75 52.5C25.75 48.5229 26.5047 44.7854 28.0141 41.2875C29.5234 37.7896 31.5719 34.7469 34.1594 32.1594C36.7469 29.5719 39.7896 27.5234 43.2875 26.0141C46.7854 24.5047 50.5229 23.75 54.5 23.75C58.4771 23.75 62.2146 24.5047 65.7125 26.0141C69.2104 27.5234 72.2531 29.5719 74.8406 32.1594C77.4281 34.7469 79.4766 37.7896 80.9859 41.2875C82.4953 44.7854 83.25 48.5229 83.25 52.5C83.25 56.4771 82.4953 60.2146 80.9859 63.7125C79.4766 67.2104 77.4281 70.2531 74.8406 72.8406C72.2531 75.4281 69.2104 77.4766 65.7125 78.9859C62.2146 80.4953 58.4771 81.25 54.5 81.25ZM54.5 75.5C60.9208 75.5 66.3594 73.2719 70.8156 68.8156C75.2719 64.3594 77.5 58.9208 77.5 52.5C77.5 46.0792 75.2719 40.6406 70.8156 36.1844C66.3594 31.7281 60.9208 29.5 54.5 29.5C48.0792 29.5 42.6406 31.7281 38.1844 36.1844C33.7281 40.6406 31.5 46.0792 31.5 52.5C31.5 58.9208 33.7281 64.3594 38.1844 68.8156C42.6406 73.2719 48.0792 75.5 54.5 75.5Z" fill="white" />
+                        </g>
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight:bold; font-size:23px;">Tổng tiền bán tours</h5>
+                        <p class="card-text" style="font-size:20px;" id="totalAmount"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="graph" style=" display: flex; flex-direction: column; align-items: center; margin-top:30px">
+            <div class="pie" style=" width: 83vw;">
+                <figure class="highcharts-figure">
+                    <div id="linegraph">
+                    </div>
+                </figure>
+            </div>
+            <div class="square" style=" display: grid; grid-template-columns: repeat(2, 40vw); gap: 40px; margin-top:20px">
+                <div class="bar" style="width: 40.5vw; height: 400px;}">
+                    <figure class="highcharts-figure">
+                        <div id="piegraph"></div>
+                    </figure>
+                </div>
+                <div class="bar" style="width: 40.2vw; height: 400px; margin-bottom: 10px; }">
+                    <figure class="highcharts-figure">
+                        <div id="piegraph2"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(document).ready(function () {
+    var chartData = @Html.Raw(Json.Encode(ViewBag.TourData));
+    var chartSeries = [];
+
+    for (var i = 0; i < chartData.length; i++) {
+        var item = chartData[i];
+        chartSeries.push({
+            name: item.name,
+            data: [item.count] // Sử dụng mảng để biểu thị giá trị của cột
+        });
+    }
+
+    Highcharts.chart('linegraph', {
+        chart: {
+            type: 'bar' // Sử dụng bar chart
+        },
+        title: {
+            text: 'Số lượng sản phẩm tour'
+        },
+        xAxis: {
+            categories: ['Số lượng'] // Chỉ có một cột trên trục x
+        },
+        yAxis: {
+            title: {
+                text: 'Số lượng'
+            }
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        series: chartSeries
+    });
+});
+    </script>
+    <script>
+    $(document).ready(function () {
+        var chartData = @Html.Raw(Json.Encode(ViewBag.ChartData));
+        var chartSeries = [];
+
+        for (var i = 0; i < chartData.length; i++) {
+            var item = chartData[i];
+            chartSeries.push({
+                name: item.name,
+                y: item.count
+            });
+        }
+
+        Highcharts.chart('piegraph2', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Số lượng sản phẩm tour'
+            },
+            series: [{
+                name: 'Số lượng',
+                data: chartSeries
+            }]
+        });
+    });
+    </script>
+    <script>
+   $(document).ready(function () {
+    var chartData = @Html.Raw(Json.Encode(ViewBag.KhachData));
+    var chartSeries = [];
+
+    for (var i = 0; i < chartData.length; i++) {
+        var item = chartData[i];
+        chartSeries.push({
+            name: item.name,
+            y: item.count
+        });
+    }
+
+    Highcharts.chart('piegraph', { // Đổi id 'piegraph' thành 'linegraph'
+        chart: {
+            type: 'line' // Đổi type thành 'line'
+        },
+        title: {
+            text: 'SL khách hàng mua tour'
+        },
+        xAxis: {
+            categories: chartSeries.map(function(item) {
+                return item.name;
+            })
+        },
+        yAxis: {
+            title: {
+                text: 'Số lượng khách hàng'
+            }
+        },
+        series: [{
+            name: 'SL KH',
+            data: chartSeries.map(function(item) {
+                return item.y;
+            })
+        }]
+    });
+});
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/NHANVIENs/CountBookedTours", function (data) {
+                var count = data.count;
+                $("#bookedToursCount").html("Số lượng tour đã đặt: " + count);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/NHANVIENs/CountEmploy", function (data) {
+                var count = data.count;
+                $("#employCount").html("Số lượng khách: " + count);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Gọi hành động "TotalBookingAmount"
+            $.getJSON("/NHANVIENs/TotalBookingAmount", function (data) {
+                // Lấy giá trị tổng tiền từ dữ liệu JSON
+                var totalAmount = data.TotalAmount;
+                var formattedTotalAmount = totalAmount.toLocaleString();
+                // Hiển thị giá trị tổng tiền trong phần tử có id "totalAmount"
+                $("#totalAmount").text(formattedTotalAmount + " VND");
+            });
+        });
+    </script>
+</body>
+</html>

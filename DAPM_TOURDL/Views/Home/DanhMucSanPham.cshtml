@@ -14,10 +14,10 @@
         {
             <div class="col col-danhmuctour">
                 <div class="card" style="margin:20px 40px;border-radius:15px;box-shadow:1px 0px 5px #808080">
-                    <img class="card-img-top" src="~/Images/Admin/SPTOUR/@item.HinhTour" alt="Card image cap">
+                    <img class="card-img-top" src="~/Images/Admin/TOUR/@item.HinhTour" alt="Card image cap">
                     <div class="card-body" style="text-align:left;">
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.TenTour)</h5>
-                        <a href="@Url.Action("DanhMucTour", "Home" , new { name =item.TenTour})" class="btn btn-primary">Xem Thêm</a>
+                        <a href="@Url.Action("DanhMucTour", "Home" , new { name = item.TenTour})" class="btn btn-primary">Xem Thêm</a>
                     </div>
                 </div>
             </div>

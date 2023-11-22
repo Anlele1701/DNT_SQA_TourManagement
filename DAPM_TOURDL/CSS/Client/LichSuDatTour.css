@@ -1,4 +1,7 @@
-﻿.div-navbar {
+﻿body{
+    overflow-x:hidden;
+}
+.div-navbar {
     display: none;
 }
 div.btn-back-profile a {
