@@ -40,8 +40,14 @@ namespace DAPM_TOURDL.Controllers
                 Session["HoTen"] = check.HoTen_NV;
                 Session["Email"] = check.Mail_NV;
                 return RedirectToAction
-                    ("Index", "NHANVIENs");
+                    ("GetData", "NHANVIENs");
             }
+        }
+
+        public ActionResult LogoutAdmin()
+        {
+            Session.Abandon();
+            return RedirectToAction("LoginAdmin", "Logging");
         }
     }
 }

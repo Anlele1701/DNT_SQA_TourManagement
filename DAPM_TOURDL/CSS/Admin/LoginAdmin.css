@@ -1,0 +1,125 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Agdasima&family=Poppins&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #70c1ff, #7c8696);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+
+
+.card {
+    width: 350px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 2px 5px 5px 2px rgb(117, 116, 116);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: black;
+    margin-bottom: 5px;
+}
+
+p {
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.div-input input {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #fff;
+    color: #498ffc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #70c1ff;
+    }
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+.hover-a a {
+    margin: 20px;
+    opacity: 0.6;
+    text-decoration: none;
+    color: white;
+    transition: 1s;
+}
+
+    .hover-a a:hover {
+        color: white;
+        opacity: 1;
+    }
+
+.hover-a:hover {
+    transform: scale(1.1);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.margin-page {
+    margin: 10px auto;
+}
+
+.sign-up-page input {
+    float: right;
+    border: none;
+    border-bottom: 1px solid;
+    height: 25px;
+}
+
+    .sign-up-page input[type=date] {
+        width: 165px;
+    }
+
+input[type=submit] {
+    height: auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    float: none;
+    background: #8CABFF;
+    color: white;
+    transition: 1.6s;
+}
+
+    input[type=submit]:hover {
+        transform: scale(1.1);
+        background: #4477CE;
+    }

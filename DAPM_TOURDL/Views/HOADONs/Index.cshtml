@@ -60,7 +60,7 @@
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
-                         {
+                        {
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ID_HoaDon)
@@ -75,7 +75,7 @@
                                     @Html.DisplayFor(modelItem => item.SPTOUR.TenSPTour)
                                 </td>
                                 <td>
-                                    @{ 
+                                    @{
                                         var total = item.SLNguoiLon + item.SLTreEm;
                                     }
                                     @Html.DisplayFor(modelItem => total);
@@ -92,7 +92,7 @@
                                     @Html.ActionLink("Delete", "Delete", new { id = item.ID_HoaDon })
                                 </td>
                             </tr>
-                         }
+                        }
                     </tbody>
                 </table>
             </div>
