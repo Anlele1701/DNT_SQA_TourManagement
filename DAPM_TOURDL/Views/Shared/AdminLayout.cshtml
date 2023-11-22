@@ -83,7 +83,7 @@
                     }}
 
                 <li class="logout">
-                    <a>
+                    <a href="@Url.Action("LogoutAdmin","Logging")">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span>Đăng xuất</span>
                     </a>
@@ -101,7 +101,10 @@
             }
             else
             {
-                <span>Chưa đăng nhập!</span>
+                <script>
+                    window.location.href = '/Logging/LoginAdmin';
+                    alert("CHƯA ĐĂNG NHẬP TÀI KHOẢN ADMIN!");
+                </script>
             }
         </nav>
         <div class="inner">

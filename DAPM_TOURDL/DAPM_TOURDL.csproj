@@ -362,6 +362,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="CSS\Admin\LoginAdmin.css" />
     <Content Include="CSS\Client\AboutUs.css" />
     <Content Include="CSS\Admin\AdminIndex.css" />
     <Content Include="CSS\Admin\AdminLayout.css" />
