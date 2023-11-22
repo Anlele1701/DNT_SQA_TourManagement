@@ -275,6 +275,7 @@
     <Compile Include="Models\NHANVIEN.cs">
       <DependentUpon>TOURDL.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Payments\VnPayLibrary.cs" />
     <Compile Include="Models\SPTOUR.cs">
       <DependentUpon>TOURDL.tt</DependentUpon>
     </Compile>
@@ -544,6 +545,7 @@
     <Content Include="Views\Home\HoaDon.cshtml" />
     <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\NHANVIENs\GetData.cshtml" />
+    <Content Include="Views\Home\PaymentConfirm.cshtml" />
     <None Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
