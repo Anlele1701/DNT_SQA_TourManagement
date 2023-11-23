@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<DAPM_TOURDL.Models.SPTOUR>
+@model PagedList.IPagedList<DAPM_TOURDL.Models.SPTOUR>
 @using PagedList.Mvc
 @{
     ViewBag.Title = "Danh Mục Tour";
@@ -6,7 +6,7 @@
 }
 <link rel="stylesheet" href="~/CSS/Client/DanhMucTour.css" />
 <div class="head">
-    <div class="content-main">Danh mục tour</div>
+    <div class="content-main">Tất Cả Tour</div>
     <video autoplay loop muted plays-inline class="hero-image"><source src="~/Images/Client/Video/ocean.mp4" /></video>
 </div>
 
@@ -18,7 +18,7 @@
             </div>
             <div class="col-3 d-flex justify-content-end">
                 <select class="form-select form-select-sm" name="to">
-                    <option value="">Giá từ</option>
+                    <option value="" hidden>Giá từ</option>
                     <option value="0">0 VND</option>
                     <option value="2000000">2.000.000 VND</option>
                     <option value="4000000">4.000.000 VND</option>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-3 d-flex justify-content-end">
                 <select class="form-select form-select-sm" name="from">
-                    <option value="">Đến giá</option>
+                    <option value="" hidden>Đến giá</option>
                     <option value="0">0 VND</option>
                     <option value="2000000">2.000.000 VND</option>
                     <option value="4000000">4.000.000 VND</option>
@@ -40,7 +40,7 @@
                 </select>
             </div>
             <div class="col-3 d-flex justify-content-center">
-                <input type="submit" value="Search" class="btn btn-primary btn-lg">
+                <input type="submit" value="Search" class="btn-search">
             </div>
         </div>
     </form>

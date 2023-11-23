@@ -60,16 +60,16 @@
             <img src="~/Images/Client/HomePage/Beach.png" class="background-wrap" />
             <img src="~/Images/Client/HomePage/Sun.png" class="leftground" />
             <img src="~/Images/Client/HomePage/leaf.png" class="foreground" />
-            <h1 class="title-wrap">Welcome Viet Travel!</h1>
+            <h1 class="title-wrap">Welcome To Viet Travel!</h1>
         </div>
-        <div class="row g-0 bg-white">
+        <div class="row bg-white">
             @* xuất dữ liệu các tour từ database *@
             @foreach (var item in Model)
             {
                 <p class="title-tours">@item.TenTour</p>
-                <div class="col-md-4 col-tours">
+                <div class="col-md-3 col-tours">
                     <div class="wrapper">
-                        <div class="wrapper-image">
+                        <div class="wrapper-image" style="overflow:hidden">
                             <a href="@Url.Action("DanhMucTour", "Home", new {name = item.TenTour})">
                                 <img src="~/Images/Admin/TOUR/@item.HinhTour" class="animate" alt="@item.TenTour" />
                                 <div class="wrapper-content">

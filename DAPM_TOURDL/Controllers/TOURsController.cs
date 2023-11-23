@@ -15,9 +15,14 @@ namespace DAPM_TOURDL.Controllers
         private TourDLEntities db = new TourDLEntities();
 
         // GET: TOURs
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            return View(db.TOURs.ToList());
+            var tour = db.TOURs.ToList();
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                tour = tour.Where(s => s.ID_TOUR.Contains(SearchString) || s.TenTour.Contains(SearchString)).ToList();
+            }
+            return View(tour);
         }
 
         // GET: TOURs/Details/5
@@ -42,7 +47,7 @@ namespace DAPM_TOURDL.Controllers
         }
 
         // POST: TOURs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -74,7 +79,7 @@ namespace DAPM_TOURDL.Controllers
         }
 
         // POST: TOURs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

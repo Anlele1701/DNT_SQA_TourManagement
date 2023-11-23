@@ -9,6 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>LoginAdmin</title>
+    <link rel="stylesheet" href="~/CSS/Admin/LoginAdmin.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -20,10 +21,9 @@
                 <h2>Đăng Nhập</h2>
                 <form>
                     <label for="username">Username</label>
-                    <p>@Html.TextBoxFor(m => m.Mail_NV)</p>
+                    @Html.TextBoxFor(m => m.Mail_NV)
                     <label for="password">Password</label>
-                    <p>@Html.TextBoxFor(m => m.MatKhau)</p>
-
+                    @Html.PasswordFor(m => m.MatKhau)
                     @Html.ValidationMessageFor(m => m.MatKhau)
                     @Html.AntiForgeryToken()
                     <button value="login" type="submit">Login</button>

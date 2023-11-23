@@ -1,4 +1,4 @@
-﻿/*NAVBAR*/
+/*NAVBAR*/
 .loader {
     position: fixed;
     top: 0;
@@ -79,7 +79,7 @@
     text-transform: uppercase;
     height: auto;
     width: 100%;
-    background-color: rgba(225,225,225,0.2);
+    background-color: rgba(225,225,225,0.3);
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
 }
@@ -106,6 +106,10 @@
     cursor: pointer;
 }
 
+.nav-item div.nav-link a {
+    color: white;
+}
+
 #navbar form button {
     background: #0094ff;
     color: white;
@@ -128,16 +132,16 @@
     color: #F9F9F9;
 }
 
-a {
-    text-decoration: none;
-}
-
 ul {
     list-style: none;
 }
 
+ul li a {
+    text-decoration: none;
+}
+
 .container {
-    max-width: 1170px;
+    max-width: 1440px;
     margin: auto;
 }
 
@@ -156,8 +160,9 @@ ul {
 }
 
 .footer-col {
-    width: 30%;
+    width: 30% !important;
     padding: 0 15px;
+    display: block;
 }
 
     .footer-col h4 {
@@ -232,10 +237,10 @@ ul {
         width: 50%;
         margin-bottom: 30px;
     }
-    .loader img {
+    /*.loader img {
         width: 250px;
         height: 250px;
-    }
+    }*/
 }
 
 @media(max-width: 574px) {

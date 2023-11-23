@@ -1,4 +1,4 @@
-﻿body {
+body {
     overflow-x: hidden;
 }
 
@@ -45,10 +45,48 @@
 
 .chitiettour p {
     font-style: normal;
-    font-weight: 500;
-    color:black;
+    font-weight: 400;
+    color: #222222;
 }
 
+.head {
+    height: 40vh;
+    position: relative;
+}
+.hero-image {
+    height: 40vh;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(99%)blur(0.5px);
+}
+.content-main {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    z-index: 1;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    color: white;
+}
+
+.btn {
+    background-color: #2D9596;
+    border: none;
+    color: #F4F7F7;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 40px;
+    width: 120px;
+    text-align: center:
+}
+    .btn:hover {
+        background-color: #176B87;
+        transition: ease-out 0.5s;
+    }
 
 .title {
     font-size: 48px;

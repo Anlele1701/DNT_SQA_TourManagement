@@ -55,9 +55,14 @@ namespace DAPM_TOURDL.Controllers
         }
 
         // GET: NHANVIENs
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            return View(db.NHANVIENs.ToList());
+            var nv = db.NHANVIENs.ToList();
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                nv = nv.Where(s => s.HoTen_NV.Contains(SearchString) || s.Mail_NV.Contains(SearchString)).ToList();
+            }
+            return View(nv);
         }
 
         // GET: NHANVIENs/Details/5
@@ -182,6 +187,59 @@ namespace DAPM_TOURDL.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //GET DATA
+        public ActionResult CountBookedTours()
+        {
+            using (TourDLEntities context = new TourDLEntities())
+            {
+                int bookedToursCount = context.HOADONs.Count(); // Đếm số lượng bản ghi trong bảng HOADON
+                return Json(new { count = bookedToursCount }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult CountEmploy()
+        {
+            using (TourDLEntities context = new TourDLEntities())
+            {
+                int employCount = context.KHACHHANGs.Count(); // Đếm số lượng bản ghi trong bảng HOADON
+                return Json(new { count = employCount }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult TotalBookingAmount()
+        {
+            using (TourDLEntities context = new TourDLEntities())
+            {
+                // Truy vấn dữ liệu từ bảng HOADON
+                var totalAmount = context.HOADONs.Sum(h => h.TongTienTour);
+
+                // Trả về tổng tiền dạng JSON hoặc View
+                return Json(new { TotalAmount = totalAmount }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult GetData()
+        {
+            TourDLEntities context = new TourDLEntities();
+
+            var query = context.HOADONs.Include("SPTOUR")
+                .GroupBy(p => p.SPTOUR.TenSPTour)
+                .Select(g => new { name = g.Key, count = g.Sum(w => w.TongTienTour) }).ToList();
+
+            ViewBag.ChartData = query;
+            var query2 = context.HOADONs.Include("SPTOUR")
+                .GroupBy(p => p.SPTOUR.TenSPTour)
+                .Select(g => new { name = g.Key, count = g.Sum(w => w.SLNguoiLon + w.SLTreEm) }).ToList();
+
+            ViewBag.KhachData = query2;
+
+            var query3 = context.TOURs.Include("SPTOUR")
+            .GroupBy(p => p.TenTour)
+            .Select(g => new { name = g.Key, count = g.Sum(w => w.SPTOURs.Count()) }).ToList();
+            ViewBag.TourData = query3;
+            return View();
         }
     }
 }
