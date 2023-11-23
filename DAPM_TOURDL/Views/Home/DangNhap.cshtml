@@ -5,104 +5,104 @@
     Layout = null;
 }
 <link rel="stylesheet" href="~/CSS/Client/LoginAndSignUp.css" />
-@using (Html.BeginForm())
-{
-    <body>
-        <div class="container" id="container">
-            <div class="form-container sign-up-container">
-                <form action="#">
-                    <h1>Đăng Ký Tài Khoản</h1>
-                    <div class="infield">
-                        @Html.EditorFor(model => model.HoTen_KH, new { htmlAttributes = new { @class = "input", placeholder = "Họ Tên" } })
-                        @Html.ValidationMessageFor(model => model.HoTen_KH, "", new { @class = "text-danger" })
-                        <label></label>
-                    </div>
-                    <div class="infield">
-                        Giới Tính:
-                        @Html.RadioButtonFor(model => model.GioiTinh_KH, "Nam") Nam
-                        @Html.RadioButtonFor(model => model.GioiTinh_KH, "Nữ") Nữ
-                    </div>
-                    <div class="infield">
-                        @Html.EditorFor(model => model.NgaySinh_KH, new { htmlAttributes = new { @class = "input", placeholder = "", type = "date" } })
-                        @Html.ValidationMessageFor(model => model.NgaySinh_KH, "", new { @class = "text-danger" })
-                        <label></label>
-                    </div>
-                    <div class="infield">
-                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "input", placeholder = "Mật Khẩu", type = "password" } })
-                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                        <label></label>
-                    </div>
-                    <div class="infield">
-                        @Html.EditorFor(model => model.CCCD, new { htmlAttributes = new { @class = "input", placeholder = "Căn Cước Công Dân" } })
-                        @Html.ValidationMessageFor(model => model.CCCD, "", new { @class = "text-danger" })
-                        <label></label>
-                    </div>
-                    <div class="infield">
-                        @Html.EditorFor(model => model.SDT_KH, new { htmlAttributes = new { @class = "input", placeholder = "Số Điện Thoại" } })
-                        @Html.ValidationMessageFor(model => model.SDT_KH, "", new { @class = "text-danger" })
-                        <label></label>
-                    </div>
-                    <div class="infield">
-                        @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "input", placeholder = "Email" } })
-                        @Html.ValidationMessageFor(model => model.Mail_KH, "", new { @class = "text-danger" })
-                        <label></label>
-                    </div>
-                    <div class="sign-up-btn">
-                        <button type="submit">Đăng Ký</button>
-                        <label style="color:red;text-align:center">@ViewBag.Notification</label>
-                    </div>
-                </form>
-            </div>
-            <div class="form-container sign-in-container">
-                <form action="#">
-                    <h1>Đăng Nhập</h1>
-                    <div class="infield">
-                        @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "input", placeholder = "Email" } })
-                        @Html.ValidationMessageFor(model => model.Mail_KH, "", new { @class = "text-danger" })
-                        <label></label>
-                    </div>
-                    <div class="infield">
-                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "input", placeholder = "Mật Khẩu", type = "password" } })
-                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                        <label></label>
-                    </div>
-                    <a class="forgot">Quên mật khẩu?</a>
-                    <button type="submit">Đăng Nhập</button>
-                    @Html.AntiForgeryToken()
-                    <label style="color:red;text-align:center">@ViewBag.Notification</label>
-                </form>
-            </div>
-            <div class="overlay-container" id="overlayCon">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>Chào Mừng Bạn Trở Lại!</h1>
-                        <p>Hãy đăng nhập để có trải nghiệm tốt nhất</p>
-                        <button>Đăng Nhập</button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <h1>Xin Chào Bạn Mới!</h1>
-                        <p>Đăng ký tài khoản ngay để cùng Viet Travel vi vu khắp nơi</p>
-                        <button type="button" style="margin-top: -20px">Đăng Ký</button>
-                        @Html.AntiForgeryToken()
-                    </div>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="@Url.Action("SignUp")" method="post">
+                <h1>Đăng Ký Tài Khoản</h1>
+                <div class="infield">
+                    @Html.EditorFor(model => model.HoTen_KH, new { htmlAttributes = new { @class = "input", placeholder = "Họ Tên" } })
+                    @Html.ValidationMessageFor(model => model.HoTen_KH, "", new { @class = "text-danger" })
+                    <label></label>
                 </div>
-                <button type="button" id="overlayBtn"></button>
-            </div>
+                <div class="infield">
+                    Giới Tính:
+                    @Html.RadioButtonFor(model => model.GioiTinh_KH, "Nam")
+                    @Html.RadioButtonFor(model => model.GioiTinh_KH, "Nữ")
+                </div>
+                <div class="infield">
+                    @Html.EditorFor(model => model.NgaySinh_KH, new { htmlAttributes = new { @class = "input", placeholder = "", type = "date" } })
+                    @Html.ValidationMessageFor(model => model.NgaySinh_KH, "", new { @class = "text-danger" })
+                    <label></label>
+                </div>
+                <div class="infield">
+                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "input", placeholder = "Mật Khẩu", type = "password" } })
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    <label></label>
+                </div>
+                <div class="infield">
+                    @Html.EditorFor(model => model.CCCD, new { htmlAttributes = new { @class = "input", placeholder = "Căn Cước Công Dân" } })
+                    @Html.ValidationMessageFor(model => model.CCCD, "", new { @class = "text-danger" })
+                    <label></label>
+                </div>
+                <div class="infield">
+                    @Html.EditorFor(model => model.SDT_KH, new { htmlAttributes = new { @class = "input", placeholder = "Số Điện Thoại" } })
+                    @Html.ValidationMessageFor(model => model.SDT_KH, "", new { @class = "text-danger" })
+                    <label></label>
+                </div>
+                <div class="infield">
+                    @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "input", placeholder = "Email" } })
+                    @Html.ValidationMessageFor(model => model.Mail_KH, "", new { @class = "text-danger" })
+                    <label></label>
+                </div>
+                <div class="sign-up-btn">
+                    <button type="submit">Đăng Ký</button>
+                    <label style="color:red;text-align:center">@ViewBag.Notification</label>
+                </div>
+            </form>
         </div>
-    </body>
-}
-    @* ĐỂ KHUNG DI CHUYỂN QUA LẠI *@
-    <script>
-        const container = document.getElementById('container');
-        const overlayCon = document.getElementById('overlayCon');
-        const overlayBtn = document.getElementById('overlayBtn');
+        <div class="form-container sign-in-container">
+            <form action="@Url.Action("SignIn")" method="post">
+                <h1>Đăng Nhập</h1>
+                <div class="infield">
+                    @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "input", placeholder = "Email" } })
+                    @Html.ValidationMessageFor(model => model.Mail_KH, "", new { @class = "text-danger" })
+                    <label></label>
+                </div>
+                <div class="infield">
+                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "input", placeholder = "Mật Khẩu", type = "password" } })
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    <label></label>
+                </div>
+                <a class="forgot">Quên mật khẩu?</a>
+                <button type="submit">Đăng Nhập</button>
+                @Html.AntiForgeryToken()
+                <label style="color:red;text-align:center">@ViewBag.Notification</label>
+            </form>
+        </div>
+        <div class="overlay-container" id="overlayCon">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Chào Mừng Bạn Trở Lại!</h1>
+                    <p>Hãy đăng nhập để có trải nghiệm tốt nhất</p>
+                    <button>Đăng Nhập</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Xin Chào Bạn Mới!</h1>
+                    <p>Đăng ký tài khoản ngay để cùng Viet Travel vi vu khắp nơi</p>
+                    <button type="button" style="margin-top: -20px">Đăng Ký</button>
+                    @Html.AntiForgeryToken()
+                </div>
+            </div>
+            <button type="button" id="overlayBtn"></button>
+        </div>
+    </div>
+    <p>@ViewBag.Notification</p>
+</body>
 
-        overlayBtn.addEventListener('click', () => {
-            container.classList.toggle('right-panel-active');
+@* ĐỂ KHUNG DI CHUYỂN QUA LẠI *@
+<script>
+    const container = document.getElementById('container');
+    const overlayCon = document.getElementById('overlayCon');
+    const overlayBtn = document.getElementById('overlayBtn');
 
-            overlayBtn.classList.remove('btnScaled');
-            window.requestAnimationFrame(() => {
-                overlayBtn.classList.add('btnScaled');
-            });
+    overlayBtn.addEventListener('click', () => {
+        container.classList.toggle('right-panel-active');
+
+        overlayBtn.classList.remove('btnScaled');
+        window.requestAnimationFrame(() => {
+            overlayBtn.classList.add('btnScaled');
         });
-    </script>
+    });
+</script>

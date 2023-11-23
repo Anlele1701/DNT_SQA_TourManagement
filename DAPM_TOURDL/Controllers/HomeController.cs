@@ -58,57 +58,84 @@ namespace DAPM_TOURDL.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangKy(KHACHHANG khachhang)
+        public ActionResult SignUp(FormCollection values)
         {
+            string email = values["Mail_KH"];
+            string password = values["MatKhau"];
+            string hoTen = values["HoTen_KH"];
+            string gioiTinh = values["GioiTinh_KH"];
+            string ngaySinhStr = values["NgaySinh_KH"];
+            //DateTime ngaySinh = DateTime.Parse(ngaySinhStr);
+            string cccd = values["CCCD"];
+            string sdt = values["SDT_KH"];
+
             DateTime ngayHienTai = DateTime.Now;
             DateTime ngaySinh18 = ngayHienTai.AddYears(-15);
-            if (db.KHACHHANGs.Any(x => x.Mail_KH == khachhang.Mail_KH))
+
+            // Kiểm tra các điều kiện và thực hiện đăng ký
+            if (db.KHACHHANGs.Any(x => x.Mail_KH == email))
             {
                 ViewBag.Notification = "Tài khoản đã tồn tại";
             }
-            else if (string.IsNullOrEmpty(khachhang.Mail_KH) || khachhang.GioiTinh_KH == null || khachhang.NgaySinh_KH == null || string.IsNullOrEmpty(khachhang.MatKhau) || string.IsNullOrEmpty(khachhang.CCCD) || string.IsNullOrEmpty(khachhang.SDT_KH) || string.IsNullOrEmpty(khachhang.HoTen_KH))
+            //else if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(hoTen) ||
+            //          string.IsNullOrEmpty(ngaySinhStr) || string.IsNullOrEmpty(cccd) ||
+            //         string.IsNullOrEmpty(sdt))
+            //{
+            //    ViewBag.Notification = "Vui lòng nhập đủ thông tin nhé! Xin cảm ơn";
+            //}
+            //else if (!(gioiTinh == "Nam" || gioiTinh == "Nữ"))
+            //{
+            //    ViewBag.Notification = "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'";
+            //}
+            //else if (ngaySinh > ngaySinh18)
+            //{
+            //    ViewBag.Notification = "Yêu cầu lớn hơn 15+";
+            //}
+            else if (cccd.Length != 12 || !Regex.IsMatch(cccd, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Vui lòng nhập đủ thông tin nhé ! Xin cảm ơn";
+                ViewBag.Notification = "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ, kí tự";
             }
-            else if (!(khachhang.GioiTinh_KH == "Nam" || khachhang.GioiTinh_KH == "Nữ"))
+            else if (sdt.Length != 10 || !Regex.IsMatch(sdt, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'";
+                ViewBag.Notification = "Số điện thoại phải có 10 số và không bao gồm chữ, kí tự";
             }
-            else if (khachhang.NgaySinh_KH > ngaySinh18)
-            {
-                ViewBag.Notification = "Yêu cầu lớn hơn 15+";
-            }
-            else if (khachhang.CCCD.Length != 12 || !Regex.IsMatch(khachhang.CCCD, @"^[0-9]+$"))
-            {
-                ViewBag.Notification = "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ,kí tự";
-            }
-            else if (khachhang.SDT_KH.Length != 10 || !Regex.IsMatch(khachhang.SDT_KH, @"^[0-9]+$"))
-            {
-                ViewBag.Notification = "Số điện thoại phải có 10 số và không bao gồm chữ,kí tự";
-            }
-            else if (db.KHACHHANGs.Any(x => x.CCCD == khachhang.CCCD))
+            else if (db.KHACHHANGs.Any(x => x.CCCD == cccd))
             {
                 ViewBag.Notification = "Căn Cước Công Dân này đã tồn tại";
             }
-            else if (db.KHACHHANGs.Any(x => x.SDT_KH == khachhang.SDT_KH))
+            else if (db.KHACHHANGs.Any(x => x.SDT_KH == sdt))
             {
                 ViewBag.Notification = "Số Điện Thoại này đã tồn tại";
             }
-            else if (!MatKhauManh(khachhang.MatKhau))
+            else if (!MatKhauManh(password))
             {
                 ViewBag.Notification = "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt";
             }
             else
             {
+                KHACHHANG khachhang = new KHACHHANG
+                {
+                    Mail_KH = email,
+                    MatKhau = password,
+                    HoTen_KH = hoTen,
+                    GioiTinh_KH = gioiTinh,
+                    //NgaySinh_KH = ngaySinh,
+                    CCCD = cccd,
+                    SDT_KH = sdt
+                };
+
                 db.KHACHHANGs.Add(khachhang);
                 db.SaveChanges();
+
                 Session["IDUser"] = khachhang.ID_KH.ToString();
                 Session["EmailUserSS"] = khachhang.Mail_KH.ToString();
                 Session["UsernameSS"] = khachhang.HoTen_KH.ToString();
                 Session["SDT"] = khachhang.SDT_KH.ToString();
+
                 return RedirectToAction("DangNhap", "Home");
             }
-            return View();
+
+            return View("DangNhap");
         }
 
         private bool MatKhauManh(string password)
@@ -125,14 +152,20 @@ namespace DAPM_TOURDL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DangNhap(KHACHHANG khachhang)
+        public ActionResult SignIn(KHACHHANG khachhang, FormCollection values)
         {
-            var kiemTraDangNhap = db.KHACHHANGs.Where(x => x.Mail_KH.Equals(khachhang.Mail_KH) && x.MatKhau.Equals(khachhang.MatKhau)).FirstOrDefault();
+            string email = values["Mail_KH"];
+            string password = values["MatKhau"];
+
+            var kiemTraDangNhap = db.KHACHHANGs
+                .Where(x => x.Mail_KH.Equals(email) && x.MatKhau.Equals(password))
+                .FirstOrDefault();
 
             if (kiemTraDangNhap != null)
             {
                 Session["UsernameSS"] = kiemTraDangNhap.HoTen_KH.ToString();
                 Session["IDUser"] = kiemTraDangNhap.ID_KH;
+
                 // Kiểm tra xem có thông tin tour trong Session không
                 if (Session["TourInfo"] != null)
                 {
@@ -149,7 +182,7 @@ namespace DAPM_TOURDL.Controllers
                 ViewBag.Notification = "Tài khoản và mật khẩu không đúng";
             }
 
-            return View();
+            return View("DangNhap");
         }
 
         public ActionResult DangXuat()
