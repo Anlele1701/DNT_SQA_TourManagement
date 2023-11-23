@@ -87,6 +87,20 @@ namespace DAPM_TOURDL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_HoaDon,SLTreEm,TongTienTour,NgayDat,TinhTrang,SLNguoiLon,TienKhuyenMai,TienPhaiTra,ID_SPTour,ID_KH")] HOADON hOADON)
         {
+            var spTour = db.SPTOURs.Find(hOADON.ID_SPTour);
+            if(spTour == null)
+            {
+                ModelState.AddModelError("ID_SPTour", "SPTOUR không tồn tại");
+            }
+            var khachHang = db.KHACHHANGs.Find(hOADON.ID_KH);
+            if (khachHang == null)
+            {
+                ModelState.AddModelError("ID_KH", "KHACHHANG không tồn tại");
+            }
+            if(hOADON.SLNguoiLon + hOADON.SLTreEm > spTour.SoNguoi)
+            {
+                ModelState.AddModelError("", $"Tổng số lượng người lớn và trẻ em không được vượt quá {spTour.SoNguoi}");
+            }
             if (ModelState.IsValid)
             {
                 db.HOADONs.Add(hOADON);
@@ -123,6 +137,29 @@ namespace DAPM_TOURDL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_HoaDon,SLTreEm,TongTienTour,NgayDat,TinhTrang,SLNguoiLon,TienKhuyenMai,TienPhaiTra,ID_SPTour,ID_KH")] HOADON hOADON)
         {
+            // Kiểm tra xem đơn hàng có tồn tại không
+            var existHD = db.HOADONs.Find(hOADON.ID_HoaDon);
+            if(existHD == null)
+            {
+                ModelState.AddModelError("ID_HoaDon", "Đơn hàng không tồn tại");
+                return View(hOADON);
+            }
+            // Kiểm tra xem SPTOUR có tồn tại không
+            var spTour = db.SPTOURs.Find(hOADON.ID_SPTour);
+            if(spTour == null)
+            {
+                ModelState.AddModelError("ID_SPTour", "Sản phẩm tour không tồn tại");
+            }
+            // Kiểm tra xem KHACHHANG có tồn tại không
+            var khachHang = db.KHACHHANGs.Find(hOADON.ID_KH);
+            if (khachHang == null)
+            {
+                ModelState.AddModelError("ID_KH", "Khách hàng không tồn tại");
+            }
+            if (hOADON.SLNguoiLon + hOADON.SLTreEm > spTour.SoNguoi)
+            {
+                ModelState.AddModelError("", $"Tổng số lượng người lớn và trẻ em không được vượt quá {spTour.SoNguoi}");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(hOADON).State = EntityState.Modified;

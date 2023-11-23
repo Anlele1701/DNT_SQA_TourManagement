@@ -37,7 +37,30 @@
     opacity: 0;
     visibility: hidden;
 }
+.head {
+    height: 40vh;
+    position: relative;
+}
 
+.content-main {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    z-index: 1;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    color: white
+}
+
+.hero-image {
+    height: 40vh;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(99%)blur(0.5px);
+}
 #logo {
     font-size: 36px;
     font-weight: 300;
@@ -82,17 +105,6 @@
     margin: 0px 16px 0px 16px;
     cursor: pointer;
 }
-    .nav-item div.nav-link a{
-        color: white;
-    }
-    
-
-.nav-item div.nav-link a {
-    color: white;
-}
-
-
-
 
 #navbar form button {
     background: #0094ff;

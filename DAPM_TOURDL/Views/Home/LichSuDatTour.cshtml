@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DAPM_TOURDL.Models.HOADON>
 
 @{
-    ViewBag.Title = "LichSuDatTour";
+    ViewBag.Title = "Lịch Sử Đặt Tour";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 <link rel="stylesheet" href="~/CSS/Client/LichSuDatTour.css" />
@@ -12,12 +12,6 @@
 </div>
 
 <!-- Popup -->
-<div class="modal fade" id="myModal" aria-hidden="true" role="dialog" data-url="@Url.Action("ThanhToanMomo","Home")">
-    <div class="modal-dialog">
-        <div class="modal-content"></div>
-    </div>
-</div>
-
 <div id="ModalDelete" class="modal fade" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content"></div>
@@ -25,6 +19,14 @@
 </div>
 <!-- Popup -->
 <h2 class="text-center text-uppercase fw-bold">Lịch sử tour đã đặt</h2>
+@if (ViewBag.Mes != null)
+{
+    <div class="alert alert-warning">@ViewBag.Mes</div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
 @foreach (var item in Model)
 {
     var currentTime = DateTime.Now;
@@ -78,7 +80,7 @@
                                 <button id="@item.ID_HoaDon" onclick="Delete(this.id)" type="button" class="btn btn-danger">
                                     Huỷ
                                 </button>
-                                <a class="btn btn-primary" id="@item.ID_HoaDon" onclick="ShowMomo(this.id)">Thanh Toán</a>
+                                <a class="btn btn-primary" href="@Url.Action("ThanhToanMomo","Home",new {id=item.ID_HoaDon})">Thanh Toán VNPAY</a>
                             }
                             else
                             {
@@ -113,8 +115,10 @@
         </div>
     </div>
 }
+
 <script type="text/javascript">
-        function ShowMomo(id) {
+    @*<a class="btn btn-primary" id="@item.ID_HoaDon" onclick="ShowMomo(this.id)">Thanh Toán</a>*@
+    @*function ShowMomo(id) {
             $.get("@Url.Action("ThanhToanMomo","Home")/" + id,
                 function (data) {
                     $('#myModal').html(data);
@@ -123,7 +127,7 @@
         }
         $('#myModal').on('hidden.bs.modal', function (e) {
             $('.modal-content').html("")
-        })
+        })*@
 
     function Delete(id) {
         $.get("@Url.Action("HuyTourDaDat", "Home")/" + id,

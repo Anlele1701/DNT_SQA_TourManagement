@@ -1,10 +1,15 @@
 ﻿@model DAPM_TOURDL.Models.KHACHHANG
 
 @{
-    ViewBag.Title = "Signup";
+    ViewBag.Title = "Đăng Ký";
     Layout = null;
 }
-<link href="~/CSS/Client/LoginAndSignUp.css" rel="stylesheet" />
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="~/Images/logo3.jpg" />
+    <link href="~/CSS/Client/LoginAndSignUp.css" rel="stylesheet" />
+</head>
 
 @using (Html.BeginForm())
 {

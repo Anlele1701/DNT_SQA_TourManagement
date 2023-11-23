@@ -1,16 +1,21 @@
 ﻿@model DAPM_TOURDL.Models.KHACHHANG
 
 @{
-    ViewBag.Title = "DangNhap";
+    ViewBag.Title = "Đăng Nhập";
     Layout = null;
 }
-<link rel="stylesheet" href="~/CSS/Client/LoginAndSignUp.css" />
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="~/Images/logo3.jpg" />
+    <link rel="stylesheet" href="~/CSS/Client/LoginAndSignUp.css" />
+</head>
 @using (Html.BeginForm())
 {
     <div class="container">
         <div class="row row-cols-1 row-cols-md-1 g-5 py-5">
             <div class="col">
-                <a href="@Url.Action("Index","Home")" style="color:black">
+                <a href="@Url.Action("HomePage","Home")" style="color:black">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          width="20px"
                          height="20px"

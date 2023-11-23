@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using DAPM_TOURDL.Models;
 using ClosedXML.Excel;
+using System.Text.RegularExpressions;
 
 namespace DAPM_TOURDL.Controllers
 {
@@ -93,6 +94,36 @@ namespace DAPM_TOURDL.Controllers
         public ActionResult Create([Bind(Include = "ID_KH,HoTen_KH,GioiTinh_KH,NgaySinh_KH,MatKhau,CCCD,SDT_KH,Mail_KH,Diem")] KHACHHANG kHACHHANG)
         {
             kHACHHANG.Diem = 0;
+            if (db.KHACHHANGs.Any(x => x.Mail_KH == kHACHHANG.Mail_KH) || db.NHANVIENs.Any(x => x.Mail_NV == kHACHHANG.Mail_KH))
+            {
+                ModelState.AddModelError("Mail_KH", "Email này đã tồn tại");
+                return View(kHACHHANG);
+            }
+            if (db.KHACHHANGs.Any(x => x.CCCD == kHACHHANG.CCCD))
+            {
+                ModelState.AddModelError("CCCD", "CCCD đã tồn tại");
+            }
+            if (kHACHHANG.CCCD.Length != 12 || !Regex.IsMatch(kHACHHANG.CCCD, @"^[0-9]+$"))
+            {
+                ModelState.AddModelError("CCCD", "CCCD không đúng 12 số");
+            }
+            if (db.KHACHHANGs.Any(x=>x.SDT_KH == kHACHHANG.SDT_KH) || db.NHANVIENs.Any(x=>x.SDT_NV == kHACHHANG.SDT_KH))
+            {
+                ModelState.AddModelError("SDT_KH", "Số điện thoại đã tồn tại");
+            }
+            if (kHACHHANG.SDT_KH.Length != 10 || !Regex.IsMatch(kHACHHANG.SDT_KH, @"^[0-9]+$"))
+            {
+                ModelState.AddModelError("SDT_KH", "Số điện thoại không đúng 10 số");
+            }
+            DateTime ngaySinh18 = DateTime.Now.AddYears(-16);
+            if(kHACHHANG.NgaySinh_KH > ngaySinh18)
+            {
+                ModelState.AddModelError("NgaySinh_KH", "Ngày sinh phải lớn hơn 16 tuổi");
+            }
+            if (!MatKhauManh(kHACHHANG.MatKhau))
+            {
+                ModelState.AddModelError("MatKhau", "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt");
+            }
             if (ModelState.IsValid)
             {
                 db.KHACHHANGs.Add(kHACHHANG);
@@ -101,6 +132,11 @@ namespace DAPM_TOURDL.Controllers
             }
 
             return View(kHACHHANG);
+        }
+        private bool MatKhauManh(string password)
+        {
+            return password.Length >= 8 &&
+                Regex.IsMatch(password, @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).*$");
         }
 
         // GET: KHACHHANGs/Edit/5
@@ -125,6 +161,52 @@ namespace DAPM_TOURDL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_KH,HoTen_KH,GioiTinh_KH,NgaySinh_KH,MatKhau,CCCD,SDT_KH,Mail_KH,Diem")] KHACHHANG kHACHHANG)
         {
+            // Check Mail
+            if (db.KHACHHANGs.Any(x => x.Mail_KH == kHACHHANG.Mail_KH && x.ID_KH != kHACHHANG.ID_KH) || db.NHANVIENs.Any(x => x.Mail_NV == kHACHHANG.Mail_KH))
+            {
+                ModelState.AddModelError("Mail_KH", "Email này đã tồn tại");
+                return View(kHACHHANG);
+            }
+
+            // Check CCCD
+            if (db.KHACHHANGs.Any(x => x.CCCD == kHACHHANG.CCCD && x.ID_KH != kHACHHANG.ID_KH))
+            {
+                ModelState.AddModelError("CCCD", "CCCD đã tồn tại");
+            }
+            if (kHACHHANG.CCCD.Length != 12 || !Regex.IsMatch(kHACHHANG.CCCD, @"^[0-9]+$"))
+            {
+                ModelState.AddModelError("CCCD", "CCCD không đúng 12 số");
+            }
+            //
+            // Check SĐT
+            if (db.KHACHHANGs.Any(x => x.SDT_KH == kHACHHANG.SDT_KH && x.ID_KH != kHACHHANG.ID_KH) || db.NHANVIENs.Any(x => x.SDT_NV == kHACHHANG.SDT_KH))
+            {
+                ModelState.AddModelError("SDT_KH", "Số điện thoại đã tồn tại");
+            }
+            if (kHACHHANG.SDT_KH.Length != 10 || !Regex.IsMatch(kHACHHANG.SDT_KH, @"^[0-9]+$"))
+            {
+                ModelState.AddModelError("SDT_KH", "Số điện thoại không đúng 10 số");
+            }
+            //
+            // Check Ngày sinh
+            DateTime ngaySinh18 = DateTime.Now.AddYears(-16);
+            if (kHACHHANG.NgaySinh_KH > ngaySinh18)
+            {
+                ModelState.AddModelError("NgaySinh_KH", "Ngày sinh phải lớn hơn 16 tuổi");
+            }
+            //
+            // Check mật khẩu
+            if (!MatKhauManh(kHACHHANG.MatKhau))
+            {
+                ModelState.AddModelError("MatKhau", "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt");
+            }
+            //
+            // Check GIOITINH
+            if (!(kHACHHANG.GioiTinh_KH == "Nam" || kHACHHANG.GioiTinh_KH == "Nữ"))
+            {
+                ModelState.AddModelError("GioiTinh_KH", "giới tính chỉ Nam hoặc Nữ");
+            }
+            //
             if (ModelState.IsValid)
             {
                 db.Entry(kHACHHANG).State = EntityState.Modified;
