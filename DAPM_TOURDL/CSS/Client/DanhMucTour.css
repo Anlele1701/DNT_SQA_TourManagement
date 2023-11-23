@@ -56,28 +56,60 @@
     left: 5%;
     color: white
 }
+.btn-search {
+    background-color: #2D9596;
+    border: none;
+    color: #F4F7F7;
+    font-size: 22px;
+    font-weight: 600px;
+    border-radius: 10px;
+    height: 40px;
+    width: 120px;
+}
+    .btn-search:hover {
+        background-color: #176B87;
+        transition: ease-out 0.5s;
+    }
+
+.btn-more {
+    background-color: #2D9596;
+    border: none;
+    color: #F4F7F7;
+    font-size: 16px;
+    font-weight: 400px;
+    border-radius: 6px;
+    width: 100px;
+    height: 28px;
+    text-decoration: none;
+    text-align: center;
+    float: right;
+}
+
+    .btn-more:hover {
+        background-color: #176B87;
+        transition: ease-out 0.5s;
+    }
 /*Phân trang
 */
 .pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    margin-right: 5px;
 }
 
     .pagination a {
-        color: #ffffff;
+        color: #191717;
         padding: 8px 16px;
         text-decoration: none;
         transition: background-color 0.3s;
-        border: 1px solid #007bff;
-        background: #5cb85c;
+        background-color: #F4F7F7;
         font-weight: bold;
-        border: 1px solid #5cb85c;
     }
 
-    .pagination .active {
-        background-color: black;
-        color: black;
+    .pagination .active a{
+        background: #2D9596 !important;
+        color: #F4F7F7 ;
     }
 
     .pagination .prev, .pagination .next {
@@ -86,8 +118,7 @@
     }
 
     .pagination a:hover:not(.active) {
-        background-color: #f2f2f2;
-        color: black
+        background-color: #F1EFEF;
     }
 
     .pagination a, .pagination .prev, .pagination .next {

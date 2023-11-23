@@ -120,7 +120,7 @@ namespace DAPM_TOURDL.Controllers
         [HttpGet]
         public ActionResult DangNhap()
         {
-            return PartialView();
+            return View();
         }
 
         [HttpPost]
