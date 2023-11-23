@@ -75,17 +75,21 @@
                         <td>
                             @if (item.NgayDat < currentTime)
                             {
-                                <button id="@item.ID_HoaDon" onclick="Delete(this.id)" type="button" class="btn btn-danger">
-                                    Huỷ
-                                </button>
-                                <a class="btn btn-primary" id="@item.ID_HoaDon" onclick="ShowMomo(this.id)">Thanh Toán</a>
-                            }
-                            else
-                            {
 
+                                if (item.TinhTrang == "Chưa TT")
+                                {<button id="@item.ID_HoaDon" onclick="Delete(this.id)" type="button" class="btn btn-danger">
+                                        Huỷ
+                                    </button>
+                                    <a class="btn btn-primary" id="@item.ID_HoaDon"
+                                       href="@Url.Action("UrlPayment","Home", new {orderCode = @item.ID_HoaDon})">Thanh Toán</a>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-success">Đã Thanh Toán</button>
+                                }
                             }
                         </td>
-                    </tr>
+                        </tr>
                 </tbody>
             </table>
         </div>
