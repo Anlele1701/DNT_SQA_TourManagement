@@ -39,6 +39,16 @@ body {
     opacity: 0;
     z-index: 1;
 }
+    .sign-up-container h1 {
+        text-align: center;
+        padding-top: 25px;
+    }
+.sign-up-container .sign-up-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
 
 .sign-in-container {
     z-index: 2;
@@ -53,7 +63,7 @@ form {
     width: 100%;
 }
 h1 {
-    color: #4A7EC0;
+    color: #2D9596;
 }
 .infield {
     position: relative;
@@ -67,41 +77,48 @@ h1 {
     outline: none;
     border: none;
 }
-.input-dang-nhap {
-    width: 350px;
-    height: 50px;
-    background-color: #dedede;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    font-size: 16px;
+label {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    height: 2px;
+    background: #2D9596;
+    transition: 0.3s;
+    width:0;
 }
-
-.input-dang-ki {
-    height: 40px;
-    width: 300px;
-    background-color: #dedede;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    font-size: 13px;
+.input:focus ~ label {
+    width: 100%;
 }
-
-.btn-form {
-    border-radius: 10px;
-    background: #4a7ec0;
-    color: #ffffff;
-    border: none;
+a {
+    color: #222222;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0px;
+}
+a.forgot {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #EEE;
+}
+button {
+    border-radius: 20px;
+    color: #F9F9F9;
+    background-color: #2D9596;
     font-size: 16px;
     font-weight: bold;
-    width: 120px;
-    height: 38px;
+    padding: 12px 45px;
+    border: none;
 }
 
 .form-container button {
+    margin-top: 17px;
     transition: 80ms ease-in;
 }
-
+    .form-container button:hover {
+        border: 1px solid #088395;
+        background: #fff;
+        color: #2D9596;
+    }
 .overlay-container {
     position: absolute;
     top: 0;
@@ -112,24 +129,23 @@ h1 {
     transition: transform 0.6s ease-in-out;
     z-index: 9;
 }
-
-.overlayBtn {
+#overlayBtn {
     cursor: pointer;
     position: absolute;
     left: 50%;
-    top: 350px;
-    padding-left: 20px;
-    padding-bottom: 24px;
+    top: 304px;
     transform: translateX(-50%);
+    width: 143.67px;
+    height: 40px;
     background: transparent;
-    width: 158px;
-    border: none;
+    border-radius: 20px;
+    border: 1px solid #FFF;
 }
 
 .overlay {
     position: relative;
-    background: #4278bd;
-    color: #fff;
+    background: #2D9596;
+    color: #FFF;
     left: -150%;
     height: 100%;
     width: 250%;
@@ -157,6 +173,20 @@ h1 {
 .overlay-right {
     right: 0;
     transform: translateX(0%);
+}
+.overlay-panel h1 {
+    color: #FFF;
+}
+p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    margin: 25px 0px 35px;
+}
+.overlay-panel button {
+    border: none;
+    background-color: transparent;
 }
 
 .right-panel-active .overlay-container {
@@ -215,56 +245,5 @@ h1 {
     100% {
         width: 143.67px;
     }
-}
-
-.chao-ban-moi {
-    color: #f6f4ec;
-    text-align: center;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.Welcome-back {
-    color: #f6f4ec;
-    text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.p-1 {
-    color: #fff;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-bottom: 0px;
-}
-
-.p-2 {
-    color: #d9673a;
-    font-size: 24px;
-    font-style: italic;
-    font-weight: 500;
-    line-height: normal;
-    text-decoration-line: underline;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-.p-change-3 {
-    color: #d9673a;
-    font-size: 45px;
-    font-weight: 400;
-    margin-bottom: 0px;
-}
-
-.img-resize {
-    width: 90px;
-    height: 90px;
-    border-radius: 15px;
 }
 
