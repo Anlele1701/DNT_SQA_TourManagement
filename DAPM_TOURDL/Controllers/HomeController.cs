@@ -23,7 +23,18 @@ namespace DAPM_TOURDL.Controllers
         {
             return View(db.TOURs.ToList());
         }
-
+        public ActionResult LoginAndRegister()
+        {
+            if(TempData["Mes"] != null)
+            {
+                ViewBag.Mes = TempData["Mes"];
+            }
+            return View();
+        }
+        public ActionResult RegisterAndLogin()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             return View();
@@ -54,57 +65,58 @@ namespace DAPM_TOURDL.Controllers
         }
         public ActionResult DangKy()
         {
-
             return View();
         }
         [HttpPost]
         public ActionResult DangKy(KHACHHANG khachhang)
         {
             DateTime ngayHienTai = DateTime.Now;
-            DateTime ngaySinh18 = ngayHienTai.AddYears(-16);
+            DateTime ngaySinh16 = ngayHienTai.AddYears(-16);
             if (db.KHACHHANGs.Any(x => x.Mail_KH == khachhang.Mail_KH))
             {
-                ViewBag.Notification = "Tài khoản đã tồn tại";
+                ModelState.AddModelError("", "Tài khoản đã tồn tại");
             }
             else if (string.IsNullOrEmpty(khachhang.Mail_KH) || khachhang.GioiTinh_KH == null || khachhang.NgaySinh_KH == null || string.IsNullOrEmpty(khachhang.MatKhau) || string.IsNullOrEmpty(khachhang.CCCD) || string.IsNullOrEmpty(khachhang.SDT_KH) || string.IsNullOrEmpty(khachhang.HoTen_KH))
             {
-                ViewBag.Notification = "Vui lòng không bỏ trống field nào nhé ^_^";
+                ModelState.AddModelError("", "Vui lòng không bỏ trống field nào nhé ^_^");
             }
             else if (!(khachhang.GioiTinh_KH == "Nam" || khachhang.GioiTinh_KH == "Nữ"))
             {
-                ViewBag.Notification = "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'";
+                ModelState.AddModelError("", "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'");
             }
-            else if (khachhang.NgaySinh_KH > ngaySinh18)
+            else if (khachhang.NgaySinh_KH > ngaySinh16)
             {
-                ViewBag.Notification = "Yêu cầu lớn hơn 16+";
+                ModelState.AddModelError("", "Yêu cầu lớn hơn 16+");
             }
             else if (khachhang.CCCD.Length != 12 || !Regex.IsMatch(khachhang.CCCD, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ,kí tự";
+                ModelState.AddModelError("", "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ, kí tự");
             }
             else if (khachhang.SDT_KH.Length != 10 || !Regex.IsMatch(khachhang.SDT_KH, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Số điện thoại phải có 10 số và không bao gồm chữ,kí tự";
+                ModelState.AddModelError("", "Số điện thoại phải có 10 số và không bao gồm chữ, kí tự");
             }
             else if(db.KHACHHANGs.Any(x=>x.CCCD == khachhang.CCCD))
             {
-                ViewBag.Notification = "Căn Cước Công Dân này đã tồn tại";
+                ModelState.AddModelError("", "Căn Cước Công Dân này đã tồn tại");
             }
             else if(db.KHACHHANGs.Any(x=>x.SDT_KH == khachhang.SDT_KH))
             {
-                ViewBag.Notification = "Số Điện Thoại này đã tồn tại";
+                ModelState.AddModelError("", "Số Điện Thoại này đã tồn tại");
             }
             else if (!MatKhauManh(khachhang.MatKhau))
             {
-                ViewBag.Notification = "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt";
+                ModelState.AddModelError("", "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt");
             }
             else
             {
                 db.KHACHHANGs.Add(khachhang);
                 db.SaveChanges();
-                return RedirectToAction("DangNhap", "Home");
-            }
-            return View();
+                TempData["Mes"] = "Đăng ký thành công";
+                //return RedirectToAction("LoginAndRegister", "Home");
+                return RedirectToAction("LoginAndRegister");
+            }   
+            return View("RegisterAndLogin");
         }
         private bool MatKhauManh(string password)
         {
@@ -126,10 +138,7 @@ namespace DAPM_TOURDL.Controllers
 
             if (kiemTraDangNhap != null)
             {
-                if(kiemTraDangNhap.HoTen_KH != null)
-                {
-                    Session["UsernameSS"] = kiemTraDangNhap.HoTen_KH.ToString();
-                }
+                Session["UsernameSS"] = kiemTraDangNhap.HoTen_KH.ToString();
                 Session["IDUser"] = kiemTraDangNhap.ID_KH;
                 /*Session["EmailUserSS"] = kiemTraDangNhap.Mail_KH.ToString();
                 Session["GioiTinh"] = kiemTraDangNhap.GioiTinh_KH;
@@ -149,10 +158,10 @@ namespace DAPM_TOURDL.Controllers
             }
             else
             {
-                ViewBag.Notification = "Tài khoản và mật khẩu không đúng";
+                ModelState.AddModelError("MatKhau", "Thông tin đăng nhập không hợp lệ");
             }
-
-            return View();
+            
+            return View("LoginAndRegister");
         }
         public ActionResult DangXuat()
         {
@@ -190,35 +199,35 @@ namespace DAPM_TOURDL.Controllers
             DateTime ngayTruocKhiDu16Tuoi = DateTime.Now.AddYears(-16);
             if ((khachhang.GioiTinh_KH != "Nam" && khachhang.GioiTinh_KH != "Nữ"))
             {
-                ViewBag.Notification = "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'";
+                ModelState.AddModelError("GioiTinh_KH", "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'");
             }
             else if (khachhang.NgaySinh_KH > ngayTruocKhiDu16Tuoi)
             {
-                ViewBag.Notification = "Ngày sinh phải đủ 16 tuổi";
+                ModelState.AddModelError("NgaySinh_KH", "Ngày sinh phải đủ 16 tuổi");
             }
             else if (khachhang.CCCD.Length != 12 || !Regex.IsMatch(khachhang.CCCD, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ,kí tự";
+                ModelState.AddModelError("CCCD", "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ,kí tự");
             }
             else if (khachhang.SDT_KH.Length != 10 || !Regex.IsMatch(khachhang.SDT_KH, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Số điện thoại phải có 10 số và không bao gồm chữ,kí tự";
+                ModelState.AddModelError("SDT_KH", "Số điện thoại phải có 10 số và không bao gồm chữ,kí tự");
             }
             else if (db.KHACHHANGs.Any(x => x.CCCD == khachhang.CCCD && x.ID_KH != khachhang.ID_KH))
             {
-                ViewBag.Notification = "Căn cước công dân này đã được đăng ký";
+                ModelState.AddModelError("CCCD", "Căn cước công dân này đã được đăng ký");
             }
             else if (db.KHACHHANGs.Any(x => x.SDT_KH == khachhang.SDT_KH && x.ID_KH != khachhang.ID_KH))
             {
-                ViewBag.Notification = "Số điện thoại này đã có người sử dụng";
+                ModelState.AddModelError("SDT_KH", "Số điện thoại này đã có người sử dụng");
             }
-            else if (khachhang.HoTen_KH.Length > 32)
+            else if (khachhang.HoTen_KH.Length > 64)
             {
-                ViewBag.Notification = "Tên không được quá 64 ký tự";
+                ModelState.AddModelError("HoTen_KH", "Tên không được quá 64 ký tự");
             }
             else if (db.KHACHHANGs.Any(x => x.MatKhau != khachhang.MatKhau && x.ID_KH == khachhang.ID_KH))
             {
-                ViewBag.Notification = "Mật khẩu xác nhận không chính xác";
+                ModelState.AddModelError("MatKhau", "Mật khẩu xác nhận không chính xác");
             }
             else if (ModelState.IsValid)
             {

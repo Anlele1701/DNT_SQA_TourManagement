@@ -56,11 +56,11 @@
                         }
                         else
                         {
-                            <li class="nav-item">
+@*                            <li class="nav-item">
                                 @Html.ActionLink("Đăng ký", "DangKy", "Home", new { @class = "nav-link" })
-                            </li>
+                            </li>*@
                             <li class="nav-item">
-                                @Html.ActionLink("Đăng nhập", "DangNhap", "Home", null, new { @class = "nav-link" })
+                                @Html.ActionLink("Đăng nhập", "LoginAndRegister", "Home", null, new { @class = "nav-link" })
                             </li>
                         }
                     </ul>
@@ -132,5 +132,6 @@
             });
         });
     </script>
+    @RenderSection("Validation",false)
 </body>
 </html>

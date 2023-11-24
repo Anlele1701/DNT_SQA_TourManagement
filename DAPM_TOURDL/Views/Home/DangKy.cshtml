@@ -11,103 +11,45 @@
     <link href="~/CSS/Client/LoginAndSignUp.css" rel="stylesheet" />
 </head>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("DangKy", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div class="container">
-        <div class="row row-cols-1 row-cols-md-1 g-5 py-5">
-            <div class="col">
-                <a href="@Url.Action("HomePage","Home")" style="color:black">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         width="20px"
-                         height="20px"
-                         fill="currentColor"
-                         class="bi bi-x-circle"
-                         viewBox="0 0 16 16"
-                         style="float: right; margin-top:3vh;margin-right:3vh;">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                    </svg>
-                </a>
-                <div class="card sign-up-page">
-                    <h2>Đăng ký</h2>
-
-                    <div class="form-group margin-page">
-                        <div class="col-md-10">
-                            @Html.LabelFor(model => model.HoTen_KH, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.HoTen_KH, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.HoTen_KH, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group margin-page">
-                        <div class="col-md-10">
-                            @Html.LabelFor(model => model.Mail_KH, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Mail_KH, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group margin-page">
-                        <div class="col-md-10">
-                            @Html.LabelFor(model => model.GioiTinh_KH, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.GioiTinh_KH, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.GioiTinh_KH, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group margin-page">
-                        <div class="col-md-10">
-                            @Html.LabelFor(model => model.NgaySinh_KH, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.NgaySinh_KH, new { htmlAttributes = new { @class = "form-control" , type = "date"} })
-                            @Html.ValidationMessageFor(model => model.NgaySinh_KH, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group margin-page">
-                        <div class="col-md-10">
-                            @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group margin-page">
-                        <div class="col-md-10">
-                            @Html.LabelFor(model => model.CCCD, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.CCCD, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.CCCD, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group margin-page">
-                        <div class="col-md-10">
-                            @Html.LabelFor(model => model.SDT_KH, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.EditorFor(model => model.SDT_KH, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.SDT_KH, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="hover-a">
-                        <a href="@Url.Action("DangNhap","Login")" style="color:black;">Bạn đã có tài khoản ? Đăng nhập ngay</a>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <div style="text-align:center;">
-                                <input type="submit" value="Đăng ký" class="btn btn-default" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <label style="color:red;text-align:center">@ViewBag.Notification</label>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+    <form action="#">
+        <h1>Đăng Ký Tài Khoản</h1>
+        <div class="infield">
+            @Html.EditorFor(model => model.HoTen_KH, new { htmlAttributes = new { @class = "input", placeholder = "Họ Tên", @required = "required" } })
+            <label></label>
         </div>
-    </div>
+        <div class="infield">
+            Giới Tính:
+            @Html.RadioButtonFor(model => model.GioiTinh_KH, "Nam", new { @checked = "checked" }) Nam
+            @Html.RadioButtonFor(model => model.GioiTinh_KH, "Nữ") Nữ
+        </div>
+        <div class="infield">
+            @Html.EditorFor(model => model.NgaySinh_KH, new { htmlAttributes = new { @class = "input", placeholder = "", type = "date", @required = "required" } })
+            <label></label>
+        </div>
+        <div class="infield">
+            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "input", placeholder = "Mật Khẩu", type = "password", @required = "required" } })
+            <label></label>
+        </div>
+        <div class="infield">
+            @Html.EditorFor(model => model.CCCD, new { htmlAttributes = new { @class = "input", placeholder = "Căn Cước Công Dân", @required = "required" } })
+            <label></label>
+        </div>
+        <div class="infield">
+            @Html.EditorFor(model => model.SDT_KH, new { htmlAttributes = new { @class = "input", placeholder = "Số Điện Thoại", @required = "required" } })
+            <label></label>
+        </div>
+        <div class="infield">
+            @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "input", placeholder = "Email", @required = "required" } })
+            <label></label>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="sign-up-btn">
+            <button type="submit" style="">Đăng Ký</button>
+            @*<label style="color:red;text-align:center" id="notification">@ViewBag.Notification</label>*@
+        </div>
+
+    </form>
 }

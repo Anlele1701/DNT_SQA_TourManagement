@@ -1,0 +1,57 @@
+﻿@model DAPM_TOURDL.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Đăng Nhập và Đăng ký";
+    Layout = null;
+}
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="~/Images/logo3.jpg" />
+    <link rel="stylesheet" href="~/CSS/Client/LoginAndSignUp.css" />
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            @Html.Partial("DangKy")
+        </div>
+        <div class="form-container sign-in-container">
+            @Html.Partial("DangNhap")
+        </div>
+        <div class="overlay-container" id="overlayCon">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    @*<img src="~/Images/logo3.jpg" class="logo"/>*@
+                    <h1>Chào Mừng Bạn Trở Lại!</h1>
+                    <p>Hãy đăng nhập để có trải nghiệm tốt nhất</p>
+                    <button>Đăng Nhập</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Xin Chào Bạn Mới!</h1>
+                    <p>Đăng ký tài khoản ngay để cùng Viet Travel vi vu khắp nơi</p>
+                    <button type="button" style="margin-top: -20px">Đăng Ký</button>
+                </div>
+            </div>
+            <button type="button" id="overlayBtn"></button>
+        </div>
+    </div>
+</body>
+@* ĐỂ KHUNG DI CHUYỂN QUA LẠI *@
+<script>
+    const container = document.getElementById('container');
+    const overlayCon = document.getElementById('overlayCon');
+    const overlayBtn = document.getElementById('overlayBtn');
+
+    overlayBtn.addEventListener('click', () => {
+        container.classList.toggle('right-panel-active');
+
+        overlayBtn.classList.remove('btnScaled');
+        window.requestAnimationFrame(() => {
+            overlayBtn.classList.add('btnScaled');
+        });
+    });
+</script>
+@section Validation{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
