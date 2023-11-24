@@ -18,7 +18,7 @@
 <body>
     <!-- Navbar Start-->
     <div class="loader">
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb253Y3Y3dnhnZnp1ZW9yNGJxYjZtNjh5YjBzZnNkejg1ZzkzNmpwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/dYUslDahf6Uw71gH3t/giphy.gif"/>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb253Y3Y3dnhnZnp1ZW9yNGJxYjZtNjh5YjBzZnNkejg1ZzkzNmpwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/dYUslDahf6Uw71gH3t/giphy.gif" />
     </div>
     <div class="div-navbar">
         <nav class="navbar navbar-expand-lg" id="navbar">
@@ -39,7 +39,7 @@
                             @Html.ActionLink("Danh mục tour", "DanhMucSanPham", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Về chúng tôi","About","Home",null, new { @class="nav-link"})
+                            @Html.ActionLink("Về chúng tôi", "About", "Home", null, new { @class = "nav-link" })
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
@@ -56,9 +56,9 @@
                         }
                         else
                         {
-@*                            <li class="nav-item">
-                                @Html.ActionLink("Đăng ký", "DangKy", "Home", new { @class = "nav-link" })
-                            </li>*@
+                            @*                            <li class="nav-item">
+                                    @Html.ActionLink("Đăng ký", "DangKy", "Home", new { @class = "nav-link" })
+                                </li>*@
                             <li class="nav-item">
                                 @Html.ActionLink("Đăng nhập", "LoginAndRegister", "Home", null, new { @class = "nav-link" })
                             </li>
@@ -132,6 +132,6 @@
             });
         });
     </script>
-    @RenderSection("Validation",false)
+    @RenderSection("Validation", false)
 </body>
 </html>

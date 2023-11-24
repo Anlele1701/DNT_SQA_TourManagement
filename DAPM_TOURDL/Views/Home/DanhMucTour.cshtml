@@ -9,7 +9,6 @@
     <div class="content-main">Tất Cả Tour</div>
     <video autoplay loop muted plays-inline class="hero-image"><source src="~/Images/Client/Video/ocean.mp4" /></video>
 </div>
-
 <div class="container my-3">
     <form action="DanhMucTour" method="get">
         <div class="row g-4">
@@ -60,7 +59,7 @@
                         <p class="card-text" style="margin-bottom:0px; font-size:15px"> @Html.DisplayFor(modelItem => item.ID_TOUR)_@Html.DisplayFor(modelItem => item.ID_SPTour)</p>
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.TenSPTour)</h5>
                         <p class="card-text text-black">@string.Format("{0:#,#} VND", item.GiaNguoiLon)</p>
-                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn btn-primary">Xem Chi Tiết</a>
+                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn-more">Xem Chi Tiết</a>
                     </div>
                 </div>
             </div>

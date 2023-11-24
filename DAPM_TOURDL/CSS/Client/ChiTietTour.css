@@ -31,6 +31,24 @@ body {
     border-radius:15px;
     transition:0.8s;
 }
+.btn-more {
+    background-color: #2D9596;
+    border: none;
+    color: #F4F7F7;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+    width: 100px;
+    height: 28px;
+    text-decoration: none;
+    text-align: center;
+    float: right;
+}
+
+    .btn-more:hover {
+        background-color: #176B87;
+        transition: ease-out 0.5s;
+    }
 .chitiettour h3 {
     font-weight: bold;
 }
@@ -71,7 +89,6 @@ body {
     left: 5%;
     color: white;
 }
-
 .btn {
     background-color: #2D9596;
     border: none;
@@ -81,7 +98,9 @@ body {
     border-radius: 10px;
     height: 40px;
     width: 120px;
-    text-align: center:
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
     .btn:hover {
         background-color: #176B87;
