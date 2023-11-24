@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<DAPM_TOURDL.Models.TOUR>
 @{
-    ViewBag.Title = "HomePage";
+    ViewBag.Title = "Trang Chủ";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 <head>
@@ -81,6 +81,9 @@
                 </div>
             }
         </div>
+        <button>
+            <a href="@Url.Action("Payment","Home")">Thanh toán</a>
+        </button>
     </div>
 </body>
 <script type="text/javascript">

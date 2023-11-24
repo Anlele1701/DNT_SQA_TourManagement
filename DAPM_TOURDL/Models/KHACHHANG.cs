@@ -12,6 +12,7 @@ namespace DAPM_TOURDL.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Data.Entity;
 
     public partial class KHACHHANG
     {
@@ -27,7 +28,6 @@ namespace DAPM_TOURDL.Models
         [Display(Name = "Giới Tính (Nam/Nữ)")]
         public string GioiTinh_KH { get; set; }
         [Display(Name = "Ngày Sinh")]
-
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> NgaySinh_KH { get; set; }
         [Display(Name = "Mật khẩu")]
@@ -45,5 +45,10 @@ namespace DAPM_TOURDL.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }
+
+        public static implicit operator DbSet<object>(KHACHHANG v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using ClosedXML.Excel;
 using DAPM_TOURDL.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DAPM_TOURDL.Controllers
 {
@@ -90,8 +91,17 @@ namespace DAPM_TOURDL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ID_NV,HoTen_NV,GioiTinh_NV,NgaySinh_NV,MatKhau,Mail_NV,ChucVu,SDT_NV")] NHANVIEN nHANVIEN)
         {
+            if(db.NHANVIENs.Any(x=>x.SDT_NV == nHANVIEN.SDT_NV) || db.KHACHHANGs.Any(x=>x.SDT_KH == nHANVIEN.SDT_NV))
+            {
+                ModelState.AddModelError("SDT_NV", "Số điện thoại đã tồn tại");
+            }
+            if(db.NHANVIENs.Any(x=>x.Mail_NV == nHANVIEN.Mail_NV) || db.KHACHHANGs.Any(x=>x.Mail_KH == nHANVIEN.Mail_NV))
+            {
+                ModelState.AddModelError("Mail_NV", "Email đã tồn tại");
+            }
             if (ModelState.IsValid)
             {
                 db.NHANVIENs.Add(nHANVIEN);
@@ -122,8 +132,18 @@ namespace DAPM_TOURDL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID_NV,HoTen_NV,GioiTinh_NV,NgaySinh_NV,MatKhau,Mail_NV,ChucVu,SDT_NV")] NHANVIEN nHANVIEN)
         {
+            // Kiểm tra số điện thoại và email trùng lặp, trừ nhân viên đang được chỉnh sửa
+            if (db.NHANVIENs.Any(x=>x.SDT_NV == nHANVIEN.SDT_NV && x.ID_NV != nHANVIEN.ID_NV) || db.KHACHHANGs.Any(x=>x.SDT_KH == nHANVIEN.SDT_NV))
+            {
+                ModelState.AddModelError("SDT_NV", "Số điện thoại đã tồn tại");
+            }
+            if(db.NHANVIENs.Any(x => x.Mail_NV == nHANVIEN.Mail_NV && x.ID_NV != nHANVIEN.ID_NV) || db.KHACHHANGs.Any(x => x.Mail_KH == nHANVIEN.Mail_NV))
+            {
+                ModelState.AddModelError("Mail_NV", "Email đã tồn tại");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(nHANVIEN).State = EntityState.Modified;
@@ -151,6 +171,7 @@ namespace DAPM_TOURDL.Controllers
         // POST: NHANVIENs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);

@@ -1,66 +1,38 @@
-﻿@model DAPM_TOURDL.Models.KHACHHANG
+@model DAPM_TOURDL.Models.KHACHHANG
 
 @{
-    ViewBag.Title = "DangNhap";
+    ViewBag.Title = "Đăng Ký";
     Layout = null;
 }
-<link rel="stylesheet" href="~/CSS/Client/LoginAndSignUp.css" />
-@using (Html.BeginForm())
-{
-    <div class="container">
-        <div class="row row-cols-1 row-cols-md-1 g-5 py-5">
-            <div class="col">
-                <a href="@Url.Action("Index","Home")" style="color:black">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         width="20px"
-                         height="20px"
-                         fill="currentColor"
-                         class="bi bi-x-circle"
-                         viewBox="0 0 16 16"
-                         style="float: right; margin-top:3vh;margin-right:3vh;">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                    </svg>
-                </a>
-                <div class="card">
-                    <h2>Đăng Nhập</h2>
-                    <div style="text-align:center">
-                        <img src="~/Images/logo3.jpg" style="width:auto; height:150px;">
-                    </div>
-                    <form>
-                        <div style="margin-top:20px;">
-                            <div class="form-group">
-                                <div class="div-input">
-                                    <label>Tên đăng nhập</label>
-                                    @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Mail_KH, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-group">
-                                <div class="div-input">
-                                    <label>Mật khẩu</label>
-                                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hover-a">
-                            <a style="text-decoration:none;color:black" href="@Url.Action("Signup","Login")">Bạn chưa có tài khoản ? Đăng ký ngay</a>
-                        </div>
-                        @Html.ValidationMessageFor(m => m.MatKhau)
-                        @Html.AntiForgeryToken()
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="~/Images/logo3.jpg" />
+    <link href="~/CSS/Client/LoginAndSignUp.css" rel="stylesheet" />
+</head>
 
-                        <div class="button-login" style="text-align:center">
-                            <input type="submit" value="Đăng nhập" class="btn btn-default" />
-                        </div>
-                        <div class="col-md-offset-2 col-md-10" style="text-align:center">
-                            <label style="color:red">@ViewBag.Notification</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+@using (Html.BeginForm("DangNhap", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<form action="#">
+    <h1>Đăng Nhập</h1>
+    <div class="infield">
+        @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "input", placeholder = "Email", @required = "required", type = "email" } })
+        <label></label>
     </div>
+    <div class="infield">
+        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "input", placeholder = "Mật Khẩu", type = "password", @required = "required" } })
+        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+        <label></label>
+    </div>
+    <a class="forgot">Quên mật khẩu?</a>
+    <button type="submit">Đăng Nhập</button>
+    <label style="color:red;text-align:center">@ViewBag.Notification</label>
+    @if (ViewBag.Mes != null)
+    {
+        <div class="message">
+            @ViewBag.Mes
+        </div>
+    }
+</form>
 }

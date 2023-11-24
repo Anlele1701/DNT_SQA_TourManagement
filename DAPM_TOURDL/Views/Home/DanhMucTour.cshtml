@@ -1,15 +1,14 @@
-﻿@model PagedList.IPagedList<DAPM_TOURDL.Models.SPTOUR>
+@model PagedList.IPagedList<DAPM_TOURDL.Models.SPTOUR>
 @using PagedList.Mvc
 @{
-    ViewBag.Title = "DanhSachTour";
+    ViewBag.Title = "Danh Mục Tour";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 <link rel="stylesheet" href="~/CSS/Client/DanhMucTour.css" />
 <div class="head">
-    <div class="content-main">Danh mục tour</div>
+    <div class="content-main">Tất Cả Tour</div>
     <video autoplay loop muted plays-inline class="hero-image"><source src="~/Images/Client/Video/ocean.mp4" /></video>
 </div>
-
 <div class="container my-3">
     <form action="DanhMucTour" method="get">
         <div class="row g-4">
@@ -18,7 +17,7 @@
             </div>
             <div class="col-3 d-flex justify-content-end">
                 <select class="form-select form-select-sm" name="to">
-                    <option value="">Giá từ</option>
+                    <option value="" hidden>Giá từ</option>
                     <option value="0">0 VND</option>
                     <option value="2000000">2.000.000 VND</option>
                     <option value="4000000">4.000.000 VND</option>
@@ -30,7 +29,7 @@
             </div>
             <div class="col-3 d-flex justify-content-end">
                 <select class="form-select form-select-sm" name="from">
-                    <option value="">Đến giá</option>
+                    <option value="" hidden>Đến giá</option>
                     <option value="0">0 VND</option>
                     <option value="2000000">2.000.000 VND</option>
                     <option value="4000000">4.000.000 VND</option>
@@ -40,7 +39,7 @@
                 </select>
             </div>
             <div class="col-3 d-flex justify-content-center">
-                <input type="submit" value="Search" class="btn btn-primary btn-lg">
+                <input type="submit" value="Search" class="btn-search">
             </div>
         </div>
     </form>
@@ -59,8 +58,8 @@
                     <div class="card-body" style="text-align:left;">
                         <p class="card-text" style="margin-bottom:0px; font-size:15px"> @Html.DisplayFor(modelItem => item.ID_TOUR)_@Html.DisplayFor(modelItem => item.ID_SPTour)</p>
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.TenSPTour)</h5>
-                        <p class="card-text text-black">@string.Format("{0:#,#}đ", Convert.ToDecimal(item.GiaNguoiLon))</p>
-                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn btn-primary">Xem Chi Tiết</a>
+                        <p class="card-text text-black">@string.Format("{0:#,#} VND", item.GiaNguoiLon)</p>
+                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn-more">Xem Chi Tiết</a>
                     </div>
                 </div>
             </div>

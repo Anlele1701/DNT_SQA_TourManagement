@@ -1,7 +1,7 @@
-﻿@model IEnumerable<DAPM_TOURDL.Models.SPTOUR>
+@model IEnumerable<DAPM_TOURDL.Models.SPTOUR>
 
 @{
-    ViewBag.Title = "ChiTietTour";
+    ViewBag.Title = "Chi Tiết Tour";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 <link rel="stylesheet" href="~/CSS/Client/ChiTietTour.css" />
@@ -18,28 +18,28 @@
 
     <div class="card mb-3 card-tour chitiettour" style="border:none">
         <div style="font-weight: bold; text-align: center;">
-            <h1 class="title"><span class="particletext">Detail TOUR</span></h1>
+            <h1 class="title"><span class="particletext">detail information</span></h1>
         </div>
         <div class="row g-0 d-flex justify-content-center">
             <div class="col-8 text">
                 <h3 class="text-center">Tour du lịch: @Html.DisplayFor(modelItem => item.TenSPTour)</h3>
-                <h3>Giới thiệu</h3>
+                <h2>Giới thiệu</h2>
                 <p>@Html.DisplayFor(modelItem => item.MoTa)</p>
                 <p>Điểm tập trung:  @Html.DisplayFor(modelItem => item.DiemTapTrung)</p>
                 <p>Điểm đến: @Html.DisplayFor(modelItem => item.DiemDen)</p>
                 <p>Ngày khởi hành: @Html.DisplayFor(modelItem => item.NgayKhoiHanh)</p>
                 <p>Ngày kết thúc: @Html.DisplayFor(modelItem => item.NgayKetThuc)</p>
                 <hr />
-                <div class="text-right">
+                <div class="float-left">
                     <h3>Dịch vụ</h3>
-                    <p>Giá người lớn: @string.Format("{0:#,#}đ", item.GiaNguoiLon)</p>
-                    <p>Giá trẻ em: @string.Format("{0:#,#}đ", item.GiaTreEm)</p>
+                    <p>Giá người lớn: @string.Format("{0:#,#} VND", item.GiaNguoiLon)</p>
+                    <p>Giá trẻ em: @string.Format("{0:#,#} VND", item.GiaTreEm)</p>
                     <p>Số ghế còn trống: @Html.DisplayFor(modelItem => item.SoNguoi)</p>
                 </div>
             </div>
-        </div>
-        <div class="ngoaitour" style="text-align:center;">
-            <a style="color: white;text-decoration:none" href="@Url.Action("DatTour", "Home", new {id=item.ID_SPTour})">Đặt Tour</a>
+            <div class="d-flex justify-content-center">
+                <a class="btn" href="@Url.Action("DatTour","Home",new {id=item.ID_SPTour})">Đặt tour</a>
+            </div>
         </div>
     </div>
 }

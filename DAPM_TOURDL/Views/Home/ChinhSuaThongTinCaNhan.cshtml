@@ -1,10 +1,14 @@
 ﻿@model DAPM_TOURDL.Models.KHACHHANG
 
 @{
-    ViewBag.Title = "ChinhSuaThongTinCaNhan";
+    ViewBag.Title = "Chỉnh Sửa Thông Tin Cá Nhân";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 <link rel="stylesheet" href="~/CSS/Client/ChinhSuaThongTinCaNhan.css" />
+<div class="head">
+    <div class="content-main">Chi tiết tour</div>
+    <video autoplay loop muted plays-inline class="hero-image"><source src="~/Images/Client/Video/ocean.mp4" /></video>
+</div>
 @using (Html.BeginForm())
 {
     <div class="btn-back-profile m-4">
@@ -36,7 +40,7 @@
                                         new SelectListItem { Text = "Nam", Value = "Nam" },
                                         new SelectListItem { Text = "Nữ", Value = "Nữ" },
                                         // Các lựa chọn khác nếu cần
-                                    }, "Value", "Text"),
+                                    }, "Value", "Text",Model.GioiTinh_KH),
                                     new { @class = "form-control", autocomplete = "off", @required = "required" }
                                 )
                                 @Html.ValidationMessageFor(model => model.GioiTinh_KH, "", new { @class = "text-danger" })
@@ -56,7 +60,6 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-
                                 @Html.LabelFor(model => model.NgaySinh_KH, new { @class = "profile_details_text" })
                                 @Html.EditorFor(model => model.NgaySinh_KH, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
                                 @Html.ValidationMessageFor(model => model.NgaySinh_KH, "", new { @class = "text-danger" })
@@ -66,7 +69,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Mail_KH, new { @class = "profile_details_text" })
+                                @Html.LabelFor(model => model.Mail_KH, new { @class = "profile_details_text" })<span> (Không được thay đổi)</span>
                                 @Html.EditorFor(model => model.Mail_KH, new { htmlAttributes = new { @class = "form-control", @required = "required", @readonly = "readonly" } })
                                 @Html.ValidationMessageFor(model => model.Mail_KH, "", new { @class = "text-danger" })
                             </div>
@@ -84,7 +87,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.MatKhau, new { @class = "profile_details_text" })
                         <span>xác nhận thay đổi thông tin cá nhân</span>
-                        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @required = "required",@value = "*" })
+                        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @required = "required",@value = "" })
                         @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                     </div>
                     <div class="row">

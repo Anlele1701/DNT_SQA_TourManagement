@@ -2,14 +2,6 @@
     background-color: #f2f2f2;
 }
 
-.div-navbar {
-    text-transform: uppercase;
-    padding: 0px;
-    height: auto;
-    width: 100%;
-    background-image: linear-gradient(to bottom right, #00FFB4 0%, #0EB0DC 48%, #1D43B7 80%, #06006D 100%);
-    padding: 25px 0 25px 0;
-}
 
 .nav-item .nav-link:hover {
     color: white;
@@ -41,21 +33,25 @@
         font-weight: bold;
         color: #333;
         vertical-align: middle;
+        margin-bottom: 5px;
     }
 
     .invoice-form input[type="text"],
     .invoice-form input[type="number"] {
-        width: calc(100% - 200px); /* Adjust input width based on label width */
+        width: 70%; /* Adjust input width based on label width */
         height: 30px;
         padding: 5px;
+        margin-bottom:5px;
         border: 1px solid #ccc;
         border-radius: 4px;
         color: #555;
         vertical-align: middle;
+        color:black;
+        font-weight:bold;
     }
 
     .invoice-form textarea {
-        width: calc(100% - 200px); /* Adjust textarea width based on label width */
+        width: 30%; /* Adjust textarea width based on label width */
         height: 50px; /* Adjust textarea height as needed */
         padding: 5px;
         border: none;

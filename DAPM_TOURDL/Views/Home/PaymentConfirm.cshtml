@@ -1,0 +1,68 @@
+﻿@model DAPM_TOURDL.Models.HOADON
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PaymentConfirm</title>
+    <script src="https://kit.fontawesome.com/b94d6d5661.js"
+            crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <style>
+        body {
+            margin: 0px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            color: #45474B;
+            font-size: 20px;
+        }
+
+        button {
+            background: #2D9596;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+            button a {
+                color: white;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        @if (ViewBag.ThanhToanThanhCong != null)
+        {
+            <p>@ViewBag.OrderID</p>
+            <i class="fa-solid fa-circle-check" style="color: #3CB878; font-size:100px;"></i>
+            <h2 style="color: #3CB878; margin-top:15px; margin-bottom:15px;">Thanh toán thành công</h2>
+            <p>@ViewBag.Message</p>
+            <p>Viet Travel sẽ sớm liên hệ quý khách để xác nhận đơn đặt</p>
+        }
+        else
+        {
+            <p class="alert alert-danger">@ViewBag.InnerText</p>
+        }
+        <div>
+            <button>
+                <a href="@Url.Action("HomePage","Home")">Quay về</a>
+            </button>
+            <button style="margin-left:50px;">
+                <a href="@Url.Action("HoaDon","Home",new { id = ViewBag.OrderID })"> Xem biên lai</a>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

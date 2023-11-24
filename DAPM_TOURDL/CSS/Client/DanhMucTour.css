@@ -1,4 +1,4 @@
-﻿body {
+body {
     padding: 0px;
     margin: 0px;
     top: 0;
@@ -11,17 +11,6 @@
 * {
     box-sizing: border-box;
 }
-.div-navbar {
-    text-transform: uppercase;
-    padding: 0px;
-    height: auto;
-    width: 100%;
-    background-color: rgba(225,225,225,0.1);
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
-    position: absolute;
-    z-index: 3;
-}
 
 .nav-item .nav-link {
     color: white;
@@ -31,53 +20,59 @@
         color: rgba(0,0,0,0.7);
     }
 
-
-.head {
-    height: 40vh;
-    position: relative;
+.btn-search {
+    background-color: #2D9596;
+    border: none;
+    color: #F4F7F7;
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 10px;
+    height: 40px;
+    width: 120px;
 }
+    .btn-search:hover {
+        background-color: #176B87;
+        transition: ease-out 0.5s;
+    }
 
-.hero-image {
-    height: 40vh;
-    width: 100%;
-    object-fit: cover;
-    filter: brightness(99%)blur(0.5px);
-}
-
-.content-main {
+.btn-more {
+    background-color: #2D9596;
+    border: none;
+    color: #F4F7F7;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 10px 20px;
+    text-decoration: none;
     text-align: center;
-    font-size: 40px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 20px;
-    z-index: 1;
-    position: absolute;
-    bottom: 5%;
-    left: 5%;
-    color: white
+    float: right;
 }
+
+    .btn-more:hover {
+        background-color: #176B87;
+        transition: ease-out 0.5s;
+    }
 /*Phân trang
 */
 .pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    margin-right: 5px;
 }
 
     .pagination a {
-        color: #ffffff;
+        color: #191717;
         padding: 8px 16px;
         text-decoration: none;
         transition: background-color 0.3s;
-        border: 1px solid #007bff;
-        background: #5cb85c;
+        background-color: #F4F7F7;
         font-weight: bold;
-        border: 1px solid #5cb85c;
     }
 
-    .pagination .active {
-        background-color: black;
-        color: black;
+    .pagination .active a{
+        background: #2D9596 !important;
+        color: #F4F7F7 ;
     }
 
     .pagination .prev, .pagination .next {
@@ -86,8 +81,7 @@
     }
 
     .pagination a:hover:not(.active) {
-        background-color: #f2f2f2;
-        color: black
+        background-color: #F1EFEF;
     }
 
     .pagination a, .pagination .prev, .pagination .next {

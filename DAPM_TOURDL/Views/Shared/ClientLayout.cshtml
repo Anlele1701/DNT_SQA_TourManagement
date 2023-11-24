@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+    <link type="image/svg" rel="icon" href="~/Images/logo3.jpg"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/CSS/Client/CientLayout.css" />
@@ -17,7 +18,7 @@
 <body>
     <!-- Navbar Start-->
     <div class="loader">
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb253Y3Y3dnhnZnp1ZW9yNGJxYjZtNjh5YjBzZnNkejg1ZzkzNmpwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/dYUslDahf6Uw71gH3t/giphy.gif"/>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb253Y3Y3dnhnZnp1ZW9yNGJxYjZtNjh5YjBzZnNkejg1ZzkzNmpwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/dYUslDahf6Uw71gH3t/giphy.gif" />
     </div>
     <div class="div-navbar">
         <nav class="navbar navbar-expand-lg" id="navbar">
@@ -38,7 +39,7 @@
                             @Html.ActionLink("Danh mục tour", "DanhMucSanPham", "Home", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Về chúng tôi","About","Home",null, new { @class="nav-link"})
+                            @Html.ActionLink("Về chúng tôi", "About", "Home", null, new { @class = "nav-link" })
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
@@ -55,11 +56,11 @@
                         }
                         else
                         {
+                            @*                            <li class="nav-item">
+                                    @Html.ActionLink("Đăng ký", "DangKy", "Home", new { @class = "nav-link" })
+                                </li>*@
                             <li class="nav-item">
-                                @Html.ActionLink("Đăng ký", "DangKy", "Home", new { @class = "nav-link" })
-                            </li>
-                            <li class="nav-item">
-                                @Html.ActionLink("Đăng nhập", "DangNhap", "Home", null, new { @class = "nav-link" })
+                                @Html.ActionLink("Đăng nhập", "LoginAndRegister", "Home", null, new { @class = "nav-link" })
                             </li>
                         }
                     </ul>
@@ -79,11 +80,11 @@
                     <div class="footer-col">
                         <h4>Viet Travel</h4>
                         <ul>
-                            <li><a href="#">Về Chúng Tôi</a></li>
-                            <li><a href="#">Chính Sách Công Ty</a></li>
+                            <li><a href="@Url.Action("About", "Home")">Về Chúng Tôi</a></li>
+                            <li><a>Chính Sách Công Ty</a></li>
                         </ul>
                     </div>
-                    <div class="footer-col" style="width: 40%;">
+                    <div class="footer-col">
                         <h4>Thông Tin Liên Hệ</h4>
                         <ul>
                             <li>
@@ -103,9 +104,9 @@
                     <div class="footer-col">
                         <h4>Theo Dõi Tại</h4>
                         <div class="social-links">
-                            <a href="#"><i class="fa-brands fa-facebook" style="color: #494949;"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter" style="color: #494949;"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram" style="color: #494949;"></i></a>
+                            <a><i class="fa-brands fa-facebook" style="color: #494949;"></i></a>
+                            <a><i class="fa-brands fa-twitter" style="color: #494949;"></i></a>
+                            <a><i class="fa-brands fa-instagram" style="color: #494949;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -131,5 +132,6 @@
             });
         });
     </script>
+    @RenderSection("Validation", false)
 </body>
 </html>
