@@ -1,12 +1,14 @@
-﻿using DAPM_TOURDL.Models;
+using DAPM_TOURDL.Models;
 using DAPM_TOURDL.Models.Payments;
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.EMMA;
+using Microsoft.Owin.Security.OAuth;
 using PagedList;
 using System;
 using System.Configuration;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -17,12 +19,24 @@ namespace DAPM_TOURDL.Controllers
     public class HomeController : Controller
     {
         private TourDLEntities db = new TourDLEntities();
+        //https://localhost:44385/
 
         public ActionResult Index()
         {
             return View(db.TOURs.ToList());
         }
-
+        public ActionResult LoginAndRegister()
+        {
+            if(TempData["Mes"] != null)
+            {
+                ViewBag.Mes = TempData["Mes"];
+            }
+            return View();
+        }
+        public ActionResult RegisterAndLogin()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             return View();
@@ -61,54 +75,52 @@ namespace DAPM_TOURDL.Controllers
         public ActionResult DangKy(KHACHHANG khachhang)
         {
             DateTime ngayHienTai = DateTime.Now;
-            DateTime ngaySinh18 = ngayHienTai.AddYears(-15);
+            DateTime ngaySinh16 = ngayHienTai.AddYears(-16);
             if (db.KHACHHANGs.Any(x => x.Mail_KH == khachhang.Mail_KH))
             {
-                ViewBag.Notification = "Tài khoản đã tồn tại";
+                ModelState.AddModelError("", "Tài khoản đã tồn tại");
             }
             else if (string.IsNullOrEmpty(khachhang.Mail_KH) || khachhang.GioiTinh_KH == null || khachhang.NgaySinh_KH == null || string.IsNullOrEmpty(khachhang.MatKhau) || string.IsNullOrEmpty(khachhang.CCCD) || string.IsNullOrEmpty(khachhang.SDT_KH) || string.IsNullOrEmpty(khachhang.HoTen_KH))
             {
-                ViewBag.Notification = "Vui lòng nhập đủ thông tin nhé ! Xin cảm ơn";
+                ModelState.AddModelError("", "Vui lòng không bỏ trống field nào nhé ^_^");
             }
             else if (!(khachhang.GioiTinh_KH == "Nam" || khachhang.GioiTinh_KH == "Nữ"))
             {
-                ViewBag.Notification = "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'";
+                ModelState.AddModelError("", "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'");
             }
-            else if (khachhang.NgaySinh_KH > ngaySinh18)
+            else if (khachhang.NgaySinh_KH > ngaySinh16)
             {
-                ViewBag.Notification = "Yêu cầu lớn hơn 15+";
+                ModelState.AddModelError("", "Yêu cầu lớn hơn 16+");
             }
             else if (khachhang.CCCD.Length != 12 || !Regex.IsMatch(khachhang.CCCD, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ,kí tự";
+                ModelState.AddModelError("", "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ, kí tự");
             }
             else if (khachhang.SDT_KH.Length != 10 || !Regex.IsMatch(khachhang.SDT_KH, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Số điện thoại phải có 10 số và không bao gồm chữ,kí tự";
+                ModelState.AddModelError("", "Số điện thoại phải có 10 số và không bao gồm chữ, kí tự");
             }
             else if (db.KHACHHANGs.Any(x => x.CCCD == khachhang.CCCD))
             {
-                ViewBag.Notification = "Căn Cước Công Dân này đã tồn tại";
+                ModelState.AddModelError("", "Căn Cước Công Dân này đã tồn tại");
             }
             else if (db.KHACHHANGs.Any(x => x.SDT_KH == khachhang.SDT_KH))
             {
-                ViewBag.Notification = "Số Điện Thoại này đã tồn tại";
+                ModelState.AddModelError("", "Số Điện Thoại này đã tồn tại");
             }
             else if (!MatKhauManh(khachhang.MatKhau))
             {
-                ViewBag.Notification = "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt";
+                ModelState.AddModelError("", "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt");
             }
             else
             {
                 db.KHACHHANGs.Add(khachhang);
                 db.SaveChanges();
-                Session["IDUser"] = khachhang.ID_KH.ToString();
-                Session["EmailUserSS"] = khachhang.Mail_KH.ToString();
-                Session["UsernameSS"] = khachhang.HoTen_KH.ToString();
-                Session["SDT"] = khachhang.SDT_KH.ToString();
-                return RedirectToAction("DangNhap", "Home");
-            }
-            return View();
+                TempData["Mes"] = "Đăng ký thành công";
+                //return RedirectToAction("LoginAndRegister", "Home");
+                return RedirectToAction("LoginAndRegister");
+            }   
+            return View("RegisterAndLogin");
         }
 
         private bool MatKhauManh(string password)
@@ -136,20 +148,20 @@ namespace DAPM_TOURDL.Controllers
                 // Kiểm tra xem có thông tin tour trong Session không
                 if (Session["TourInfo"] != null)
                 {
-                    var tour = (SPTOUR)Session["TourInfo"];
+                    var tour = Session["TourInfo"];
                     Session.Remove("TourInfo");
 
-                    return RedirectToAction("DatTour", new { id = tour.ID_SPTour });
+                    return RedirectToAction("DatTour", new { id = tour });
                 }
 
                 return RedirectToAction("HomePage", "Home", new { id = kiemTraDangNhap.ID_KH });
             }
             else
             {
-                ViewBag.Notification = "Tài khoản và mật khẩu không đúng";
+                ModelState.AddModelError("MatKhau", "Thông tin đăng nhập không hợp lệ");
             }
-
-            return View();
+            
+            return View("LoginAndRegister");
         }
 
         public ActionResult DangXuat()
@@ -161,6 +173,10 @@ namespace DAPM_TOURDL.Controllers
         public ActionResult ThongTinCaNhan(int id)
         {
             var data = db.KHACHHANGs.Find(id);
+            if (TempData["SuccessMessage"] != null)
+            {
+                ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            }
             return View(data);
         }
 
@@ -184,51 +200,97 @@ namespace DAPM_TOURDL.Controllers
         public ActionResult ChinhSuaThongTinCaNhan([Bind(Include = "ID_KH,HoTen_KH,GioiTinh_KH,NgaySinh_KH,MatKhau,CCCD,SDT_KH,Mail_KH,Diem")] KHACHHANG khachhang)
         {
             DateTime ngayTruocKhiDu16Tuoi = DateTime.Now.AddYears(-16);
-            if (!(khachhang.GioiTinh_KH == "Nam" || khachhang.GioiTinh_KH == "Nữ"))
+            if ((khachhang.GioiTinh_KH != "Nam" && khachhang.GioiTinh_KH != "Nữ"))
             {
-                ViewBag.Notification = "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'";
+                ModelState.AddModelError("GioiTinh_KH", "Giới tính chỉ có thể là 'Nam' hoặc 'Nữ'");
             }
             else if (khachhang.NgaySinh_KH > ngayTruocKhiDu16Tuoi)
             {
-                ViewBag.Notification = "Ngày sinh phải đủ 16 tuổi";
+                ModelState.AddModelError("NgaySinh_KH", "Ngày sinh phải đủ 16 tuổi");
             }
             else if (khachhang.CCCD.Length != 12 || !Regex.IsMatch(khachhang.CCCD, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ,kí tự";
+                ModelState.AddModelError("CCCD", "Căn Cước Công Dân vui lòng nhập đủ 12 số và không bao gồm chữ,kí tự");
             }
             else if (khachhang.SDT_KH.Length != 10 || !Regex.IsMatch(khachhang.SDT_KH, @"^[0-9]+$"))
             {
-                ViewBag.Notification = "Số điện thoại phải có 10 số và không bao gồm chữ,kí tự";
+                ModelState.AddModelError("SDT_KH", "Số điện thoại phải có 10 số và không bao gồm chữ,kí tự");
             }
             else if (db.KHACHHANGs.Any(x => x.CCCD == khachhang.CCCD && x.ID_KH != khachhang.ID_KH))
             {
-                ViewBag.Notification = "Căn cước công dân này đã được đăng ký";
+                ModelState.AddModelError("CCCD", "Căn cước công dân này đã được đăng ký");
             }
             else if (db.KHACHHANGs.Any(x => x.SDT_KH == khachhang.SDT_KH && x.ID_KH != khachhang.ID_KH))
             {
-                ViewBag.Notification = "Số điện thoại này đã có người sử dụng";
+                ModelState.AddModelError("SDT_KH", "Số điện thoại này đã có người sử dụng");
             }
-            else if (khachhang.HoTen_KH.Length > 32)
+            else if (khachhang.HoTen_KH.Length > 64)
             {
-                ViewBag.Notification = "Tên không được quá 64 ký tự";
+                ModelState.AddModelError("HoTen_KH", "Tên không được quá 64 ký tự");
             }
             else if (db.KHACHHANGs.Any(x => x.MatKhau != khachhang.MatKhau && x.ID_KH == khachhang.ID_KH))
             {
-                ViewBag.Notification = "Mật khẩu xác nhận không chính xác";
+                ModelState.AddModelError("MatKhau", "Mật khẩu xác nhận không chính xác");
             }
             else if (ModelState.IsValid)
             {
                 db.Entry(khachhang).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["SuccessMessage"] = "Chỉnh sửa thông tin cá nhân thành công";
                 //Session["UsernameSS"] = khachhang.HoTen_KH.ToString();
                 return RedirectToAction("ThongTinCaNhan", "Home", new { id = khachhang.ID_KH });
             }
             return View(khachhang);
         }
-
+        [HttpGet]
+        public ActionResult DoiMatKhau(int id)
+        {
+            var data = db.KHACHHANGs.Find(id);
+            return View(data);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DoiMatKhau(int id,string currentPassword, string newPassword, string confirmPassword)
+        {
+            var data = db.KHACHHANGs.Find(id);
+            if(currentPassword != data.MatKhau)
+            {
+                ModelState.AddModelError("currentPassword", "Mật khẩu hiện tại không chính xác");
+            }
+            if(currentPassword == newPassword)
+            {
+                ModelState.AddModelError("newPassword", "Vui lòng đổi mật khẩu mới không, đổi lại mật khẩu cũ");
+            }
+            if(newPassword != confirmPassword)
+            {
+                ModelState.AddModelError("confirmPassword", "Mật khẩu xác nhận không trùng khớp");
+            }
+            if (!MatKhauManh(newPassword))
+            {
+                ModelState.AddModelError("newPassword", "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 số, 1 chữ thường, 1 chữ hoa, 1 ký tự đặc biệt");
+            }
+            if (!ModelState.IsValid)
+            {
+                TempData["currentPassword"] = currentPassword;
+                TempData["newPassword"] = newPassword;
+                TempData["confirmPassword"] = confirmPassword;
+                return View(data);
+            }
+            else
+            {
+                data.MatKhau = newPassword;
+                db.SaveChanges();
+                TempData["SuccessMessage"] = "Đổi mật khẩu thành công";
+                return RedirectToAction("ThongTinCaNhan", "Home", new { id = data.ID_KH });
+            } 
+        }
         public ActionResult LichSuDatTour(int id)
         {
             var data = db.HOADONs.Where(t => t.ID_KH == id).ToList();
+            if(data.Count == 0)
+            {
+                ViewBag.Mes = "Bạn chưa đặt tour nào cả";
+            }
             return View(data);
         }
 
@@ -244,6 +306,15 @@ namespace DAPM_TOURDL.Controllers
                 return PartialView("Error");
             }
         }
+        public ActionResult HuyTour(int id)
+        {
+            HOADON data = db.HOADONs.Find(id);
+            db.HOADONs.Remove(data);
+            db.SaveChanges();
+            TempData["SuccessMessage"] = "Hủy tour thành công";
+            return RedirectToAction("LichSuDatTour", new { id = Session["IDUser"] });
+        }
+        
 
         public ActionResult ThanhToanMomo(int id)
         {
@@ -344,7 +415,22 @@ namespace DAPM_TOURDL.Controllers
         public ActionResult DatTour(string id)
         {
             var data = db.SPTOURs.Find(id);
-            Session["TourInfo"] = data;
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+            var idSPTOUR = data.ID_SPTour;
+            Session["TourInfo"] = idSPTOUR;
+            if (Session["IDUser"] != null)
+            {
+                int idUser = (int)Session["IDUser"];
+                var user = db.KHACHHANGs.FirstOrDefault(u => u.ID_KH == idUser);
+                ViewBag.KhachHang = user;   
+            }
+            else if (data.SoNguoi <= 0)
+            {
+                ViewBag.Noti = "Hết số lượng chỗ ngồi";
+            }
             return View(data);
         }
 
@@ -357,48 +443,54 @@ namespace DAPM_TOURDL.Controllers
             {
                 return View(sptour);
             }
-            else if (sptour.SoNguoi <= 0)
-            {
-                ViewBag.Noti = "Hết số lượng chỗ ngồi";
-                return View(sptour);
-            }
             else
             {
-                hOADON.ID_SPTour = form["idsptour"];
-                hOADON.NgayDat = DateTime.Now;
-                hOADON.TinhTrang = "Chưa TT";
-                hOADON.ID_KH = int.Parse(form["idkh"]);
+                int currentIDUser = (int)Session["IDUser"];
+                var KHang = db.KHACHHANGs.FirstOrDefault(u => u.ID_KH == currentIDUser);
+                hOADON.ID_KH = currentIDUser;
+
+                hOADON.ID_SPTour = sptour.ID_SPTour;
+                hOADON.NgayDat = DateTime.Now; //Default
+                hOADON.TinhTrang = "Chưa TT"; //Default 
 
                 hOADON.SLNguoiLon = int.Parse(form["songuoilon"]);
                 hOADON.SLTreEm = int.Parse(form["sotreem"]);
 
                 int slnguoilon = int.Parse(form["songuoilon"]);
                 int sltreem = int.Parse(form["sotreem"]);
+                int giaguoilon = sptour.GiaNguoiLon;
+                int giatreem = sptour.GiaTreEm;
+                /*int giaguoilon = int.Parse(form["gianguoilon"]);
+                int giatreem = int.Parse(form["giatreem"]);*/
 
-                int giaguoilon = int.Parse(form["gianguoilon"]);
-                int giatreem = int.Parse(form["giatreem"]);
-
+                //so sánh ...
                 int soluong = slnguoilon + sltreem;
-                Session["SoLuong"] = soluong;
-                ////////////////
-
                 int SoLuongSPTOUR = (int)sptour.SoNguoi;
                 if (SoLuongSPTOUR < soluong)
                 {
+                    ViewBag.KhachHang = KHang;
                     ViewBag.SoLuong = "Vui lòng đặt ít hơn hoặc bằng số lượng chỗ hiện có !";
                     return View(sptour);
                 }
                 else
                 {
+                    if(KHang.Diem != null)
+                    {
+                        hOADON.TienKhuyenMai = (int)(KHang.Diem * 0.05);
+                    }
+                    else
+                    {
+                        hOADON.TienKhuyenMai = 0;
+                    }
+                    var tienkhuyenmai = hOADON.TienKhuyenMai;
                     int tongtien = (slnguoilon * giaguoilon) + (sltreem * giatreem);
                     int VAT = (int)(tongtien * 0.05);
                     hOADON.TongTienTour = tongtien;
-                    hOADON.TienPhaiTra = tongtien - hOADON.TienKhuyenMai + VAT;
+                    hOADON.TienPhaiTra = tongtien - tienkhuyenmai + VAT;
 
                     SoLuongSPTOUR -= soluong;
                     sptour.SoNguoi = SoLuongSPTOUR;
                     db.Entry(sptour).State = EntityState.Modified;
-                    db.SaveChanges();
                     db.HOADONs.Add(hOADON);
                     db.SaveChanges();
                     var url = UrlPayment(hOADON.ID_HoaDon);

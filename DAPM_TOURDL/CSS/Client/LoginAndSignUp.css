@@ -47,7 +47,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: -15px;
 }
 
 .sign-in-container {
@@ -247,3 +247,15 @@ p {
     }
 }
 
+.validation-summary-errors{
+    color:red;
+    font-weight:bold;
+}
+.validation-summary-errors ul{
+    list-style:none;
+}
+.message {
+    color: #4BB543;
+    margin: 10px;
+    font-weight: bold;
+}

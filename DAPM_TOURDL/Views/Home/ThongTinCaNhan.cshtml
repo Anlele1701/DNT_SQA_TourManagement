@@ -1,16 +1,25 @@
 ﻿@model DAPM_TOURDL.Models.KHACHHANG
 
 @{
-    ViewBag.Title = "ThongTinCaNhan";
+    ViewBag.Title = "Thông Tin Cá Nhân";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 <link rel="stylesheet" href="~/CSS/Client/ThongTinCaNhan.css" />
-
+<div class="head">
+    <div class="content-main">Thông tin cá nhân</div>
+    <video autoplay loop muted plays-inline class="hero-image"><source src="~/Images/Client/Video/ocean.mp4" /></video>
+</div>
 <body>
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success" id="successAlert">
+            @ViewBag.SuccessMessage
+        </div>
+    }
     <div class="containers shadow-sm rounded">
         <div class="profile-box">
-            <img id="invoice-icon" src="~/Images/Client/Profile/invoice.png" class="invoice-icon" />
-            <img id="pen-icon" src="~/Images/Client/Profile/pen.png" class="pen-icon">
+            <i class="fa-solid fa-file-invoice-dollar invoice-icon" id="invoice-icon"></i>
+            <i class="fa-solid fa-pen-to-square pen-icon" id="pen-icon"></i>
             @{
                 if (Model.GioiTinh_KH == "Nam")
                 {
@@ -28,9 +37,9 @@
             <h3>@Model.HoTen_KH</h3>
             <p>@Model.Mail_KH</p>
             <div class="social-media">
-                <img src="~/Images/Client/Profile/facebook.png">
-                <img src="~/Images/Client/Profile/instagram.png">
-                <img src="~/Images/Client/Profile/zalo.png">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
             </div>
             <div class="profile-bottom">
                 <div class="row row-cols-2 px-3">
@@ -46,6 +55,23 @@
                     <p>
                         CCCD: @Model.CCCD
                     </p>
+                    <p>
+                        @Html.ActionLink("Đổi mật khẩu", "DoiMatKhau", new { id = Model.ID_KH }, new { @class = "btn btn-primary btn-sm" })
+                    </p>
+                    @{
+                        if (Model.Diem != null)
+                        {
+                            <p>
+                                Điểm: @Model.Diem
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                Điểm: 0
+                            </p>
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -63,4 +89,12 @@
         var idUser = '@Model.ID_KH';
         window.location.href = '@Url.Action("ChinhSuaThongTinCaNhan", "Home")/' + idUser;
     })
+
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#successAlert").fadeOut("slow", function () {
+                $(this).remove();
+            });
+        }, 5000);
+    });
 </script>

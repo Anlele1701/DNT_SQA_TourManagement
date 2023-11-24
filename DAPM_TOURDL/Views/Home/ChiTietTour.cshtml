@@ -1,7 +1,7 @@
-﻿@model IEnumerable<DAPM_TOURDL.Models.SPTOUR>
+@model IEnumerable<DAPM_TOURDL.Models.SPTOUR>
 
 @{
-    ViewBag.Title = "ChiTietTour";
+    ViewBag.Title = "Chi Tiết Tour";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 <link rel="stylesheet" href="~/CSS/Client/ChiTietTour.css" />
@@ -30,14 +30,15 @@
                 <p>Ngày khởi hành: @Html.DisplayFor(modelItem => item.NgayKhoiHanh)</p>
                 <p>Ngày kết thúc: @Html.DisplayFor(modelItem => item.NgayKetThuc)</p>
                 <hr />
-                    <h2>Dịch vụ</h2>
-                    <p>Giá người lớn: @string.Format("{0:#,#}đ", item.GiaNguoiLon)</p>
-                    <p>Giá trẻ em: @string.Format("{0:#,#}đ", item.GiaTreEm)</p>
+                <div class="text-right">
+                    <h3>Dịch vụ</h3>
+                    <p>Giá người lớn: @string.Format("{0:#,#} VND", item.GiaNguoiLon)</p>
+                    <p>Giá trẻ em: @string.Format("{0:#,#} VND", item.GiaTreEm)</p>
                     <p>Số ghế còn trống: @Html.DisplayFor(modelItem => item.SoNguoi)</p>
             </div>
         </div>
-        <div style="text-align:center;">
-            <button href="@Url.Action("DatTour", "Home", new {id=item.ID_SPTour})" class="btn">Đặt Tour</button>
+        <div class="text-center">
+            <a class="btn btn-primary btn-lg fw-bold"    href="@Url.Action("DatTour","Home",new {id=item.ID_SPTour})">Đặt tour</a>
         </div>
     </div>
 }

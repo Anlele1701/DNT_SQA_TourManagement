@@ -1,49 +1,69 @@
 ﻿@model DAPM_TOURDL.Models.HOADON
 
 @{
-    ViewBag.Title = "HoaDon";
+    ViewBag.Title = "Hóa Đơn";
     Layout = null;
 }
-<link href="~/CSS/Client/HoaDon.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-<div class="invoice">
-    <div class="invoice-header">
-        <h1>Hoá đơn</h1>
-    </div>
-    <form class="invoice-form">
-        <label for="company-name" id="company-name-label">Tên công ty:</label>
-        <input type="text" id="company-name" placeholder="Travel Dalats" readonly>
-        <hr>
-        <label for="customer-name">Tên khách hàng:</label>
-        <input type="text" id="customer-name" placeholder="@Session["UsernameSS"]" readonly>
-        <label for="Date">Date:</label>
-        <input type="text" id="date" placeholder="@Model.NgayDat" readonly>
-        <label for="item-number">Số điện thoại:</label>
-        <input type="text" id="mobile-number" placeholder="@Session["SDT"]" readonly>
-        <label for="item-name">ID Tour:</label>
-        <input type="text" id="item-name" placeholder="@Model.ID_SPTour" readonly>
-        <label for="item-hoadon">ID Hoá Đơn:</label>
-        <input type="number" id="quantity" placeholder="@Model.ID_HoaDon" readonly>
-        <label for="TienTour">Tổng Tiền Tour:</label>
-        <input type="number" id="rate" placeholder="@Model.TongTienTour" readonly>
-        <label for="SoLuong">Số lượng ghế:</label>
-        <input type="number" id="rate" placeholder="@Session["SoLuong"]" readonly>
-        <label for="TinhTrang">Tình trạng:</label>
-        <input type="number" id="rate" placeholder="@Model.TinhTrang" readonly>
-    </form>
-    <div class="invoice-footer">
-        <div class="box">
-            Delivery Date
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/Images/logo3.jpg"/>
+    <link href="~/CSS/Client/HoaDon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<div class="contain">
+    <div class="row">
+        <div class="col-12">
+            <div class="invoice">
+                <div class="invoice-header">
+                    <h1>Hoá đơn</h1>
+                </div>
+                <form class="invoice-form">
+                    <label for="company-name" id="company-name-label">Tên công ty:</label>
+                    <input type="text" id="company-name" placeholder="Travel Dalats" disabled>
+                    <hr>
+                    <label for="item-hoadon">ID Hoá Đơn:</label>
+                    <input type="number" id="quantity" placeholder="@Model.ID_HoaDon" disabled>
+                    <label for="customer-name">Tên khách hàng:</label>
+                    <input type="text" id="customer-name" placeholder="@Model.KHACHHANG.HoTen_KH" disabled>
+                    <label for="Date">Ngày đặt:</label>
+                    <input type="text" id="date" placeholder="@Model.NgayDat" disabled>
+                    <label for="item-number">Số điện thoại:</label>
+                    <input type="text" id="mobile-number" placeholder="@Model.KHACHHANG.SDT_KH" disabled>
+                    <label for="item-name">Tên Tour:</label>
+                    <input type="text" id="item-name" placeholder="@Model.SPTOUR.TenSPTour" disabled>
+                    <label for="TienTour">Tổng Tiền Tour:</label>
+                    <input type="number" id="rate" placeholder="@string.Format("{0:#,#} VND",Model.TongTienTour)" disabled>
+                    <label for="TienTour">Tiền giảm giá:</label>
+                    <input type="number" id="rate" placeholder="@string.Format("{0:#,#} VND",Model.TienKhuyenMai)" disabled>
+                    <label for="TienTour">VAT:</label>
+                    <input type="number" id="rate" placeholder="5%" disabled>
+                    <label for="TienTour">Tiền phải thanh toán:</label>
+                    <input type="number" id="rate" placeholder="@string.Format("{0:#,#} VND",Model.TienPhaiTra)" disabled>
+                    @{
+                        var soluong = Model.SLNguoiLon + Model.SLTreEm;
+                    }
+                    <label for="SoLuong">Số lượng khách:</label>
+                    <input type="number" id="rate" placeholder="@soluong" disabled>
+                    <label for="TinhTrang">Tình trạng:</label>
+                    <input type="number" id="rate" placeholder="@Model.TinhTrang" disabled>
+                </form>
+                <div class="invoice-footer">
+                    <div class="box">
+                        Delivery Date
+                    </div>
+                    <div class="box">
+                        Customer Signature
+                    </div>
+                </div>
+                <div class="print-button">
+                    <button onclick="window.print()"><i class="fas fa-print"></i> Print Invoice</button>
+                </div>
+                <div class="print-button back-home">
+                    <a href=@Url.Action("HomePage","Home")>Quay về trang chủ</a>
+                </div>
+            </div>
         </div>
-        <div class="box">
-            Customer Signature
-        </div>
-    </div>
-    <div class="print-button">
-        <button onclick="window.print()"><i class="fas fa-print"></i> Print Invoice</button>
-    </div>
-    <div class="print-button back-home">
-        <a href=@Url.Action("HomePage","Home")>Quay về trang chủ</a>
     </div>
 </div>

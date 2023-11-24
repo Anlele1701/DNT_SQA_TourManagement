@@ -8,18 +8,31 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+            <div class="form-group" id="load_form_payment">
+                <h4>Chọn phương thức thanh toán</h4>
+                <h5>Cách 1: Chuyển hướng sang VNPAY chọn phương thức thanh toán</h5>
+                <label><input type="radio" name="TypePaymentVN" value="0" checked /> Cổng thanh toán VNPAYQR</label>
+                <h5>Cách 2: Tách phương thức thanh toán tại site của Merchant</h5>
+                <label><input type="radio" name="TypePaymentVN" value="1" /> Thanh toán qua ứng dụng hỗ trợ VNPAYQR</label>
+                <label><input type="radio" name="TypePaymentVN" value="2" /> ATM tài khoản ngân hàng nội địa</label>
+                <label><input type="radio" name="TypePaymentVN" value="3" /> Thanh toán qua thẻ quốc tế</label>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Thanh Toán</button>
+            </div>
             <div class="row g-0">
-                <div class="col-6">
-                    <img src="~/Images/Client/Momo/momoTA.jpg" class="img-fluid" alt="...">
-                </div>
-                <div class="col-6 text-center fw-bold">
-                    <p>ID Hoá Đơn: @Html.DisplayFor(item => Model.ID_HoaDon)</p>
-                    <p>Điểm đi: @Html.DisplayFor(item => Model.SPTOUR.DiemTapTrung)</p>
-                    <p>Điểm đến: @Html.DisplayFor(item => Model.SPTOUR.DiemDen)</p>
-                    <p>Tổng tiền: @Html.DisplayFor(item => Model.TienPhaiTra)</p>
-                </div>
+            <div class="col-6">
+                <img src="~/Images/Client/Momo/momoTA.jpg" class="img-fluid" alt="...">
+            </div>
+            <div class="col-6 text-center fw-bold">
+                <p>ID Hoá Đơn: @Html.DisplayFor(item => Model.ID_HoaDon)</p>
+                <p>Điểm đi: @Html.DisplayFor(item => Model.SPTOUR.DiemTapTrung)</p>
+                <p>Điểm đến: @Html.DisplayFor(item => Model.SPTOUR.DiemDen)</p>
+                <p>Tổng tiền: @Html.DisplayFor(item => Model.TienPhaiTra)</p>
             </div>
         </div>
+        </div>
+        
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>

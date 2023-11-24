@@ -1,0 +1,10 @@
+{
+  "Momo": {
+    "PartnerCode": "MOMOBKUN20180529",
+    "ReturnUrl": "https://localhost:44385/payment/api/momo-return",
+    "PaymentUrl": "https://test-payment.momo.vn/v2/gateway/api/create",
+    "IpnUrl": "https://localhost:44385/payment/api/momo-ipn",
+    "AccessKey": "klm05TvNBzhg7h7j",
+    "SecrectKey": "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa"
+  }
+}

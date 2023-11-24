@@ -96,10 +96,13 @@
         text-decoration: none;
         font-weight: bold;
         background: #4790d2;
-        border: 2px solid black;
         color: white;
         border-radius: 10px;
+        transition:0.6s;    
     }
+        .modal-body a:hover {
+            background: #0b5ed7;
+        }
 
 .modal-body h2{
     margin-bottom: 20px;

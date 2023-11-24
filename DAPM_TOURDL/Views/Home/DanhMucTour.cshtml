@@ -1,7 +1,7 @@
-﻿@model PagedList.IPagedList<DAPM_TOURDL.Models.SPTOUR>
+@model PagedList.IPagedList<DAPM_TOURDL.Models.SPTOUR>
 @using PagedList.Mvc
 @{
-    ViewBag.Title = "DanhSachTour";
+    ViewBag.Title = "Danh Mục Tour";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 <link rel="stylesheet" href="~/CSS/Client/DanhMucTour.css" />
@@ -59,8 +59,8 @@
                     <div class="card-body" style="text-align:left;">
                         <p class="card-text" style="margin-bottom:0px; font-size:15px"> @Html.DisplayFor(modelItem => item.ID_TOUR)_@Html.DisplayFor(modelItem => item.ID_SPTour)</p>
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.TenSPTour)</h5>
-                        <p class="card-text text-black">@string.Format("{0:#,#}đ", Convert.ToDecimal(item.GiaNguoiLon))</p>
-                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn-more d-block">Xem Chi Tiết</a>
+                        <p class="card-text text-black">@string.Format("{0:#,#} VND", item.GiaNguoiLon)</p>
+                        <a href="@Url.Action("ChiTietTour", "Home", new { id = item.ID_SPTour })" class="btn btn-primary">Xem Chi Tiết</a>
                     </div>
                 </div>
             </div>
