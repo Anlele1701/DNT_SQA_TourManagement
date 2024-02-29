@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAPM_TOURDL", "DAPM_TOURDL\DAPM_TOURDL.csproj", "{2EA0375C-0B02-48E8-93CA-781438B5EE3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQA_AutomationTest", "SQA_AutomationTest\SQA_AutomationTest.csproj", "{0CA289B6-D535-4125-A410-BA356CF96F1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQA_AutomationTest", "SQA_AutomationTest\SQA_AutomationTest.csproj", "{0CA289B6-D535-4125-A410-BA356CF96F1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
