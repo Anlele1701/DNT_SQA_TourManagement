@@ -11,68 +11,38 @@ namespace SQA_AutomationTest
     {
         private IWebDriver driver;
         private string pathAn;
+        private Spreadsheet spreadsheet;
 
         [SetUp]
         public void Setup()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             pathAn = "C:/Users/ADMIN/Documents/HUFLIT/NAM 3/HK2/BDCL/ĐỒ ÁN/Test.xlsx";
+            spreadsheet = new Spreadsheet();
             driver = new EdgeDriver();
         }
 
         #region FunctionTest
 
-        //public void UpdateValue(int i, string part, Worksheet worksheet)
-        //{
-        //    Console.WriteLine(part.Trim());
-        //    worksheet.Cell(i, 5).Value = "Fat pig";
-        //    //Code logic
-        //    //Login
+        public void TestCompare(ref string[] newString, string[] parts)
+        {
+            for (int j = 0; j < parts.Length; j++)
+            {
+                if (parts[j] == " ")
+                {
+                    newString[j] = "";
+                }
+                else
+                {
+                    newString[j] = parts[j];
+                }
+                Console.Write(newString[j]);
+            }
+        }
 
-        //    //Actual result so sanh expected Result
-        //}
-
-        //public void ReadData(Worksheet worksheet, int worksheetCount)
-        //{
-        //    for (int i = 2; i < worksheetCount; i++)
-        //    {
-        //        if (worksheet.Cell(i, 3).Merged)
-        //        {
-        //            Range objRange = worksheet.Cell(i, 3).MergedWith;
-        //            string mergedCellValue = Convert.ToString(worksheet.Cell(objRange.Row, objRange.LeftColumnIndex).Value).Trim();
-        //            string[] parts = mergedCellValue.Split('\n');
-        //            string a = null;
-        //            foreach (string part in parts)
-        //            {
-        //                if (objRange.Row == i)
-        //                {
-        //                    UpdateValue(i, part, worksheet);
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-        //            string cellValues = worksheet.Cell(i, 3).Value.ToString();
-        //            string[] parts = cellValues.Split('\n');
-        //            string a = null;
-        //            foreach (string part in parts)
-        //            {
-        //                UpdateValue(i, part, worksheet);
-        //            }
-        //        }
-        //        Console.WriteLine("---");
-        //    }
-        //}
-
-        //public void SaveExcel(Spreadsheet spreadsheet)
-        //{
-        //    spreadsheet.SaveAs(@$"{pathAn}");
-        //    spreadsheet.Close();
-        //}
         [Test]
         public void AutomationTest()
         {
-            Spreadsheet spreadsheet = new Spreadsheet();
             spreadsheet.LoadFromFile(@$"{pathAn}");
             Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName($"CL - Đăng Nhập");
             Console.WriteLine(worksheet.Name);
@@ -80,79 +50,69 @@ namespace SQA_AutomationTest
 
             for (int i = 2; i < worksheetCount; i++)
             {
-                string mail = null;
-                string password = null;
                 if (worksheet.Cell(i, 3).Merged)
                 {
                     Range objRange = worksheet.Cell(i, 3).MergedWith;
-                    string mergedCellValue = Convert.ToString(worksheet.Cell(objRange.Row, objRange.LeftColumnIndex).Value).Trim();
+                    string mergedCellValue = Convert.ToString(worksheet.Cell(objRange.Row, objRange.LeftColumnIndex).Value);
                     string[] parts = mergedCellValue.Split('\n');
-                    foreach (string part in parts)
+                    string[] newString = new string[parts.Length];
+                    if (objRange.Row == i)
                     {
-                        if (objRange.Row == i)
+                        TestCompare(ref newString, parts);
+                        driver.Navigate().GoToUrl("https://localhost:44385/Home/LoginAndRegister");
+                        driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(parts[0]);
+                        driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(parts[1]);
+                        driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
+                        //
+                        if (driver.Url == ("https://localhost:44385") || driver.Url.Contains("Home/HomePage/2"))
                         {
-                            mail = parts[0];
-                            password = parts[1];
-                            Console.WriteLine(part.Trim());
-                            driver.Navigate().GoToUrl("https://localhost:44385/Home/LoginAndRegister");
-                            driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(mail);
-                            driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(password);
-                            driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
-                            worksheet.Cell(i, 5).Value = "peongox";
+                            Console.WriteLine("Đăng nhập thành công");
+                            worksheet.Cell(i, 5).Value = "Thông báo đăng nhập thành công";
+                        }
+                        else
+                        {
+                            try
+                            {
+                                string errorMsg = driver.FindElement(By.XPath("//span[@class='field-validation-error text-danger']")).Text;
+                                worksheet.Cell(i, 5).Value = errorMsg;
+                            }
+                            catch (NoSuchElementException)
+                            {
+                                Console.WriteLine("Chưa điền đủ thông tin đăng nhập");
+                            }
                         }
                     }
                 }
                 else
                 {
                     string cellValues = worksheet.Cell(i, 3).Value.ToString();
-
                     string[] parts = cellValues.Split('\n');
                     string[] newString = new string[parts.Length];
-                    for (int j = 0; j < parts.Length; j++)
+                    TestCompare(ref newString, parts);
+                    driver.Navigate().GoToUrl("https://localhost:44385/Home/LoginAndRegister");
+                    driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(newString[0]);
+                    driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(newString[1]);
+                    driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
+                    if (driver.Url.Contains("https://localhost:44385") || driver.Url.Contains("https://localhost:44385/Home/HomePage/2"))
                     {
-                        if (parts[j] == " ")
+                        Console.WriteLine("Đăng nhập thành công");
+                        worksheet.Cell(i, 5).Value = "Thông báo đăng nhập thành công";
+                    }
+                    else
+                    {
+                        try
                         {
-                            newString[j] = "";
+                            string errorMsg = driver.FindElement(By.XPath("//span[@class='field-validation-error text-danger']")).Text;
+                            worksheet.Cell(i, 5).Value = errorMsg;
                         }
-                        else
+                        catch (NoSuchElementException)
                         {
-                            newString[j] = parts[j];
+                            Console.WriteLine("Không tìm thấy thông báo lỗi, có thể đăng nhập thành công hoặc có lỗi khác xảy ra");
                         }
                     }
-                    //0 - email
-                    //1 - null;
-
-                    driver.Navigate().GoToUrl("https://localhost:44385/Home/LoginAndRegister");
-                    driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(newString[j]);
-                    driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(newString[j + 1]);
-                    driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
-                    worksheet.Cell(i, 5).Value = "peongox";
-
-                    //foreach (string part in parts)
-                    //{
-                    //    if (parts[0] == " ")
-                    //    {
-                    //        mail = "";
-                    //    }
-                    //    else
-                    //    {
-                    //        mail = parts[0];
-                    //    }
-                    //    if (parts[1] == " ")
-                    //    {
-                    //        password = "";
-                    //    }
-                    //    else password = parts[1];
-                    //    Console.WriteLine(part.Trim());
-                    //    driver.Navigate().GoToUrl("https://localhost:44385/Home/LoginAndRegister");
-                    //    driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(mail);
-                    //    driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(password);
-                    //    driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
-                    //    worksheet.Cell(i, 5).Value = "peongox";
-                    //}
                 }
-                Console.WriteLine("---");
             }
+            Console.WriteLine("---");
 
             // Save document
             spreadsheet.SaveAs(@"C:\Users\ADMIN\Documents\HUFLIT\NAM 3\HK2\BDCL\ĐỒ ÁN\Test.xlsx");
@@ -174,6 +134,7 @@ namespace SQA_AutomationTest
         {
             driver.Quit();
             driver.Dispose();
+            spreadsheet.Dispose();
         }
     }
 }
