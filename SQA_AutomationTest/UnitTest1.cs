@@ -12,7 +12,6 @@ namespace SQA_AutomationTest
         private IWebDriver driver;
         private string pathOfClientExcel;
         private string pathOfAdminExcel;
-
         private Compare convert; //tách test data thành từng chuỗi nhỏ
 
         [SetUp]
