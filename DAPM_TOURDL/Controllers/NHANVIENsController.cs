@@ -91,7 +91,6 @@ namespace DAPM_TOURDL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ID_NV,HoTen_NV,GioiTinh_NV,NgaySinh_NV,MatKhau,Mail_NV,ChucVu,SDT_NV")] NHANVIEN nHANVIEN)
         {
             if(db.NHANVIENs.Any(x=>x.SDT_NV == nHANVIEN.SDT_NV) || db.KHACHHANGs.Any(x=>x.SDT_KH == nHANVIEN.SDT_NV))
@@ -132,7 +131,6 @@ namespace DAPM_TOURDL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public ActionResult Edit([Bind(Include = "ID_NV,HoTen_NV,GioiTinh_NV,NgaySinh_NV,MatKhau,Mail_NV,ChucVu,SDT_NV")] NHANVIEN nHANVIEN)
         {
             // Kiểm tra số điện thoại và email trùng lặp, trừ nhân viên đang được chỉnh sửa
@@ -171,7 +169,6 @@ namespace DAPM_TOURDL.Controllers
         // POST: NHANVIENs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
