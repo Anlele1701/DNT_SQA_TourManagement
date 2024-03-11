@@ -1,5 +1,4 @@
-﻿using DAPM_TOURDL;
-using OpenQA.Selenium.Edge;
+﻿using OpenQA.Selenium.Edge;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -16,13 +15,11 @@ namespace SQA_AutomationTest
         protected string pathAn;
         protected string pathOfExcel;
         protected string[] newString;
-        protected Compare convert;
 
         [SetUp]
         public void Setup()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            convert = new Compare();
             pathOfExcel = "FILETEST/Admin.xlsx";
             string currentDirectory = Directory.GetCurrentDirectory();
             pathOfExcel = Path.Combine(currentDirectory, pathOfExcel);
@@ -30,11 +27,28 @@ namespace SQA_AutomationTest
             driver = new EdgeDriver();
         }
 
-        [TearDown]
-        public void TearDown()
+        public string[] ConvertToArray(string[] parts)
         {
-            driver.Quit();
-            driver.Dispose();
+            string[] newString = new string[parts.Length];
+            for (int j = 0; j < parts.Length; j++)
+            {
+                if (parts[j] == "null")
+                {
+                    newString[j] = "";
+                }
+                else
+                {
+                    newString[j] = parts[j];
+                }
+                Console.WriteLine(newString[j]);
+            }
+            return newString;
+        }
+
+        public bool CompareExpectedAndActual(string expected, string actual)
+        {
+            if (expected == actual) return true;
+            else return false;
         }
 
         public bool ElementExists(By locator)
@@ -48,6 +62,13 @@ namespace SQA_AutomationTest
             {
                 return false;
             }
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            driver.Quit();
+            driver.Dispose();
         }
     }
 }

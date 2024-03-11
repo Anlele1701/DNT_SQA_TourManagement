@@ -1,5 +1,4 @@
 ﻿using Bytescout.Spreadsheet;
-using DAPM_TOURDL;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
@@ -27,7 +26,7 @@ namespace SQA_AutomationTest.Admin.NhanVien
                 string expected = worksheet.Cell(i, 3).Value.ToString();
                 string cellValues = worksheet.Cell(i, 2).Value.ToString();
                 string[] parts = cellValues.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
-                string[] newString = convert.ConvertToArray(parts);
+                string[] newString = ConvertToArray(parts);
                 driver.Navigate().GoToUrl(localHost + "/Logging/LoginAdmin");
                 driver.FindElement(By.Id("Mail_NV")).SendKeys(username);
                 driver.FindElement(By.Id("MatKhau")).SendKeys(password);
@@ -46,21 +45,21 @@ namespace SQA_AutomationTest.Admin.NhanVien
                 {
                     string actual = "Hệ thống tạo nhân viên thành công và trả về trang Index";
                     worksheet.Cell(i, 4).Value = actual;
-                    if (convert.CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
+                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
                     else worksheet.Cell(i, 5).Value = "Failed";
                 }
                 else if (ElementExists(By.XPath("/html/body/span/h1")))
                 {
                     string actual = driver.FindElement(By.XPath("/html/body/span/h1")).Text;
                     worksheet.Cell(i, 4).Value = actual;
-                    if (convert.CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
+                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
                     else worksheet.Cell(i, 5).Value = "Failed";
                 }
                 else
                 {
                     string actual = "Hệ thống báo lỗi không đủ dữ liệu và không tạo nhân viên mới";
                     worksheet.Cell(i, 4).Value = actual;
-                    if (convert.CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
+                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
                     else worksheet.Cell(i, 5).Value = "Failed";
                 }
                 // Save document
