@@ -32,7 +32,7 @@ namespace SQA_AutomationTest
             string[] newString = new string[parts.Length];
             for (int j = 0; j < parts.Length; j++)
             {
-                if (parts[j] == "null")
+                if (parts[j].Contains("null"))
                 {
                     newString[j] = "";
                 }
