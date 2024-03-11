@@ -1,4 +1,4 @@
-﻿using NUnit.Framework.Internal.Execution;
+using NUnit.Framework.Internal.Execution;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using Bytescout.Spreadsheet;
@@ -34,15 +34,56 @@ namespace SQA_AutomationTest
             int worksheetCount = worksheet.UsedRangeRowMax;
             for (int i = 2; i <= worksheetCount; i++)
             {
+                    string cellValues = worksheet.Cell(i, 3).Value.ToString();
+                    string[] parts = cellValues.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                    string[] newString = new string[parts.Length];
+                    newString=convert.ConvertToArray(parts);
+                    driver.Navigate().GoToUrl("https://localhost:44385/Home/LoginAndRegister");
+                    driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(newString[0]);
+                    driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(newString[1]);
+                    driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
+                    //
+                    if (driver.Url == ("https://localhost:44385") || driver.Url.Contains("https://localhost:44385/Home/HomePage/2"))
+                    {
+                        Console.WriteLine("Đăng nhập thành công");
+                        worksheet.Cell(i, 5).Value = "Thông báo đăng nhập thành công";
+                    }
+                    else
+                    {
+                        try
+                        {
+                            string errorMsg = driver.FindElement(By.XPath("//span[@class='field-validation-error text-danger']")).Text;
+                            worksheet.Cell(i, 5).Value = errorMsg;
+                        }
+                        catch (NoSuchElementException)
+                        {
+                            worksheet.Cell(i, 5).Value = "Chưa điền đầy đủ thông tin đăng nhập";
+                            Console.WriteLine("Không tìm thấy thông báo lỗi, có thể đăng nhập thành công hoặc có lỗi khác xảy ra");
+                        }
+                    }
+            }
+            Console.WriteLine("---");
+            // Save document
+            spreadsheet.SaveAs(pathOfExcel);
+            spreadsheet.Close();
+        }
+
+        [Test]
+        public void TestLogin2()
+        {
+            Spreadsheet spreadsheet = new Spreadsheet();
+            spreadsheet.LoadFromFile(@$"{pathOfExcel}");
+            Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("Sheet2");
+            int worksheetCount = worksheet.UsedRangeRowMax;
+            for (int i = 2; i <= worksheetCount; i++)
+            {
                 string cellValues = worksheet.Cell(i, 3).Value.ToString();
-                Console.WriteLine(cellValues);
-                string[] parts = cellValues.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
-                string[] newString = convert.ConvertToArray(parts);
-                //Viet cau lenh ra
-                driver.Navigate().GoToUrl(localHost + "/Home/LoginAndRegister");
-                driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(newString[0]);
-                driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(newString[1]);
-                driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
+                 string[] parts = cellValues.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                 string[] newString = convert.ConvertToArray(parts);
+                 driver.Navigate().GoToUrl(localHost+"/Home/LoginAndRegister");
+                 driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(newString[0]);
+                 driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(newString[1]);
+                 driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
                 string expected = worksheet.Cell(i, 4).Value.ToString();
                 if (driver.Url == (localHost + "/Home/HomePage/2"))
                 {

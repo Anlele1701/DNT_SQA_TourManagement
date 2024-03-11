@@ -9,7 +9,7 @@ namespace DAPM_TOURDL
     {
         public string[] ConvertToArray(string[] parts)
         {
-            string[] newString= new string[parts.Length];
+            string[] newString = new string[parts.Length];
             for (int j = 0; j < parts.Length; j++)
             {
                 if (parts[j] == "null")
