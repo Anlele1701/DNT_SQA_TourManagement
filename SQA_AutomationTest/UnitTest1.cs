@@ -11,7 +11,7 @@ namespace SQA_AutomationTest
         private IWebDriver driver;
         private string pathOfClientExcel;
         private string pathOfAdminExcel;
-
+  
         [SetUp]
         public void Setup()
         {
@@ -26,9 +26,7 @@ namespace SQA_AutomationTest
         }
 
         //#region CLIENT
-
         //#region CL Shared Function
-
         //public void CL_LoggedInValid()
         //{
         //    driver.Navigate().GoToUrl(localHost + "/Home/LoginAndRegister");
@@ -113,6 +111,35 @@ namespace SQA_AutomationTest
         //}
 
         //#endregion CL Shared Function
+
+        [Test]
+        public void FUNC_CL_EditProfile()
+        {
+            Spreadsheet spreadsheet = new Spreadsheet();
+            spreadsheet.LoadFromFile(@$"{pathOfClientExcel}");
+            Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("CL - Chỉnh sửa TT Cá Nhân");
+            int worksheetCount = worksheet.UsedRangeRowMax;
+            for (int i = 2; i <= worksheetCount; i++)
+            {
+                string cellValues = worksheet.Cell(i, 3).Value.ToString();
+                Console.WriteLine(cellValues);
+                string[] parts = cellValues.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                string[] newString = convert.ConvertToArray(parts);
+                string expected = worksheet.Cell(i, 4).Value.ToString();
+                string actual = "";
+                //VIẾT CÂU LỆNH LOGIC CỦA TEST SCRIPT
+                CL_LoggedInValid();
+                driver.FindElement(By.CssSelector(".nav-link.no-hover")).Click();
+                driver.FindElement(By.XPath("//i[@id='pen-icon']")).Click();
+                //if (convert.CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 6).Value = "Passed";
+                //else worksheet.Cell(i, 6).Value = "Failed";
+            }
+            // Save document
+            spreadsheet.SaveAs(pathOfClientExcel);
+            spreadsheet.Close();
+        }
+
+        #endregion CLIENT
 
         [TearDown]
         public void TearDown()
