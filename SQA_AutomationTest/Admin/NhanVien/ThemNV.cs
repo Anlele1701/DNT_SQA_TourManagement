@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SQA_AutomationTest.Admin.NhanVien
 {
-    internal class ThemNV : BaseTest
+    internal class ThemNV : Tests
     {
         [Test]
         [TestCase("bngoc.hi4103@gmail.com", "17012003")]
