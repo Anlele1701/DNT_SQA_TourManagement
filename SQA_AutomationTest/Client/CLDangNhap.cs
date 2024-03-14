@@ -33,21 +33,19 @@ namespace SQA_AutomationTest.Client
                 if (driver.Url == (localHost + "/Home/HomePage/2"))
                 {
                     actual = "Thông báo đăng nhập thành công, điều hướng sang trang HomePage";
-                    worksheet.Cell(i, 5).Value = actual;
                 }
                 else
                 {
                     try
                     {
                         actual = driver.FindElement(By.XPath("//span[@class='field-validation-error text-danger']")).Text;
-                        worksheet.Cell(i, 5).Value = actual;
                     }
                     catch (NoSuchElementException)
                     {
                         actual = "Chưa điền đầy đủ thông tin đăng nhập";
-                        worksheet.Cell(i, 5).Value = actual;
                     }
                 }
+                worksheet.Cell(i, 5).Value = actual;
                 if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 6).Value = "Passed";
                 else worksheet.Cell(i, 6).Value = "Failed";
             }
