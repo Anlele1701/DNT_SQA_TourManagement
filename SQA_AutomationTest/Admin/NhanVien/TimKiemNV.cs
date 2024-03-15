@@ -11,25 +11,31 @@ namespace SQA_AutomationTest.Admin.NhanVien
 {
     internal class TimKiemNV : BaseTest
     {
+
+        public void DangNhap()
+        {
+            driver.Navigate().GoToUrl(localHost + "/Logging/LoginAdmin");
+            driver.FindElement(By.Id("Mail_NV")).SendKeys("bngoc.hi4103@gmail.com");
+            driver.FindElement(By.Id("MatKhau")).SendKeys("17012003");
+            driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
+        }
+
         [Test]
-        [TestCase("bngoc.hi4103@gmail.com", "17012003")]
-        public void TestTimKiemNV(string username, string password)
+        public void TestTimKiemNV()
         {
             Spreadsheet spreadsheet = new Spreadsheet();
             spreadsheet.LoadFromFile(@$"{pathOfExcel}");
             Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Tìm Kiếm NV");
             int worksheetCount = worksheet.UsedRangeRowMax;
             Console.WriteLine(worksheetCount);
+            DangNhap();
             for (int i = 2; i <= worksheetCount; i++)
             {
+                driver.Navigate().GoToUrl(localHost+"/NHANVIENs/Index");
                 string expected = worksheet.Cell(i, 3).Value.ToString();
                 string cellValues = worksheet.Cell(i, 2).Value.ToString();
                 string[] parts = cellValues.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
                 string[] newString = ConvertToArray(parts);
-                driver.Navigate().GoToUrl(localHost + "/Logging/LoginAdmin");
-                driver.FindElement(By.Id("Mail_NV")).SendKeys(username);
-                driver.FindElement(By.Id("MatKhau")).SendKeys(password);
-                driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
                 driver.FindElement(By.XPath("/html/body/div[1]/div[2]/ul/li[2]/a")).Click();
                 IWebElement element = driver.FindElement(By.XPath("/html/body/div[2]/div/div[1]/form/input"));
                 element.SendKeys(newString[0]);
@@ -54,10 +60,10 @@ namespace SQA_AutomationTest.Admin.NhanVien
                     if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
                     else worksheet.Cell(i, 5).Value = "Failed";
                 }
-                // Save document
-                spreadsheet.SaveAs(pathOfExcel);
-                spreadsheet.Close();
             }
+            // Save document
+            spreadsheet.SaveAs(pathOfExcel);
+            spreadsheet.Close();
         }
     }
 }

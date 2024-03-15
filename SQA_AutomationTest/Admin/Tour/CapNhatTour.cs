@@ -7,11 +7,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SQA_AutomationTest.Admin.Tour
 {
-    internal class ThemTour:BaseTest
+    internal class CapNhatTour:BaseTest
     {
         private string localHost = "https://localhost:44385";
         private string pathAn;
@@ -28,6 +27,7 @@ namespace SQA_AutomationTest.Admin.Tour
             pathOfExcel = Path.Combine(currentDirectory, pathOfExcel); //đường dẫn tuyệt đối
             Console.WriteLine(pathOfExcel);
         }
+
         public void DangNhap()
         {
             driver.Navigate().GoToUrl(localHost + "/Logging/LoginAdmin");
@@ -36,12 +36,13 @@ namespace SQA_AutomationTest.Admin.Tour
             driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
         }
 
+
         [Test]
-        public void TestThemTour()
+        public void TestCapNhatTour()
         {
             Spreadsheet spreadsheet = new Spreadsheet();
             spreadsheet.LoadFromFile(@$"{pathOfExcel}");
-            Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Thêm Tour");
+            Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Chỉnh sửa Tour");
             int worksheetCount = worksheet.UsedRangeRowMax;
             Console.WriteLine(worksheetCount);
             DangNhap();
@@ -51,24 +52,27 @@ namespace SQA_AutomationTest.Admin.Tour
                 string cellValues = worksheet.Cell(i, 2).Value.ToString();
                 string[] parts = cellValues.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
                 string[] newString = ConvertToArray(parts);
-                driver.Navigate().GoToUrl(localHost+"/TOURs/Index");
+                driver.Navigate().GoToUrl(localHost + "/TOURs/Index");
                 driver.FindElement(By.XPath("/html/body/div[1]/div[2]/ul/li[3]/a")).Click();
-                driver.FindElement(By.XPath("/html/body/div[2]/div/div[1]/button")).Click();
-                driver.FindElement(By.XPath("//*[@id=\"ID_TOUR\"]")).SendKeys(newString[0]);
-                driver.FindElement(By.XPath("//*[@id=\"TenTour\"]")).SendKeys(newString[1]);
-                driver.FindElement(By.XPath("//*[@id=\"GiaTour\"]")).SendKeys(newString[2]);
-                driver.FindElement(By.XPath("//*[@id=\"MoTa\"]")).SendKeys(newString[3]);
-                if (newString[4] != "")
-                {
-                    driver.FindElement(By.CssSelector("#HinhTour")).SendKeys(patfOfFolderImages + newString[4]);
-                }
-                driver.FindElement(By.XPath("//*[@id=\"TinhThanh\"]")).SendKeys(newString[5]);
-                driver.FindElement(By.XPath("//*[@id=\"LoaiTour\"]")).SendKeys(newString[6]);
-                driver.FindElement(By.XPath("/html/body/div[2]/div/form/div/div[8]/div/input")).Click();
-                if (driver.Url.Contains(localHost + "TOURs/Index"))
+                driver.FindElement(By.XPath("//*[@id=\"tourBox\"]/div[1]/div[2]/a/i")).Click();
+                driver.FindElement(By.XPath("//*[@id=\"tourBox\"]/div[1]/div[2]/ul/li[1]/a")).Click();
+                driver.FindElement(By.XPath("//*[@id=\"TenTour\"]")).Clear();
+                driver.FindElement(By.XPath("//*[@id=\"GiaTour\"]")).Clear();
+                driver.FindElement(By.XPath("//*[@id=\"MoTa\"]")).Clear();
+                driver.FindElement(By.XPath("//*[@id=\"HinhTour\"]")).Clear();
+                driver.FindElement(By.XPath("//*[@id=\"TinhThanh\"]")).Clear();
+                driver.FindElement(By.XPath("//*[@id=\"LoaiTour\"]")).Clear();
 
+                driver.FindElement(By.XPath("//*[@id=\"TenTour\"]")).SendKeys(newString[0]);
+                driver.FindElement(By.XPath("//*[@id=\"GiaTour\"]")).SendKeys(newString[1]);
+                driver.FindElement(By.XPath("//*[@id=\"MoTa\"]")).SendKeys(newString[2]);
+                driver.FindElement(By.XPath("//*[@id=\"HinhTour\"]")).SendKeys(newString[3]);
+                driver.FindElement(By.XPath("//*[@id=\"TinhThanh\"]")).SendKeys(newString[4]);
+                driver.FindElement(By.XPath("//*[@id=\"LoaiTour\"]")).SendKeys(newString[5]);
+                driver.FindElement(By.XPath("/html/body/div[2]/div/form/div/div[7]/div/input")).Click();
+                if (driver.Url.Contains(localHost + "TOURs/Index"))
                 {
-                    string actual = "Hệ thống tạo tour thành công và trả về trang Index";
+                    string actual = "Hệ thống chỉnh sửa tour thành công và trả về trang Index";
                     worksheet.Cell(i, 4).Value = actual;
                     if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
                     else worksheet.Cell(i, 5).Value = "Failed";
@@ -84,13 +88,14 @@ namespace SQA_AutomationTest.Admin.Tour
                 {
                     string actual = "Hệ thống báo lỗi không đủ dữ liệu và không tạo tour mới";
                     worksheet.Cell(i, 4).Value = actual;
-                    if(expected.Contains("Hệ thống báo lỗi"))
+                    if (expected.Contains("Hệ thống báo lỗi"))
                     {
                         worksheet.Cell(i, 5).Value = "Passed";
                     }
                     else worksheet.Cell(i, 5).Value = "Failed";
                 }
             }
+            // Save document
             spreadsheet.SaveAs(pathOfExcel);
             spreadsheet.Close();
         }

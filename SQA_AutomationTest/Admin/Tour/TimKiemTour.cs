@@ -1,4 +1,5 @@
-﻿using Bytescout.Spreadsheet;
+﻿using AutoItX3Lib;
+using Bytescout.Spreadsheet;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
@@ -6,14 +7,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace SQA_AutomationTest.Admin.NhanVien
+namespace SQA_AutomationTest.Admin.Tour
 {
-    internal class XoaNV:BaseTest
+    internal class TimKiemTour:BaseTest
     {
         private string localHost = "https://localhost:44385";
-        private string pathAn;
         private string pathOfExcel;
         private string[] newString;
         [SetUp]
@@ -34,36 +33,40 @@ namespace SQA_AutomationTest.Admin.NhanVien
             driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
         }
 
-
         [Test]
-        public void TestXoaNV()
+        public void TestTimKiemTour()
         {
             Spreadsheet spreadsheet = new Spreadsheet();
             spreadsheet.LoadFromFile(@$"{pathOfExcel}");
-            Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Xóa NV");
+            Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Tìm kiếm Tour");
             int worksheetCount = worksheet.UsedRangeRowMax;
             Console.WriteLine(worksheetCount);
             DangNhap();
             for (int i = 2; i <= worksheetCount; i++)
             {
-                driver.Navigate().GoToUrl(localHost+"/NHANVIENs/Index");
+                driver.Navigate().GoToUrl("https://localhost:44385/TOURs/Index");
                 string expected = worksheet.Cell(i, 3).Value.ToString();
-                driver.FindElement(By.XPath("/html/body/div[1]/div[2]/ul/li[2]/a")).Click();
-                driver.FindElement(By.XPath("//*[@id=\"listBox\"]/div/table/tbody/tr[1]/td[8]/a[3]")).Click();
-                driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div/input")).Click();
-                if(driver.Url.Contains(localHost + "NHANVIENs/Index")){
-                    string actual = "Hệ thống xóa nhân viên thành công và trả về trang Index";
-                    worksheet.Cell(i, 4).Value = actual;
-                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
-                    else worksheet.Cell(i, 5).Value = "Failed";
-                }
-                else if (ElementExists(By.XPath("/html/body/span/h1")))
+                string inputData=worksheet.Cell(i,2).Value.ToString();
+                IWebElement element= driver.FindElement(By.XPath("/html/body/div[2]/div/div[1]/form/input"));
+                element.SendKeys(inputData);
+                element.SendKeys(Keys.Enter);
+                string actual;
+                IList<IWebElement> elements = driver.FindElements(By.ClassName("card"));
+                if (elements.Count > 0)
                 {
-                    string actual = driver.FindElement(By.XPath("/html/body/span/h1")).Text;
+                    actual = "Hệ thống trả về danh sách các tour tìm kiếm";
                     worksheet.Cell(i, 4).Value = actual;
-                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
-                    else worksheet.Cell(i, 5).Value = "Failed";
                 }
+                else
+                {
+                    actual = "Hệ thống trả về danh sách trống";
+                    worksheet.Cell(i, 4).Value = actual;
+                }
+                if (expected.Contains("Hệ thống trả về"))
+                {
+                    worksheet.Cell(i, 5).Value = "Passed";
+                }
+                else worksheet.Cell(i, 5).Value = "Failed";
             }
             // Save document
             spreadsheet.SaveAs(pathOfExcel);
