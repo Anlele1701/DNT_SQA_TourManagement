@@ -80,7 +80,14 @@ namespace SQA_AutomationTest
             driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys("17012003");
             driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
         }
-
+        public void CL_LoggedInValidWithPara(string username, string password)
+        {
+            driver.Navigate().GoToUrl(localHost + "/Home/LoginAndRegister");
+            driver.Manage().Window.Maximize();
+            driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(username);
+            driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(password);
+            driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
+        }
         #endregion Client Function
 
         [TearDown]
