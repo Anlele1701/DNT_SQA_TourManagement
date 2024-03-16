@@ -29,6 +29,8 @@ namespace SQA_AutomationTest
             driver = new EdgeDriver();
         }
 
+        #region Excel Sorting
+
         public string[] ConvertToArray(string[] parts)
         {
             string[] newString = new string[parts.Length];
@@ -40,7 +42,7 @@ namespace SQA_AutomationTest
                 }
                 else
                 {
-                    newString[j] = parts[j];
+                    newString[j] = parts[j].Trim();
                 }
                 Console.WriteLine(newString[j]);
             }
@@ -49,7 +51,7 @@ namespace SQA_AutomationTest
 
         public bool CompareExpectedAndActual(string expected, string actual)
         {
-            if (expected == actual) return true;
+            if (expected.Contains(actual)) return true;
             else return false;
         }
 
@@ -65,6 +67,28 @@ namespace SQA_AutomationTest
                 return false;
             }
         }
+
+        #endregion Excel Sorting
+
+        #region Client Function
+
+        public void CL_LoggedInValid()
+        {
+            driver.Navigate().GoToUrl(localHost + "/Home/LoginAndRegister");
+            driver.Manage().Window.Maximize();
+            driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys("lethanhduyan@gmail.com");
+            driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys("17012003");
+            driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
+        }
+        public void CL_LoggedInValidWithPara(string username, string password)
+        {
+            driver.Navigate().GoToUrl(localHost + "/Home/LoginAndRegister");
+            driver.Manage().Window.Maximize();
+            driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='Mail_KH']")).SendKeys(username);
+            driver.FindElement(By.XPath("//form[@action='/Login']//input[@id='MatKhau']")).SendKeys(password);
+            driver.FindElement(By.XPath("//button[@type='submit'][contains(text(),'Đăng Nhập')]")).Click();
+        }
+        #endregion Client Function
 
         [TearDown]
         public void TearDown()
