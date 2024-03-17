@@ -10,7 +10,7 @@ using System.Text;
 
 namespace SQA_AutomationTest.Admin.Tour
 {
-    internal class XoaTour:BaseTest
+    internal class XoaTour:Tests
     {
         private string localHost = "https://localhost:44385";
         private string pathAn;
@@ -44,7 +44,7 @@ namespace SQA_AutomationTest.Admin.Tour
             Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Xóa Tour");
             int worksheetCount = worksheet.UsedRangeRowMax;
             Console.WriteLine(worksheetCount);
-            DangNhap();
+            CL_LoggedInValidWithPara("bngoc.hi4103@gmail.com", "17012003");
             for (int i = 2; i <= worksheetCount; i++)
             {
                 driver.Navigate().GoToUrl(localHost + "/TOURs/Index");

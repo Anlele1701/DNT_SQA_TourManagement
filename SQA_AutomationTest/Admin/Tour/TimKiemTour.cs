@@ -10,29 +10,9 @@ using System.Text;
 
 namespace SQA_AutomationTest.Admin.Tour
 {
-    internal class TimKiemTour:BaseTest
+    internal class TimKiemTour:Tests
     {
-        private string localHost = "https://localhost:44385";
-        private string pathOfExcel;
-        private string[] newString;
-        [SetUp]
-        public void Setup()
-        {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            pathOfExcel = "FILETEST/Admin.xlsx";
-            string currentDirectory = Directory.GetCurrentDirectory();
-            pathOfExcel = Path.Combine(currentDirectory, pathOfExcel); //đường dẫn tuyệt đối
-            Console.WriteLine(pathOfExcel);
-        }
-
-        public void DangNhap()
-        {
-            driver.Navigate().GoToUrl(localHost + "/Logging/LoginAdmin");
-            driver.FindElement(By.Id("Mail_NV")).SendKeys("bngoc.hi4103@gmail.com");
-            driver.FindElement(By.Id("MatKhau")).SendKeys("17012003");
-            driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
-        }
-
+        
         [Test]
         public void TestTimKiemTour()
         {
@@ -41,7 +21,7 @@ namespace SQA_AutomationTest.Admin.Tour
             Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Tìm kiếm Tour");
             int worksheetCount = worksheet.UsedRangeRowMax;
             Console.WriteLine(worksheetCount);
-            DangNhap();
+            CL_LoggedInValidWithPara("bngoc.hi4103@gmail.com", "17012003");
             for (int i = 2; i <= worksheetCount; i++)
             {
                 driver.Navigate().GoToUrl("https://localhost:44385/TOURs/Index");
@@ -50,7 +30,7 @@ namespace SQA_AutomationTest.Admin.Tour
                 IWebElement element= driver.FindElement(By.XPath("/html/body/div[2]/div/div[1]/form/input"));
                 element.SendKeys(inputData);
                 element.SendKeys(Keys.Enter);
-                string actual;
+                string actual="";
                 IList<IWebElement> elements = driver.FindElements(By.ClassName("card"));
                 if (elements.Count > 0)
                 {

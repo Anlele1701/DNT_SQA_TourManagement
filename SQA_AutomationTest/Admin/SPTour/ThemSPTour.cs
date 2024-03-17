@@ -10,27 +10,9 @@ using System.Text;
 
 namespace SQA_AutomationTest.Admin.SPTour
 {
-    internal class ThemSPTour:BaseTest
+    internal class ThemSPTour:Tests
     {
-        private string localHost = "https://localhost:44385";
-        private string pathOfExcel;
-        private string[] newString;
-        [SetUp]
-        public void Setup()
-        {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            pathOfExcel = "FILETEST/Admin.xlsx";
-            string currentDirectory = Directory.GetCurrentDirectory();
-            pathOfExcel = Path.Combine(currentDirectory, pathOfExcel); //đường dẫn tuyệt đối
-            Console.WriteLine(pathOfExcel);
-        }
-        public void DangNhap()
-        {
-            driver.Navigate().GoToUrl(localHost + "/Logging/LoginAdmin");
-            driver.FindElement(By.Id("Mail_NV")).SendKeys("bngoc.hi4103@gmail.com");
-            driver.FindElement(By.Id("MatKhau")).SendKeys("17012003");
-            driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
-        }
+        
 
         [Test]
         public void TestThemSPTour()
@@ -40,7 +22,7 @@ namespace SQA_AutomationTest.Admin.SPTour
             Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Thêm SPTour");
             int worksheetCount = worksheet.UsedRangeRowMax;
             Console.WriteLine(worksheetCount);
-            DangNhap();
+            CL_LoggedInValidWithPara("bngoc.hi4103@gmail.com", "17012003");
             for (int i = 2; i <= worksheetCount; i++)
             {
                 string expected = worksheet.Cell(i, 3).Value.ToString();
@@ -62,7 +44,7 @@ namespace SQA_AutomationTest.Admin.SPTour
                 driver.FindElement(By.XPath("//*[@id=\"GiaTreEm\"]")).SendKeys(newString[10]);
                 driver.FindElement(By.XPath("/html/body/div[2]/div/form/div/div[8]/div/input")).Click();
 
-
+                
                 if (driver.Url.Contains(localHost + "SPTOURs/Index"))
 
                 {

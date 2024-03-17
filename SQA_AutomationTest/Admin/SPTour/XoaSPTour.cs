@@ -10,28 +10,9 @@ using System.Text;
 
 namespace SQA_AutomationTest.Admin.SPTour
 {
-    internal class XoaSPTour:BaseTest
+    internal class XoaSPTour:Tests
     {
-        private string localHost = "https://localhost:44385";
-        private string pathOfExcel;
-        [SetUp]
-        public void Setup()
-        {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            pathOfExcel = "FILETEST/Admin.xlsx";
-            string currentDirectory = Directory.GetCurrentDirectory();
-            pathOfExcel = Path.Combine(currentDirectory, pathOfExcel); //đường dẫn tuyệt đối
-            Console.WriteLine(pathOfExcel);
-        }
-
-        public void DangNhap()
-        {
-            driver.Navigate().GoToUrl(localHost + "/Logging/LoginAdmin");
-            driver.FindElement(By.Id("Mail_NV")).SendKeys("bngoc.hi4103@gmail.com");
-            driver.FindElement(By.Id("MatKhau")).SendKeys("17012003");
-            driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
-        }
-
+        
 
         [Test]
         public void TestXoaSPTour()
@@ -41,7 +22,7 @@ namespace SQA_AutomationTest.Admin.SPTour
             Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Xóa SPTour");
             int worksheetCount = worksheet.UsedRangeRowMax;
             Console.WriteLine(worksheetCount);
-            DangNhap();
+            CL_LoggedInValidWithPara("bngoc.hi4103@gmail.com", "17012003");
             for (int i = 2; i <= worksheetCount; i++)
             {
                 string expected = worksheet.Cell(i, 3).Value.ToString();

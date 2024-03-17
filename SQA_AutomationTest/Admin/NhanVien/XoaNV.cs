@@ -10,31 +10,8 @@ using System.Threading.Tasks;
 
 namespace SQA_AutomationTest.Admin.NhanVien
 {
-    internal class XoaNV:BaseTest
+    internal class XoaNV:Tests
     {
-        private string localHost = "https://localhost:44385";
-        private string pathAn;
-        private string pathOfExcel;
-        private string[] newString;
-        [SetUp]
-        public void Setup()
-        {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            pathOfExcel = "FILETEST/Admin.xlsx";
-            string currentDirectory = Directory.GetCurrentDirectory();
-            pathOfExcel = Path.Combine(currentDirectory, pathOfExcel); //đường dẫn tuyệt đối
-            Console.WriteLine(pathOfExcel);
-        }
-
-        public void DangNhap()
-        {
-            driver.Navigate().GoToUrl(localHost + "/Logging/LoginAdmin");
-            driver.FindElement(By.Id("Mail_NV")).SendKeys("bngoc.hi4103@gmail.com");
-            driver.FindElement(By.Id("MatKhau")).SendKeys("17012003");
-            driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
-        }
-
-
         [Test]
         public void TestXoaNV()
         {
@@ -43,7 +20,7 @@ namespace SQA_AutomationTest.Admin.NhanVien
             Worksheet worksheet = spreadsheet.Workbook.Worksheets.ByName("AD - Xóa NV");
             int worksheetCount = worksheet.UsedRangeRowMax;
             Console.WriteLine(worksheetCount);
-            DangNhap();
+            CL_LoggedInValidWithPara("bngoc.hi4103@gmail.com", "17012003");
             for (int i = 2; i <= worksheetCount; i++)
             {
                 driver.Navigate().GoToUrl(localHost+"/NHANVIENs/Index");
@@ -51,19 +28,19 @@ namespace SQA_AutomationTest.Admin.NhanVien
                 driver.FindElement(By.XPath("/html/body/div[1]/div[2]/ul/li[2]/a")).Click();
                 driver.FindElement(By.XPath("//*[@id=\"listBox\"]/div/table/tbody/tr[1]/td[8]/a[3]")).Click();
                 driver.FindElement(By.XPath("/html/body/div[2]/div/div/form/div/input")).Click();
+                string actual = "";
                 if(driver.Url.Contains(localHost + "NHANVIENs/Index")){
-                    string actual = "Hệ thống xóa nhân viên thành công và trả về trang Index";
+                    actual = "Hệ thống xóa nhân viên thành công và trả về trang Index";
                     worksheet.Cell(i, 4).Value = actual;
-                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
-                    else worksheet.Cell(i, 5).Value = "Failed";
                 }
                 else if (ElementExists(By.XPath("/html/body/span/h1")))
                 {
-                    string actual = driver.FindElement(By.XPath("/html/body/span/h1")).Text;
+                    actual = driver.FindElement(By.XPath("/html/body/span/h1")).Text;
                     worksheet.Cell(i, 4).Value = actual;
-                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
-                    else worksheet.Cell(i, 5).Value = "Failed";
                 }
+
+                if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
+                else worksheet.Cell(i, 5).Value = "Failed";
             }
             // Save document
             spreadsheet.SaveAs(pathOfExcel);

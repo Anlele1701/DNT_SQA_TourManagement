@@ -31,29 +31,28 @@ namespace SQA_AutomationTest.Admin
                 driver.FindElement(By.XPath("/html/body/form/div/div/button")).Click();
                 string expected = worksheet.Cell(i, 3).Value.ToString();
                 //
+                string actual = "";
                 if (driver.Url == localHost || driver.Url.Contains(localHost + "/NHANVIENs/GetData"))
                 {
-                    string actual = "Hệ thống xác thực người dùng thành công và chuyển vào trang Admin";
+                    actual = "Hệ thống xác thực người dùng thành công và chuyển vào trang Admin";
                     worksheet.Cell(i, 4).Value = actual;
-                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
-                    else worksheet.Cell(i, 5).Value = "Failed";
                 }
                 else
                 {
                     if (ElementExists(By.XPath("/html/body/span/h1")))
                     {
-                        string actual = driver.FindElement(By.XPath("/html/body/span/h1")).Text;
+                        actual = driver.FindElement(By.XPath("/html/body/span/h1")).Text;
                         worksheet.Cell(i, 4).Value = actual;
-                        if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
-                        else worksheet.Cell(i, 5).Value = "Failed";
                     }
                     else
                     {
-                        string actual = "Hệ thống báo lỗi sai thông tin đăng nhập và yêu cầu nhập lại";
+                        actual = "Hệ thống báo lỗi sai thông tin đăng nhập và yêu cầu nhập lại";
                         worksheet.Cell(i, 4).Value = actual;
-                        if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
-                        else worksheet.Cell(i, 5).Value = "Failed";
                     }
+
+                    if (CompareExpectedAndActual(expected, actual)) worksheet.Cell(i, 5).Value = "Passed";
+                    else worksheet.Cell(i, 5).Value = "Failed";
+
                 }
             }
             // Save document

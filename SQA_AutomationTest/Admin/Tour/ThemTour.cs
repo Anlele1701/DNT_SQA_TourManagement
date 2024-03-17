@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SQA_AutomationTest.Admin.Tour
 {
-    internal class ThemTour:BaseTest
+    internal class ThemTour:Tests
     {
         private string localHost = "https://localhost:44385";
         private string pathAn;
