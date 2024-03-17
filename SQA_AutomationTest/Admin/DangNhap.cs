@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SQA_AutomationTest.Admin
 {
-    internal class DangNhap : BaseTest
+    internal class DangNhap : Tests
     {
         [Test]
         public void TestDangNhapAdmin()

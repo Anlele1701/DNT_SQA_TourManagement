@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SQA_AutomationTest.Admin.NhanVien
 {
-    internal class TimKiemNV : BaseTest
+    internal class TimKiemNV : Tests
     {
 
         public void DangNhap()
