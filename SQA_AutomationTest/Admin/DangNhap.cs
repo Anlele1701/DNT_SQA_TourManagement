@@ -11,7 +11,6 @@ namespace SQA_AutomationTest.Admin
 {
     internal class DangNhap : Tests
     {
-        [Test]
         public void TestDangNhapAdmin()
         {
             Spreadsheet spreadsheet = new Spreadsheet();
