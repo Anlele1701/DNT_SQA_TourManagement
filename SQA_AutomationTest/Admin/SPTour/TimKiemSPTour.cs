@@ -1,5 +1,4 @@
-﻿using AutoItX3Lib;
-using Bytescout.Spreadsheet;
+﻿using Bytescout.Spreadsheet;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
@@ -12,8 +11,6 @@ namespace SQA_AutomationTest.Admin.SPTour
 {
     internal class TimKiemSPTour:Tests
     {
-        
-
         [Test]
         public void TestTimKiemTour()
         {
@@ -54,13 +51,6 @@ namespace SQA_AutomationTest.Admin.SPTour
             // Save document
             spreadsheet.SaveAs(pathOfExcel);
             spreadsheet.Close();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-            driver.Dispose();
         }
     }
 }

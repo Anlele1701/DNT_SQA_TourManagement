@@ -70,24 +70,5 @@ namespace SQA_AutomationTest.Admin.NhanVien
             spreadsheet.SaveAs(pathOfExcel);
             spreadsheet.Close();
         }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-            driver.Dispose();
-        }
-        public bool ElementExists(By locator)
-        {
-            try
-            {
-                driver.FindElement(locator);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
     }
 }

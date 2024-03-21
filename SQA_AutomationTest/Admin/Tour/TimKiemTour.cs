@@ -1,5 +1,4 @@
-﻿using AutoItX3Lib;
-using Bytescout.Spreadsheet;
+﻿using Bytescout.Spreadsheet;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
@@ -51,25 +50,6 @@ namespace SQA_AutomationTest.Admin.Tour
             // Save document
             spreadsheet.SaveAs(pathOfExcel);
             spreadsheet.Close();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-            driver.Dispose();
-        }
-        public bool ElementExists(By locator)
-        {
-            try
-            {
-                driver.FindElement(locator);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
         }
     }
 }
