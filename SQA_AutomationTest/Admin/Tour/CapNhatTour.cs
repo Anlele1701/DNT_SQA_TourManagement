@@ -1,5 +1,4 @@
-﻿using AutoItX3Lib;
-using Bytescout.Spreadsheet;
+﻿using Bytescout.Spreadsheet;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
@@ -12,10 +11,6 @@ namespace SQA_AutomationTest.Admin.Tour
 {
     internal class CapNhatTour:Tests
     {
-        private string localHost = "https://localhost:44385";
-        private string pathAn;
-        private string pathOfExcel;
-        private string[] newString;
         string patfOfFolderImages;
         [SetUp]
         public void Setup()
@@ -27,9 +22,6 @@ namespace SQA_AutomationTest.Admin.Tour
             pathOfExcel = Path.Combine(currentDirectory, pathOfExcel); //đường dẫn tuyệt đối
             Console.WriteLine(pathOfExcel);
         }
-
-
-
         [Test]
         public void TestCapNhatTour()
         {
@@ -91,13 +83,6 @@ namespace SQA_AutomationTest.Admin.Tour
             // Save document
             spreadsheet.SaveAs(pathOfExcel);
             spreadsheet.Close();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-            driver.Dispose();
         }
     }
 }
